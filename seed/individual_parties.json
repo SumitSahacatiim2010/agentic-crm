@@ -1,0 +1,402 @@
+[
+  {
+    "customer_id": "42a8bde7-483e-4125-ae04-eca109870c38",
+    "full_legal_name": "Barbara Wilson",
+    "segment_tier": "Gold",
+    "nationality": "Japanese",
+    "employment_status": "Manager",
+    "annual_income": 956353
+  },
+  {
+    "customer_id": "3efcd709-a369-4674-98b3-61a3b62f4a0a",
+    "full_legal_name": "Charles Brown",
+    "segment_tier": "UHNW",
+    "nationality": "French",
+    "employment_status": "Lawyer",
+    "annual_income": 308739
+  },
+  {
+    "customer_id": "6b018190-c4e0-4e67-8c95-edc99a2aa61f",
+    "full_legal_name": "William Davis",
+    "segment_tier": "Platinum",
+    "nationality": "Canadian",
+    "employment_status": "Engineer",
+    "annual_income": 898107
+  },
+  {
+    "customer_id": "3c3d24f1-a18b-4f2d-a32d-7631981d8e32",
+    "full_legal_name": "Thomas Johnson",
+    "segment_tier": "Standard",
+    "nationality": "Singaporean",
+    "employment_status": "Artist",
+    "annual_income": 2533103
+  },
+  {
+    "customer_id": "75d7fb01-a61f-4b08-b953-648c115d02ae",
+    "full_legal_name": "Charles Thomas",
+    "segment_tier": "UHNW",
+    "nationality": "Japanese",
+    "employment_status": "Manager",
+    "annual_income": 3462349
+  },
+  {
+    "customer_id": "cb84d38d-488c-445a-8796-e63cc92608f7",
+    "full_legal_name": "Barbara Jones",
+    "segment_tier": "Standard",
+    "nationality": "Canadian",
+    "employment_status": "Retired",
+    "annual_income": 4149969
+  },
+  {
+    "customer_id": "e057936e-21af-426c-9666-aab2d173a0f4",
+    "full_legal_name": "Joseph Hernandez",
+    "segment_tier": "Silver",
+    "nationality": "Canadian",
+    "employment_status": "Student",
+    "annual_income": 4659886
+  },
+  {
+    "customer_id": "f6ea4beb-e345-4d43-be20-dba05cf071b5",
+    "full_legal_name": "Michael Williams",
+    "segment_tier": "Standard",
+    "nationality": "French",
+    "employment_status": "Manager",
+    "annual_income": 3006975
+  },
+  {
+    "customer_id": "ee18f5f4-8d97-440f-b486-965d0b2516ba",
+    "full_legal_name": "William Martin",
+    "segment_tier": "Silver",
+    "nationality": "German",
+    "employment_status": "Retired",
+    "annual_income": 3954904
+  },
+  {
+    "customer_id": "981695ac-76b4-4568-a02f-2fa78ff2814f",
+    "full_legal_name": "Jennifer Martinez",
+    "segment_tier": "UHNW",
+    "nationality": "German",
+    "employment_status": "Doctor",
+    "annual_income": 4220285
+  },
+  {
+    "customer_id": "6391c619-9645-4667-b716-6fa88e23cbc6",
+    "full_legal_name": "Joseph Garcia",
+    "segment_tier": "UHNW",
+    "nationality": "Singaporean",
+    "employment_status": "Director",
+    "annual_income": 3289704
+  },
+  {
+    "customer_id": "3824e5ae-3905-4501-b8f5-a2a06e2956a2",
+    "full_legal_name": "Jessica Taylor",
+    "segment_tier": "Platinum",
+    "nationality": "Singaporean",
+    "employment_status": "Analyst",
+    "annual_income": 2063264
+  },
+  {
+    "customer_id": "b5f0f29c-116e-46db-900a-d84b581719de",
+    "full_legal_name": "Joseph Davis",
+    "segment_tier": "Standard",
+    "nationality": "Japanese",
+    "employment_status": "Manager",
+    "annual_income": 1652518
+  },
+  {
+    "customer_id": "d157ea6d-4d64-4b24-93fd-0f1f89039826",
+    "full_legal_name": "John Moore",
+    "segment_tier": "Gold",
+    "nationality": "Japanese",
+    "employment_status": "Retired",
+    "annual_income": 4716681
+  },
+  {
+    "customer_id": "7d41dfad-d0fd-477d-b804-958d515a67a5",
+    "full_legal_name": "Sarah Rodriguez",
+    "segment_tier": "Standard",
+    "nationality": "British",
+    "employment_status": "Engineer",
+    "annual_income": 3486780
+  },
+  {
+    "customer_id": "c54cd7d5-a05f-4552-a4e4-2519a588cee1",
+    "full_legal_name": "Karen Miller",
+    "segment_tier": "Silver",
+    "nationality": "Japanese",
+    "employment_status": "Retired",
+    "annual_income": 2880560
+  },
+  {
+    "customer_id": "3bb3a360-fc56-4509-ad84-a05ce3b44eb6",
+    "full_legal_name": "James Taylor",
+    "segment_tier": "Gold",
+    "nationality": "Japanese",
+    "employment_status": "Doctor",
+    "annual_income": 597825
+  },
+  {
+    "customer_id": "9763a691-c79f-459f-ba6b-3d34fbe6650d",
+    "full_legal_name": "Michael Rodriguez",
+    "segment_tier": "Platinum",
+    "nationality": "German",
+    "employment_status": "Manager",
+    "annual_income": 3095083
+  },
+  {
+    "customer_id": "71037cca-2af5-445f-a682-350c33e5e0cd",
+    "full_legal_name": "James Taylor",
+    "segment_tier": "Standard",
+    "nationality": "Singaporean",
+    "employment_status": "Lawyer",
+    "annual_income": 214400
+  },
+  {
+    "customer_id": "03359c26-bbe8-4178-8ba1-bba04f41bb39",
+    "full_legal_name": "Sarah Jackson",
+    "segment_tier": "Silver",
+    "nationality": "British",
+    "employment_status": "Consultant",
+    "annual_income": 2124944
+  },
+  {
+    "customer_id": "ba28640b-6ecd-4203-8aa7-224b9982952f",
+    "full_legal_name": "Charles Smith",
+    "segment_tier": "UHNW",
+    "nationality": "Japanese",
+    "employment_status": "Engineer",
+    "annual_income": 2780553
+  },
+  {
+    "customer_id": "0ce24d32-53f3-45f7-b749-206cf1420958",
+    "full_legal_name": "William Hernandez",
+    "segment_tier": "Platinum",
+    "nationality": "Australian",
+    "employment_status": "Artist",
+    "annual_income": 3189675
+  },
+  {
+    "customer_id": "6c487664-3b42-4d2d-a4c0-aaccb8ea2644",
+    "full_legal_name": "Linda Martinez",
+    "segment_tier": "Platinum",
+    "nationality": "American",
+    "employment_status": "Student",
+    "annual_income": 3983855
+  },
+  {
+    "customer_id": "1e84f3fe-00ed-4b26-a267-6cdaee53fd12",
+    "full_legal_name": "Michael Moore",
+    "segment_tier": "Gold",
+    "nationality": "Canadian",
+    "employment_status": "Doctor",
+    "annual_income": 4525815
+  },
+  {
+    "customer_id": "67b02fcd-e910-455b-890e-7dff016c351e",
+    "full_legal_name": "Joseph Johnson",
+    "segment_tier": "Standard",
+    "nationality": "Singaporean",
+    "employment_status": "Lawyer",
+    "annual_income": 1760114
+  },
+  {
+    "customer_id": "b467609d-679f-4785-b14c-da778898ebcd",
+    "full_legal_name": "David Hernandez",
+    "segment_tier": "Gold",
+    "nationality": "Australian",
+    "employment_status": "Director",
+    "annual_income": 4744517
+  },
+  {
+    "customer_id": "9b395e81-d4cf-455a-b5b9-4321e235f883",
+    "full_legal_name": "Michael Wilson",
+    "segment_tier": "Platinum",
+    "nationality": "Canadian",
+    "employment_status": "Analyst",
+    "annual_income": 4377290
+  },
+  {
+    "customer_id": "0482afbe-b4b6-45bb-8388-dc357a38a7f5",
+    "full_legal_name": "James Jones",
+    "segment_tier": "Gold",
+    "nationality": "Canadian",
+    "employment_status": "Student",
+    "annual_income": 1208877
+  },
+  {
+    "customer_id": "a3ff0efc-8dfd-41e0-a31c-78b45511356a",
+    "full_legal_name": "Jessica Thomas",
+    "segment_tier": "Platinum",
+    "nationality": "Singaporean",
+    "employment_status": "Teacher",
+    "annual_income": 1396327
+  },
+  {
+    "customer_id": "4f1f88f7-f41e-4e5b-8a78-2e6f4c3eab33",
+    "full_legal_name": "Karen Martin",
+    "segment_tier": "Standard",
+    "nationality": "American",
+    "employment_status": "Retired",
+    "annual_income": 1093689
+  },
+  {
+    "customer_id": "205f3bd6-d528-43da-b82b-bd5f08e7b614",
+    "full_legal_name": "Jennifer Jackson",
+    "segment_tier": "Platinum",
+    "nationality": "Singaporean",
+    "employment_status": "Analyst",
+    "annual_income": 1602115
+  },
+  {
+    "customer_id": "3513cc44-4fee-49c2-9f8e-d66ad5163ad3",
+    "full_legal_name": "Karen Jackson",
+    "segment_tier": "Standard",
+    "nationality": "German",
+    "employment_status": "Executive",
+    "annual_income": 1032116
+  },
+  {
+    "customer_id": "22391b88-d5b0-467a-9917-883b55cd2cff",
+    "full_legal_name": "William Lopez",
+    "segment_tier": "Gold",
+    "nationality": "Japanese",
+    "employment_status": "Doctor",
+    "annual_income": 1088940
+  },
+  {
+    "customer_id": "4fbd7490-6a29-4164-807f-561f567ed22c",
+    "full_legal_name": "John Jones",
+    "segment_tier": "Standard",
+    "nationality": "British",
+    "employment_status": "Teacher",
+    "annual_income": 3058373
+  },
+  {
+    "customer_id": "f382564a-cffb-4db7-be0b-84236bf9d8fe",
+    "full_legal_name": "Karen Thomas",
+    "segment_tier": "Gold",
+    "nationality": "Japanese",
+    "employment_status": "Executive",
+    "annual_income": 2545005
+  },
+  {
+    "customer_id": "1549d4f1-5156-4232-a02e-6787ff77cb90",
+    "full_legal_name": "Patricia Taylor",
+    "segment_tier": "UHNW",
+    "nationality": "Canadian",
+    "employment_status": "Retired",
+    "annual_income": 672622
+  },
+  {
+    "customer_id": "8bd513bc-ab62-4ad5-89b9-23f57b13069c",
+    "full_legal_name": "Barbara Jackson",
+    "segment_tier": "Platinum",
+    "nationality": "French",
+    "employment_status": "Analyst",
+    "annual_income": 2207893
+  },
+  {
+    "customer_id": "366da732-bb60-4e1c-bf66-c8bb002154d5",
+    "full_legal_name": "Mary Lopez",
+    "segment_tier": "Silver",
+    "nationality": "Singaporean",
+    "employment_status": "Manager",
+    "annual_income": 3097801
+  },
+  {
+    "customer_id": "5a2abf4b-a442-4b23-8254-a4d8bd7bb498",
+    "full_legal_name": "William Hernandez",
+    "segment_tier": "Platinum",
+    "nationality": "Canadian",
+    "employment_status": "Doctor",
+    "annual_income": 1726565
+  },
+  {
+    "customer_id": "bce3e794-aa7f-46dc-ae3e-a1079063d496",
+    "full_legal_name": "Richard Smith",
+    "segment_tier": "Gold",
+    "nationality": "Singaporean",
+    "employment_status": "Retired",
+    "annual_income": 1886715
+  },
+  {
+    "customer_id": "34518746-2032-45df-b08b-57e7958b1305",
+    "full_legal_name": "Patricia Davis",
+    "segment_tier": "Standard",
+    "nationality": "Singaporean",
+    "employment_status": "Student",
+    "annual_income": 2791551
+  },
+  {
+    "customer_id": "cf178039-05b6-4a7c-ad93-989e4c5c70f8",
+    "full_legal_name": "Robert Anderson",
+    "segment_tier": "Silver",
+    "nationality": "American",
+    "employment_status": "Executive",
+    "annual_income": 3609129
+  },
+  {
+    "customer_id": "857e4335-9d05-42f3-911b-c33cabe1c33b",
+    "full_legal_name": "Susan Taylor",
+    "segment_tier": "Silver",
+    "nationality": "French",
+    "employment_status": "Artist",
+    "annual_income": 752158
+  },
+  {
+    "customer_id": "23c9da99-7f33-43b1-b7f8-53fc7706b819",
+    "full_legal_name": "Jessica Hernandez",
+    "segment_tier": "UHNW",
+    "nationality": "French",
+    "employment_status": "Lawyer",
+    "annual_income": 1813956
+  },
+  {
+    "customer_id": "e7813b7a-5ae1-427d-b261-346fc4afa453",
+    "full_legal_name": "Susan Gonzalez",
+    "segment_tier": "Standard",
+    "nationality": "American",
+    "employment_status": "Student",
+    "annual_income": 3563186
+  },
+  {
+    "customer_id": "e35f4fb3-d6a7-4c79-b3bc-69f8ed2890fc",
+    "full_legal_name": "Michael Wilson",
+    "segment_tier": "UHNW",
+    "nationality": "Canadian",
+    "employment_status": "Executive",
+    "annual_income": 2031151
+  },
+  {
+    "customer_id": "d152ef25-547a-4a2f-ae3b-249088802585",
+    "full_legal_name": "Richard Jackson",
+    "segment_tier": "Gold",
+    "nationality": "British",
+    "employment_status": "Executive",
+    "annual_income": 1080965
+  },
+  {
+    "customer_id": "b504ffc4-1f5b-47bc-b6f8-aca021bd90f3",
+    "full_legal_name": "Barbara Hernandez",
+    "segment_tier": "Standard",
+    "nationality": "Canadian",
+    "employment_status": "Analyst",
+    "annual_income": 4343410
+  },
+  {
+    "customer_id": "3bc48f8f-1d28-47bb-a6d5-009d2788f631",
+    "full_legal_name": "Charles Wilson",
+    "segment_tier": "Platinum",
+    "nationality": "American",
+    "employment_status": "Consultant",
+    "annual_income": 2318144
+  },
+  {
+    "customer_id": "ba0ef0b4-34fc-4abb-845c-c69aae5033e6",
+    "full_legal_name": "Charles Martinez",
+    "segment_tier": "Gold",
+    "nationality": "British",
+    "employment_status": "Teacher",
+    "annual_income": 4124281
+  }
+]

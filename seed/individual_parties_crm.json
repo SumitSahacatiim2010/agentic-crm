@@ -1,0 +1,142 @@
+[
+  {
+    "customer_id": "8b965b32-fedf-4d44-8439-31eab6a9e648",
+    "full_legal_name": "Michael Jones",
+    "segment_tier": "Gold",
+    "nationality": "American",
+    "employment_status": "Employed"
+  },
+  {
+    "customer_id": "8c71387e-ccd6-4507-b4a2-074ead81ee2f",
+    "full_legal_name": "Jennifer Rodriguez",
+    "segment_tier": "Gold",
+    "nationality": "American",
+    "employment_status": "Employed"
+  },
+  {
+    "customer_id": "1a23f052-e109-47d9-b236-30d0f5a8cb48",
+    "full_legal_name": "Robert Jones",
+    "segment_tier": "Platinum",
+    "nationality": "American",
+    "employment_status": "Employed"
+  },
+  {
+    "customer_id": "ebf23684-9abe-4d6b-a399-c4f3f46fd53f",
+    "full_legal_name": "David Rodriguez",
+    "segment_tier": "Gold",
+    "nationality": "American",
+    "employment_status": "Employed"
+  },
+  {
+    "customer_id": "835ec38d-558f-4def-8b36-5d7947e469fa",
+    "full_legal_name": "Joseph Gonzalez",
+    "segment_tier": "Gold",
+    "nationality": "American",
+    "employment_status": "Employed"
+  },
+  {
+    "customer_id": "305f72b7-1b72-41bf-8d96-c6a383a9f95c",
+    "full_legal_name": "Jennifer Garcia",
+    "segment_tier": "Gold",
+    "nationality": "American",
+    "employment_status": "Employed"
+  },
+  {
+    "customer_id": "3faad8c9-ede2-40f0-a6c1-ae7f7500e522",
+    "full_legal_name": "Mary Gonzalez",
+    "segment_tier": "Platinum",
+    "nationality": "American",
+    "employment_status": "Employed"
+  },
+  {
+    "customer_id": "1470c139-cd1e-4f6f-b452-3bef46d221d3",
+    "full_legal_name": "Robert Davis",
+    "segment_tier": "Standard",
+    "nationality": "American",
+    "employment_status": "Employed"
+  },
+  {
+    "customer_id": "43c3933b-0661-41a0-9a22-97cba59b6378",
+    "full_legal_name": "Jennifer Lopez",
+    "segment_tier": "Platinum",
+    "nationality": "American",
+    "employment_status": "Employed"
+  },
+  {
+    "customer_id": "9954047d-945d-45d2-8508-33bf46e1f338",
+    "full_legal_name": "John Gonzalez",
+    "segment_tier": "Standard",
+    "nationality": "American",
+    "employment_status": "Employed"
+  },
+  {
+    "customer_id": "047a2212-e1c0-4e3f-971c-6b9553cbf8cf",
+    "full_legal_name": "Charles Anderson",
+    "segment_tier": "Platinum",
+    "nationality": "American",
+    "employment_status": "Employed"
+  },
+  {
+    "customer_id": "595ba1c0-7d71-43fe-847d-8af1498e3c3e",
+    "full_legal_name": "Elizabeth Martinez",
+    "segment_tier": "Standard",
+    "nationality": "American",
+    "employment_status": "Employed"
+  },
+  {
+    "customer_id": "48b6e84f-588c-4117-b355-0565595ec92a",
+    "full_legal_name": "James Rodriguez",
+    "segment_tier": "Gold",
+    "nationality": "American",
+    "employment_status": "Employed"
+  },
+  {
+    "customer_id": "b915cbab-9037-425d-aad3-daafc9e85a4d",
+    "full_legal_name": "William Wilson",
+    "segment_tier": "Gold",
+    "nationality": "American",
+    "employment_status": "Employed"
+  },
+  {
+    "customer_id": "8aa54de5-22d5-4ce8-bd31-c1ce47ec05a9",
+    "full_legal_name": "Mary Williams",
+    "segment_tier": "Gold",
+    "nationality": "American",
+    "employment_status": "Employed"
+  },
+  {
+    "customer_id": "86ebd5d5-e9b5-45e2-b916-6157680c6fb1",
+    "full_legal_name": "William Rodriguez",
+    "segment_tier": "Standard",
+    "nationality": "American",
+    "employment_status": "Employed"
+  },
+  {
+    "customer_id": "f0739849-d088-4ce1-8171-c56cd7f24928",
+    "full_legal_name": "Sarah Thomas",
+    "segment_tier": "Gold",
+    "nationality": "American",
+    "employment_status": "Employed"
+  },
+  {
+    "customer_id": "48798da7-a2f5-49f8-8d92-4570b40c568e",
+    "full_legal_name": "Thomas Moore",
+    "segment_tier": "Platinum",
+    "nationality": "American",
+    "employment_status": "Employed"
+  },
+  {
+    "customer_id": "f3c9aa8c-6c60-4c9d-b370-eafa24ad496e",
+    "full_legal_name": "Thomas Brown",
+    "segment_tier": "Platinum",
+    "nationality": "American",
+    "employment_status": "Employed"
+  },
+  {
+    "customer_id": "005956aa-1ae3-45ef-a066-dcc0c3c4f4d3",
+    "full_legal_name": "Michael Anderson",
+    "segment_tier": "Platinum",
+    "nationality": "American",
+    "employment_status": "Employed"
+  }
+]

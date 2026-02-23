@@ -1,0 +1,1181 @@
+[
+  {
+    "account_id": "3810e7d8-b91c-45b0-a3a1-b3ff4ceabf8e",
+    "customer_id": "42a8bde7-483e-4125-ae04-eca109870c38",
+    "product_type": "Mortgage",
+    "product_name": "City Mortgage",
+    "current_balance": -1149586,
+    "currency_code": "USD",
+    "account_status": "active"
+  },
+  {
+    "account_id": "b96ee019-81ab-471a-b6ac-c4deadd8f64f",
+    "customer_id": "3efcd709-a369-4674-98b3-61a3b62f4a0a",
+    "product_type": "Credit Card",
+    "product_name": "UHNW Rewards Card",
+    "current_balance": -24974,
+    "currency_code": "USD",
+    "account_status": "active"
+  },
+  {
+    "account_id": "06f26d43-daee-46ea-b025-a1d6b1af3c82",
+    "customer_id": "6b018190-c4e0-4e67-8c95-edc99a2aa61f",
+    "product_type": "Mortgage",
+    "product_name": "Hamptons Mortgage",
+    "current_balance": -1462314,
+    "currency_code": "USD",
+    "account_status": "active"
+  },
+  {
+    "account_id": "4656c515-f4d6-4471-8f87-f290f8954219",
+    "customer_id": "6b018190-c4e0-4e67-8c95-edc99a2aa61f",
+    "product_type": "Savings",
+    "product_name": "Platinum Savings",
+    "current_balance": "70377.82",
+    "currency_code": "USD",
+    "account_status": "dormant"
+  },
+  {
+    "account_id": "28f04e34-1a71-41e2-aa7a-7408bcff99fa",
+    "customer_id": "6b018190-c4e0-4e67-8c95-edc99a2aa61f",
+    "product_type": "Mortgage",
+    "product_name": "Lake Mortgage",
+    "current_balance": -371738,
+    "currency_code": "USD",
+    "account_status": "active"
+  },
+  {
+    "account_id": "7af81e5a-25ed-479d-ad9b-20572da66ffe",
+    "customer_id": "3c3d24f1-a18b-4f2d-a32d-7631981d8e32",
+    "product_type": "Mortgage",
+    "product_name": "City Mortgage",
+    "current_balance": -971811,
+    "currency_code": "USD",
+    "account_status": "active"
+  },
+  {
+    "account_id": "fd053857-f6ec-4642-a412-27516f007e4d",
+    "customer_id": "75d7fb01-a61f-4b08-b953-648c115d02ae",
+    "product_type": "Investment",
+    "product_name": "UHNW Investment",
+    "current_balance": "963883.06",
+    "currency_code": "USD",
+    "account_status": "active"
+  },
+  {
+    "account_id": "bd306fd3-cc8a-415d-93db-ffaf7e7ac8e5",
+    "customer_id": "75d7fb01-a61f-4b08-b953-648c115d02ae",
+    "product_type": "Credit Card",
+    "product_name": "UHNW Rewards Card",
+    "current_balance": -31601,
+    "currency_code": "USD",
+    "account_status": "active"
+  },
+  {
+    "account_id": "1c28185f-aa75-4179-bf12-f1708d541e0b",
+    "customer_id": "75d7fb01-a61f-4b08-b953-648c115d02ae",
+    "product_type": "Credit Card",
+    "product_name": "UHNW Rewards Card",
+    "current_balance": -23942,
+    "currency_code": "USD",
+    "account_status": "dormant"
+  },
+  {
+    "account_id": "a38c0ded-ba14-4fea-af4c-156e0575ddf8",
+    "customer_id": "75d7fb01-a61f-4b08-b953-648c115d02ae",
+    "product_type": "Credit Card",
+    "product_name": "UHNW Rewards Card",
+    "current_balance": -14098,
+    "currency_code": "USD",
+    "account_status": "dormant"
+  },
+  {
+    "account_id": "6c6a1652-da3e-4172-bd1c-397427f5f1e0",
+    "customer_id": "75d7fb01-a61f-4b08-b953-648c115d02ae",
+    "product_type": "Savings",
+    "product_name": "UHNW Savings",
+    "current_balance": "824978.12",
+    "currency_code": "USD",
+    "account_status": "dormant"
+  },
+  {
+    "account_id": "ba502efc-1a74-4a16-9b48-045f84e9d6d9",
+    "customer_id": "cb84d38d-488c-445a-8796-e63cc92608f7",
+    "product_type": "Credit Card",
+    "product_name": "Standard Rewards Card",
+    "current_balance": -42607,
+    "currency_code": "USD",
+    "account_status": "active"
+  },
+  {
+    "account_id": "7b47856c-abff-4c1c-925a-673ecde8baae",
+    "customer_id": "cb84d38d-488c-445a-8796-e63cc92608f7",
+    "product_type": "Checking",
+    "product_name": "Standard Checking",
+    "current_balance": "812825.16",
+    "currency_code": "USD",
+    "account_status": "active"
+  },
+  {
+    "account_id": "e97ae290-8e6f-4068-abc5-e4bc0aa469dc",
+    "customer_id": "cb84d38d-488c-445a-8796-e63cc92608f7",
+    "product_type": "Checking",
+    "product_name": "Standard Checking",
+    "current_balance": "652006.40",
+    "currency_code": "USD",
+    "account_status": "active"
+  },
+  {
+    "account_id": "e5aa576c-fa88-4973-bf9b-4ecbbf984a77",
+    "customer_id": "e057936e-21af-426c-9666-aab2d173a0f4",
+    "product_type": "Credit Card",
+    "product_name": "Silver Rewards Card",
+    "current_balance": -26905,
+    "currency_code": "USD",
+    "account_status": "active"
+  },
+  {
+    "account_id": "b3e0228a-0bb4-4bd6-a34e-e078dae8fbbd",
+    "customer_id": "f6ea4beb-e345-4d43-be20-dba05cf071b5",
+    "product_type": "Savings",
+    "product_name": "Standard Savings",
+    "current_balance": "286325.63",
+    "currency_code": "USD",
+    "account_status": "active"
+  },
+  {
+    "account_id": "cb308f56-6bd7-4f04-b7d8-91683f093442",
+    "customer_id": "f6ea4beb-e345-4d43-be20-dba05cf071b5",
+    "product_type": "Checking",
+    "product_name": "Standard Checking",
+    "current_balance": "781060.70",
+    "currency_code": "USD",
+    "account_status": "dormant"
+  },
+  {
+    "account_id": "1d7f4d61-2bed-46fd-bd6a-40519e316155",
+    "customer_id": "f6ea4beb-e345-4d43-be20-dba05cf071b5",
+    "product_type": "Savings",
+    "product_name": "Standard Savings",
+    "current_balance": "885167.51",
+    "currency_code": "USD",
+    "account_status": "active"
+  },
+  {
+    "account_id": "fe2210e6-7999-4e1b-bd95-5106f64fea7c",
+    "customer_id": "f6ea4beb-e345-4d43-be20-dba05cf071b5",
+    "product_type": "Mortgage",
+    "product_name": "Estate Mortgage",
+    "current_balance": -1262796,
+    "currency_code": "USD",
+    "account_status": "dormant"
+  },
+  {
+    "account_id": "691f2cb3-7522-41eb-a6d8-eaa3519311e8",
+    "customer_id": "ee18f5f4-8d97-440f-b486-965d0b2516ba",
+    "product_type": "Savings",
+    "product_name": "Silver Savings",
+    "current_balance": "548861.15",
+    "currency_code": "USD",
+    "account_status": "dormant"
+  },
+  {
+    "account_id": "7ff4c421-3506-4081-b345-88e9e94cf256",
+    "customer_id": "981695ac-76b4-4568-a02f-2fa78ff2814f",
+    "product_type": "Checking",
+    "product_name": "UHNW Checking",
+    "current_balance": "761967.74",
+    "currency_code": "USD",
+    "account_status": "active"
+  },
+  {
+    "account_id": "b44c307e-32ea-4b70-a2d6-49dfd7223655",
+    "customer_id": "981695ac-76b4-4568-a02f-2fa78ff2814f",
+    "product_type": "Credit Card",
+    "product_name": "UHNW Rewards Card",
+    "current_balance": -6993,
+    "currency_code": "USD",
+    "account_status": "dormant"
+  },
+  {
+    "account_id": "9b90d77c-9abb-42f7-a64d-63ee995a5c12",
+    "customer_id": "6391c619-9645-4667-b716-6fa88e23cbc6",
+    "product_type": "Savings",
+    "product_name": "UHNW Savings",
+    "current_balance": "101489.92",
+    "currency_code": "USD",
+    "account_status": "dormant"
+  },
+  {
+    "account_id": "13ead691-4019-4912-b74a-b3aeed0eea42",
+    "customer_id": "6391c619-9645-4667-b716-6fa88e23cbc6",
+    "product_type": "Checking",
+    "product_name": "UHNW Checking",
+    "current_balance": "418575.98",
+    "currency_code": "USD",
+    "account_status": "active"
+  },
+  {
+    "account_id": "6e32db31-8def-473e-9357-0a27272ae1c5",
+    "customer_id": "6391c619-9645-4667-b716-6fa88e23cbc6",
+    "product_type": "Checking",
+    "product_name": "UHNW Checking",
+    "current_balance": "78880.42",
+    "currency_code": "USD",
+    "account_status": "active"
+  },
+  {
+    "account_id": "46575f0a-1eed-42be-8296-3ceac69b4916",
+    "customer_id": "3824e5ae-3905-4501-b8f5-a2a06e2956a2",
+    "product_type": "Credit Card",
+    "product_name": "Platinum Rewards Card",
+    "current_balance": -10994,
+    "currency_code": "USD",
+    "account_status": "dormant"
+  },
+  {
+    "account_id": "da6f66d5-b5dd-4046-8115-efd1236cd5be",
+    "customer_id": "3824e5ae-3905-4501-b8f5-a2a06e2956a2",
+    "product_type": "Checking",
+    "product_name": "Platinum Checking",
+    "current_balance": "580833.08",
+    "currency_code": "USD",
+    "account_status": "active"
+  },
+  {
+    "account_id": "cff2c175-9d5e-4c43-b1fb-f072b61468dd",
+    "customer_id": "b5f0f29c-116e-46db-900a-d84b581719de",
+    "product_type": "Checking",
+    "product_name": "Standard Checking",
+    "current_balance": "9978.21",
+    "currency_code": "USD",
+    "account_status": "active"
+  },
+  {
+    "account_id": "ed778a77-f983-4cec-a436-6d67b82b6b56",
+    "customer_id": "d157ea6d-4d64-4b24-93fd-0f1f89039826",
+    "product_type": "Savings",
+    "product_name": "Gold Savings",
+    "current_balance": "426965.19",
+    "currency_code": "USD",
+    "account_status": "active"
+  },
+  {
+    "account_id": "a5b25384-5253-491f-8f5f-4cbfef00b778",
+    "customer_id": "d157ea6d-4d64-4b24-93fd-0f1f89039826",
+    "product_type": "Credit Card",
+    "product_name": "Gold Rewards Card",
+    "current_balance": -24382,
+    "currency_code": "USD",
+    "account_status": "active"
+  },
+  {
+    "account_id": "23e7e558-fa59-4009-b594-6b661c80f5bc",
+    "customer_id": "d157ea6d-4d64-4b24-93fd-0f1f89039826",
+    "product_type": "Checking",
+    "product_name": "Gold Checking",
+    "current_balance": "243428.70",
+    "currency_code": "USD",
+    "account_status": "active"
+  },
+  {
+    "account_id": "16ab149c-14fa-406f-ba74-d916dffb6b06",
+    "customer_id": "7d41dfad-d0fd-477d-b804-958d515a67a5",
+    "product_type": "Credit Card",
+    "product_name": "Standard Rewards Card",
+    "current_balance": -29067,
+    "currency_code": "USD",
+    "account_status": "active"
+  },
+  {
+    "account_id": "68aeb262-44c9-4aee-8491-c73028195272",
+    "customer_id": "7d41dfad-d0fd-477d-b804-958d515a67a5",
+    "product_type": "Mortgage",
+    "product_name": "Lake Mortgage",
+    "current_balance": -1996891,
+    "currency_code": "USD",
+    "account_status": "active"
+  },
+  {
+    "account_id": "80356844-ac84-4336-acb2-fbf683292de3",
+    "customer_id": "7d41dfad-d0fd-477d-b804-958d515a67a5",
+    "product_type": "Credit Card",
+    "product_name": "Standard Rewards Card",
+    "current_balance": -23164,
+    "currency_code": "USD",
+    "account_status": "active"
+  },
+  {
+    "account_id": "d2900438-c335-4368-ad8e-6c181c095497",
+    "customer_id": "c54cd7d5-a05f-4552-a4e4-2519a588cee1",
+    "product_type": "Mortgage",
+    "product_name": "Lake Mortgage",
+    "current_balance": -447826,
+    "currency_code": "USD",
+    "account_status": "dormant"
+  },
+  {
+    "account_id": "ab86cbf7-5ba8-4269-9b12-771307100c7d",
+    "customer_id": "c54cd7d5-a05f-4552-a4e4-2519a588cee1",
+    "product_type": "Checking",
+    "product_name": "Silver Checking",
+    "current_balance": "449136.88",
+    "currency_code": "USD",
+    "account_status": "active"
+  },
+  {
+    "account_id": "ea7df6e1-bce9-46f0-b2b1-acaa30a9dea5",
+    "customer_id": "c54cd7d5-a05f-4552-a4e4-2519a588cee1",
+    "product_type": "Credit Card",
+    "product_name": "Silver Rewards Card",
+    "current_balance": -28278,
+    "currency_code": "USD",
+    "account_status": "active"
+  },
+  {
+    "account_id": "dabc8fe6-f2d1-4dcb-bab8-a2fa4e43985d",
+    "customer_id": "3bb3a360-fc56-4509-ad84-a05ce3b44eb6",
+    "product_type": "Credit Card",
+    "product_name": "Gold Rewards Card",
+    "current_balance": -41098,
+    "currency_code": "USD",
+    "account_status": "active"
+  },
+  {
+    "account_id": "b241658f-8d7c-459f-9559-cfeab40f32fc",
+    "customer_id": "9763a691-c79f-459f-ba6b-3d34fbe6650d",
+    "product_type": "Credit Card",
+    "product_name": "Platinum Rewards Card",
+    "current_balance": -18378,
+    "currency_code": "USD",
+    "account_status": "dormant"
+  },
+  {
+    "account_id": "af97e0fb-f94d-4b22-9cd6-5af2ecd68456",
+    "customer_id": "9763a691-c79f-459f-ba6b-3d34fbe6650d",
+    "product_type": "Investment",
+    "product_name": "Platinum Investment",
+    "current_balance": "28467.66",
+    "currency_code": "USD",
+    "account_status": "active"
+  },
+  {
+    "account_id": "7d5b4d17-8812-46a6-b236-65946a1a830f",
+    "customer_id": "9763a691-c79f-459f-ba6b-3d34fbe6650d",
+    "product_type": "Credit Card",
+    "product_name": "Platinum Rewards Card",
+    "current_balance": -24106,
+    "currency_code": "USD",
+    "account_status": "dormant"
+  },
+  {
+    "account_id": "c6cbe2c9-6492-4b5d-8a81-d5ce5589934a",
+    "customer_id": "9763a691-c79f-459f-ba6b-3d34fbe6650d",
+    "product_type": "Checking",
+    "product_name": "Platinum Checking",
+    "current_balance": "763967.29",
+    "currency_code": "USD",
+    "account_status": "active"
+  },
+  {
+    "account_id": "daf87083-350e-4951-a50e-0a6ceefc5948",
+    "customer_id": "9763a691-c79f-459f-ba6b-3d34fbe6650d",
+    "product_type": "Credit Card",
+    "product_name": "Platinum Rewards Card",
+    "current_balance": -24982,
+    "currency_code": "USD",
+    "account_status": "active"
+  },
+  {
+    "account_id": "7abde1ea-1f1e-4cae-b64c-d4ceb54287c7",
+    "customer_id": "71037cca-2af5-445f-a682-350c33e5e0cd",
+    "product_type": "Investment",
+    "product_name": "Standard Investment",
+    "current_balance": "820701.25",
+    "currency_code": "USD",
+    "account_status": "active"
+  },
+  {
+    "account_id": "e050ac13-1b71-4e38-a288-3d5db6af9854",
+    "customer_id": "71037cca-2af5-445f-a682-350c33e5e0cd",
+    "product_type": "Mortgage",
+    "product_name": "Estate Mortgage",
+    "current_balance": -858603,
+    "currency_code": "USD",
+    "account_status": "active"
+  },
+  {
+    "account_id": "09689f12-72f0-446f-849e-1f4a7b66cdb0",
+    "customer_id": "03359c26-bbe8-4178-8ba1-bba04f41bb39",
+    "product_type": "Savings",
+    "product_name": "Silver Savings",
+    "current_balance": "763423.27",
+    "currency_code": "USD",
+    "account_status": "active"
+  },
+  {
+    "account_id": "8f5f8059-c097-468b-941d-e4ca8f6dd40a",
+    "customer_id": "03359c26-bbe8-4178-8ba1-bba04f41bb39",
+    "product_type": "Credit Card",
+    "product_name": "Silver Rewards Card",
+    "current_balance": -24413,
+    "currency_code": "USD",
+    "account_status": "dormant"
+  },
+  {
+    "account_id": "8ff05cf5-d2c7-461b-bb1a-7c56ca1ce2be",
+    "customer_id": "03359c26-bbe8-4178-8ba1-bba04f41bb39",
+    "product_type": "Investment",
+    "product_name": "Silver Investment",
+    "current_balance": "424529.27",
+    "currency_code": "USD",
+    "account_status": "active"
+  },
+  {
+    "account_id": "e4bd8d8b-8cfd-4721-b5c0-769e37a42406",
+    "customer_id": "ba28640b-6ecd-4203-8aa7-224b9982952f",
+    "product_type": "Investment",
+    "product_name": "UHNW Investment",
+    "current_balance": "743165.57",
+    "currency_code": "USD",
+    "account_status": "dormant"
+  },
+  {
+    "account_id": "8030f67b-0967-461e-a293-8bc9daad7251",
+    "customer_id": "ba28640b-6ecd-4203-8aa7-224b9982952f",
+    "product_type": "Investment",
+    "product_name": "UHNW Investment",
+    "current_balance": "977083.96",
+    "currency_code": "USD",
+    "account_status": "dormant"
+  },
+  {
+    "account_id": "a3eeafa3-b986-4733-8f5f-4f030b81a7e6",
+    "customer_id": "ba28640b-6ecd-4203-8aa7-224b9982952f",
+    "product_type": "Checking",
+    "product_name": "UHNW Checking",
+    "current_balance": "156537.95",
+    "currency_code": "USD",
+    "account_status": "dormant"
+  },
+  {
+    "account_id": "6e10782f-ef12-40fe-83bf-33d8ff08a6c1",
+    "customer_id": "0ce24d32-53f3-45f7-b749-206cf1420958",
+    "product_type": "Mortgage",
+    "product_name": "Hamptons Mortgage",
+    "current_balance": -782311,
+    "currency_code": "USD",
+    "account_status": "dormant"
+  },
+  {
+    "account_id": "74b9dbbc-4682-46cb-81c2-6f42d07b5f54",
+    "customer_id": "0ce24d32-53f3-45f7-b749-206cf1420958",
+    "product_type": "Savings",
+    "product_name": "Platinum Savings",
+    "current_balance": "942584.30",
+    "currency_code": "USD",
+    "account_status": "active"
+  },
+  {
+    "account_id": "6b20f55c-45e5-4836-aae2-b2960447cbfc",
+    "customer_id": "6c487664-3b42-4d2d-a4c0-aaccb8ea2644",
+    "product_type": "Credit Card",
+    "product_name": "Platinum Rewards Card",
+    "current_balance": -42416,
+    "currency_code": "USD",
+    "account_status": "dormant"
+  },
+  {
+    "account_id": "ec677857-9efb-4d8e-baf9-e4ac163e50d7",
+    "customer_id": "6c487664-3b42-4d2d-a4c0-aaccb8ea2644",
+    "product_type": "Mortgage",
+    "product_name": "City Mortgage",
+    "current_balance": -455624,
+    "currency_code": "USD",
+    "account_status": "active"
+  },
+  {
+    "account_id": "cb19d3b8-0454-4963-97b5-b703c907d6d2",
+    "customer_id": "6c487664-3b42-4d2d-a4c0-aaccb8ea2644",
+    "product_type": "Credit Card",
+    "product_name": "Platinum Rewards Card",
+    "current_balance": -2279,
+    "currency_code": "USD",
+    "account_status": "active"
+  },
+  {
+    "account_id": "b157e82e-0ae5-4f50-be45-53426894058c",
+    "customer_id": "1e84f3fe-00ed-4b26-a267-6cdaee53fd12",
+    "product_type": "Mortgage",
+    "product_name": "Lake Mortgage",
+    "current_balance": -1852233,
+    "currency_code": "USD",
+    "account_status": "active"
+  },
+  {
+    "account_id": "754dea25-3c73-497d-b2ad-acc4749812bf",
+    "customer_id": "67b02fcd-e910-455b-890e-7dff016c351e",
+    "product_type": "Mortgage",
+    "product_name": "Hamptons Mortgage",
+    "current_balance": -1777013,
+    "currency_code": "USD",
+    "account_status": "active"
+  },
+  {
+    "account_id": "34c8c1ec-b8f6-4611-bf4d-4fef523ca9a8",
+    "customer_id": "67b02fcd-e910-455b-890e-7dff016c351e",
+    "product_type": "Mortgage",
+    "product_name": "Lake Mortgage",
+    "current_balance": -832345,
+    "currency_code": "USD",
+    "account_status": "dormant"
+  },
+  {
+    "account_id": "03eccb8b-a444-4b29-977d-c1915e7ec423",
+    "customer_id": "67b02fcd-e910-455b-890e-7dff016c351e",
+    "product_type": "Investment",
+    "product_name": "Standard Investment",
+    "current_balance": "715368.46",
+    "currency_code": "USD",
+    "account_status": "active"
+  },
+  {
+    "account_id": "c87d76bd-953d-4f6f-b509-a3f35947367a",
+    "customer_id": "67b02fcd-e910-455b-890e-7dff016c351e",
+    "product_type": "Credit Card",
+    "product_name": "Standard Rewards Card",
+    "current_balance": -33138,
+    "currency_code": "USD",
+    "account_status": "active"
+  },
+  {
+    "account_id": "403f104a-e699-4d00-ba20-f44f33a05ff6",
+    "customer_id": "67b02fcd-e910-455b-890e-7dff016c351e",
+    "product_type": "Mortgage",
+    "product_name": "Lake Mortgage",
+    "current_balance": -1083175,
+    "currency_code": "USD",
+    "account_status": "dormant"
+  },
+  {
+    "account_id": "d4007514-4e78-42ee-b6bb-7a8795d8948e",
+    "customer_id": "b467609d-679f-4785-b14c-da778898ebcd",
+    "product_type": "Checking",
+    "product_name": "Gold Checking",
+    "current_balance": "428648.83",
+    "currency_code": "USD",
+    "account_status": "dormant"
+  },
+  {
+    "account_id": "6b153003-39c2-4c37-866c-9dc6c3534b04",
+    "customer_id": "9b395e81-d4cf-455a-b5b9-4321e235f883",
+    "product_type": "Credit Card",
+    "product_name": "Platinum Rewards Card",
+    "current_balance": -20119,
+    "currency_code": "USD",
+    "account_status": "active"
+  },
+  {
+    "account_id": "1b9643f2-1ea2-4204-8b43-aadcde9c3ceb",
+    "customer_id": "0482afbe-b4b6-45bb-8388-dc357a38a7f5",
+    "product_type": "Savings",
+    "product_name": "Gold Savings",
+    "current_balance": "31379.19",
+    "currency_code": "USD",
+    "account_status": "active"
+  },
+  {
+    "account_id": "e7fa0561-614f-49f7-9109-89dd495deac9",
+    "customer_id": "0482afbe-b4b6-45bb-8388-dc357a38a7f5",
+    "product_type": "Investment",
+    "product_name": "Gold Investment",
+    "current_balance": "580335.90",
+    "currency_code": "USD",
+    "account_status": "dormant"
+  },
+  {
+    "account_id": "dfce79b6-d5da-45ed-8523-3f44b7e42bb5",
+    "customer_id": "a3ff0efc-8dfd-41e0-a31c-78b45511356a",
+    "product_type": "Investment",
+    "product_name": "Platinum Investment",
+    "current_balance": "221330.28",
+    "currency_code": "USD",
+    "account_status": "active"
+  },
+  {
+    "account_id": "279a6d45-a70a-48b0-823b-63210f177809",
+    "customer_id": "a3ff0efc-8dfd-41e0-a31c-78b45511356a",
+    "product_type": "Savings",
+    "product_name": "Platinum Savings",
+    "current_balance": "61355.91",
+    "currency_code": "USD",
+    "account_status": "dormant"
+  },
+  {
+    "account_id": "06c74668-6624-4002-8234-307293488f2e",
+    "customer_id": "a3ff0efc-8dfd-41e0-a31c-78b45511356a",
+    "product_type": "Mortgage",
+    "product_name": "City Mortgage",
+    "current_balance": -387718,
+    "currency_code": "USD",
+    "account_status": "active"
+  },
+  {
+    "account_id": "b5cf2b05-4859-4a0f-848b-fe8053a23325",
+    "customer_id": "a3ff0efc-8dfd-41e0-a31c-78b45511356a",
+    "product_type": "Credit Card",
+    "product_name": "Platinum Rewards Card",
+    "current_balance": -17909,
+    "currency_code": "USD",
+    "account_status": "active"
+  },
+  {
+    "account_id": "8879e1b3-63da-4221-8c01-8e97e7139a44",
+    "customer_id": "4f1f88f7-f41e-4e5b-8a78-2e6f4c3eab33",
+    "product_type": "Checking",
+    "product_name": "Standard Checking",
+    "current_balance": "866513.89",
+    "currency_code": "USD",
+    "account_status": "active"
+  },
+  {
+    "account_id": "e4b3ed74-f32b-448e-9951-c9783ba512e1",
+    "customer_id": "4f1f88f7-f41e-4e5b-8a78-2e6f4c3eab33",
+    "product_type": "Savings",
+    "product_name": "Standard Savings",
+    "current_balance": "590373.90",
+    "currency_code": "USD",
+    "account_status": "dormant"
+  },
+  {
+    "account_id": "600f77a3-67f6-4a8b-8c14-61f09b53ee7f",
+    "customer_id": "4f1f88f7-f41e-4e5b-8a78-2e6f4c3eab33",
+    "product_type": "Savings",
+    "product_name": "Standard Savings",
+    "current_balance": "545581.80",
+    "currency_code": "USD",
+    "account_status": "active"
+  },
+  {
+    "account_id": "a7297746-6e2d-47b3-9248-5bcf137b7736",
+    "customer_id": "4f1f88f7-f41e-4e5b-8a78-2e6f4c3eab33",
+    "product_type": "Savings",
+    "product_name": "Standard Savings",
+    "current_balance": "272585.34",
+    "currency_code": "USD",
+    "account_status": "active"
+  },
+  {
+    "account_id": "bd0ee352-5bd8-47b8-ba8e-02586c93e075",
+    "customer_id": "205f3bd6-d528-43da-b82b-bd5f08e7b614",
+    "product_type": "Credit Card",
+    "product_name": "Platinum Rewards Card",
+    "current_balance": -33504,
+    "currency_code": "USD",
+    "account_status": "active"
+  },
+  {
+    "account_id": "f18a7911-7b81-4c19-9dad-728982546a6d",
+    "customer_id": "3513cc44-4fee-49c2-9f8e-d66ad5163ad3",
+    "product_type": "Investment",
+    "product_name": "Standard Investment",
+    "current_balance": "161025.85",
+    "currency_code": "USD",
+    "account_status": "active"
+  },
+  {
+    "account_id": "598ae7fc-16c1-49ab-bbd2-9376d6422abb",
+    "customer_id": "22391b88-d5b0-467a-9917-883b55cd2cff",
+    "product_type": "Credit Card",
+    "product_name": "Gold Rewards Card",
+    "current_balance": -47931,
+    "currency_code": "USD",
+    "account_status": "active"
+  },
+  {
+    "account_id": "10459714-0b5f-4baa-bab7-0f9d714bd6f7",
+    "customer_id": "22391b88-d5b0-467a-9917-883b55cd2cff",
+    "product_type": "Investment",
+    "product_name": "Gold Investment",
+    "current_balance": "753164.33",
+    "currency_code": "USD",
+    "account_status": "active"
+  },
+  {
+    "account_id": "bcf4f506-65a0-4158-98ba-b468be551799",
+    "customer_id": "22391b88-d5b0-467a-9917-883b55cd2cff",
+    "product_type": "Credit Card",
+    "product_name": "Gold Rewards Card",
+    "current_balance": -3940,
+    "currency_code": "USD",
+    "account_status": "dormant"
+  },
+  {
+    "account_id": "36700d39-368a-49f0-a7c9-30cada4823ea",
+    "customer_id": "22391b88-d5b0-467a-9917-883b55cd2cff",
+    "product_type": "Savings",
+    "product_name": "Gold Savings",
+    "current_balance": "939584.59",
+    "currency_code": "USD",
+    "account_status": "active"
+  },
+  {
+    "account_id": "5172dbb5-d7c5-47a4-b5de-214ad9d81146",
+    "customer_id": "4fbd7490-6a29-4164-807f-561f567ed22c",
+    "product_type": "Savings",
+    "product_name": "Standard Savings",
+    "current_balance": "753682.81",
+    "currency_code": "USD",
+    "account_status": "dormant"
+  },
+  {
+    "account_id": "a0ec7be5-5ca3-474e-83db-da1031010ca6",
+    "customer_id": "4fbd7490-6a29-4164-807f-561f567ed22c",
+    "product_type": "Credit Card",
+    "product_name": "Standard Rewards Card",
+    "current_balance": -3775,
+    "currency_code": "USD",
+    "account_status": "dormant"
+  },
+  {
+    "account_id": "bb20179e-2f6e-43c2-bc32-b4919ba7031f",
+    "customer_id": "4fbd7490-6a29-4164-807f-561f567ed22c",
+    "product_type": "Checking",
+    "product_name": "Standard Checking",
+    "current_balance": "22026.66",
+    "currency_code": "USD",
+    "account_status": "dormant"
+  },
+  {
+    "account_id": "b20ad92b-8e05-409c-a250-b98c75e817f2",
+    "customer_id": "4fbd7490-6a29-4164-807f-561f567ed22c",
+    "product_type": "Savings",
+    "product_name": "Standard Savings",
+    "current_balance": "120974.16",
+    "currency_code": "USD",
+    "account_status": "active"
+  },
+  {
+    "account_id": "1bffc9a5-2637-4d0c-a9c9-87ef781958b5",
+    "customer_id": "f382564a-cffb-4db7-be0b-84236bf9d8fe",
+    "product_type": "Investment",
+    "product_name": "Gold Investment",
+    "current_balance": "930145.08",
+    "currency_code": "USD",
+    "account_status": "active"
+  },
+  {
+    "account_id": "d960a92a-767b-43bb-8565-fb6d1500274c",
+    "customer_id": "f382564a-cffb-4db7-be0b-84236bf9d8fe",
+    "product_type": "Checking",
+    "product_name": "Gold Checking",
+    "current_balance": "71995.88",
+    "currency_code": "USD",
+    "account_status": "active"
+  },
+  {
+    "account_id": "08fffd77-21fc-4fe7-8e2c-2be4ab5eaa6b",
+    "customer_id": "f382564a-cffb-4db7-be0b-84236bf9d8fe",
+    "product_type": "Investment",
+    "product_name": "Gold Investment",
+    "current_balance": "257494.34",
+    "currency_code": "USD",
+    "account_status": "dormant"
+  },
+  {
+    "account_id": "573da228-0c56-4b56-98b3-bc3aee1f62ab",
+    "customer_id": "f382564a-cffb-4db7-be0b-84236bf9d8fe",
+    "product_type": "Savings",
+    "product_name": "Gold Savings",
+    "current_balance": "706359.25",
+    "currency_code": "USD",
+    "account_status": "active"
+  },
+  {
+    "account_id": "2b64e1fe-b45c-4c8b-b03e-836a6fc345b1",
+    "customer_id": "f382564a-cffb-4db7-be0b-84236bf9d8fe",
+    "product_type": "Investment",
+    "product_name": "Gold Investment",
+    "current_balance": "759049.69",
+    "currency_code": "USD",
+    "account_status": "dormant"
+  },
+  {
+    "account_id": "cfa26999-4345-4093-b787-be1622e6827e",
+    "customer_id": "1549d4f1-5156-4232-a02e-6787ff77cb90",
+    "product_type": "Mortgage",
+    "product_name": "Lake Mortgage",
+    "current_balance": -1240114,
+    "currency_code": "USD",
+    "account_status": "dormant"
+  },
+  {
+    "account_id": "bce48d29-0893-48c9-be9f-dd7227f52ef0",
+    "customer_id": "1549d4f1-5156-4232-a02e-6787ff77cb90",
+    "product_type": "Mortgage",
+    "product_name": "Hamptons Mortgage",
+    "current_balance": -1305817,
+    "currency_code": "USD",
+    "account_status": "active"
+  },
+  {
+    "account_id": "2312881f-dec9-43f5-8c9b-b68b1f977ad3",
+    "customer_id": "1549d4f1-5156-4232-a02e-6787ff77cb90",
+    "product_type": "Mortgage",
+    "product_name": "Lake Mortgage",
+    "current_balance": -1140611,
+    "currency_code": "USD",
+    "account_status": "active"
+  },
+  {
+    "account_id": "ee011c43-823a-422c-9df3-668836ed72cd",
+    "customer_id": "8bd513bc-ab62-4ad5-89b9-23f57b13069c",
+    "product_type": "Savings",
+    "product_name": "Platinum Savings",
+    "current_balance": "563944.53",
+    "currency_code": "USD",
+    "account_status": "active"
+  },
+  {
+    "account_id": "318a2d77-4ebe-48fb-8438-845580dce340",
+    "customer_id": "8bd513bc-ab62-4ad5-89b9-23f57b13069c",
+    "product_type": "Savings",
+    "product_name": "Platinum Savings",
+    "current_balance": "957035.82",
+    "currency_code": "USD",
+    "account_status": "active"
+  },
+  {
+    "account_id": "0537486e-c9a9-48bf-9aef-5459212b8371",
+    "customer_id": "8bd513bc-ab62-4ad5-89b9-23f57b13069c",
+    "product_type": "Investment",
+    "product_name": "Platinum Investment",
+    "current_balance": "663208.11",
+    "currency_code": "USD",
+    "account_status": "dormant"
+  },
+  {
+    "account_id": "8d014183-0387-46bb-937d-180f2362a805",
+    "customer_id": "8bd513bc-ab62-4ad5-89b9-23f57b13069c",
+    "product_type": "Credit Card",
+    "product_name": "Platinum Rewards Card",
+    "current_balance": -11762,
+    "currency_code": "USD",
+    "account_status": "dormant"
+  },
+  {
+    "account_id": "89a18b77-24fb-46bd-8145-9137bd9d0e9e",
+    "customer_id": "366da732-bb60-4e1c-bf66-c8bb002154d5",
+    "product_type": "Credit Card",
+    "product_name": "Silver Rewards Card",
+    "current_balance": -6163,
+    "currency_code": "USD",
+    "account_status": "active"
+  },
+  {
+    "account_id": "db7c1c87-4ab9-4ee5-bd93-ab56f99735bc",
+    "customer_id": "366da732-bb60-4e1c-bf66-c8bb002154d5",
+    "product_type": "Checking",
+    "product_name": "Silver Checking",
+    "current_balance": "199264.10",
+    "currency_code": "USD",
+    "account_status": "active"
+  },
+  {
+    "account_id": "0cd8dc45-df20-4e84-b5b4-b1b1d4dc197e",
+    "customer_id": "366da732-bb60-4e1c-bf66-c8bb002154d5",
+    "product_type": "Mortgage",
+    "product_name": "Hamptons Mortgage",
+    "current_balance": -1724482,
+    "currency_code": "USD",
+    "account_status": "active"
+  },
+  {
+    "account_id": "22936894-6314-45a1-80b2-6716219e6cd3",
+    "customer_id": "366da732-bb60-4e1c-bf66-c8bb002154d5",
+    "product_type": "Investment",
+    "product_name": "Silver Investment",
+    "current_balance": "359417.30",
+    "currency_code": "USD",
+    "account_status": "active"
+  },
+  {
+    "account_id": "781c3214-6b32-486a-b5df-d4ab672b5269",
+    "customer_id": "366da732-bb60-4e1c-bf66-c8bb002154d5",
+    "product_type": "Savings",
+    "product_name": "Silver Savings",
+    "current_balance": "295777.78",
+    "currency_code": "USD",
+    "account_status": "active"
+  },
+  {
+    "account_id": "f27a3541-4a31-4cfa-96cd-6966b7ecad7a",
+    "customer_id": "5a2abf4b-a442-4b23-8254-a4d8bd7bb498",
+    "product_type": "Checking",
+    "product_name": "Platinum Checking",
+    "current_balance": "615385.56",
+    "currency_code": "USD",
+    "account_status": "active"
+  },
+  {
+    "account_id": "a7f46c07-d7bd-4723-87fc-d49e670bafc5",
+    "customer_id": "bce3e794-aa7f-46dc-ae3e-a1079063d496",
+    "product_type": "Investment",
+    "product_name": "Gold Investment",
+    "current_balance": "320503.97",
+    "currency_code": "USD",
+    "account_status": "active"
+  },
+  {
+    "account_id": "62633835-6e42-499a-af35-8ba349adfd44",
+    "customer_id": "bce3e794-aa7f-46dc-ae3e-a1079063d496",
+    "product_type": "Credit Card",
+    "product_name": "Gold Rewards Card",
+    "current_balance": -42827,
+    "currency_code": "USD",
+    "account_status": "active"
+  },
+  {
+    "account_id": "fb58b7f0-19ba-474a-ba5b-503dd39fb86e",
+    "customer_id": "bce3e794-aa7f-46dc-ae3e-a1079063d496",
+    "product_type": "Savings",
+    "product_name": "Gold Savings",
+    "current_balance": "557374.52",
+    "currency_code": "USD",
+    "account_status": "active"
+  },
+  {
+    "account_id": "0da13a74-35af-4e3d-adef-8ae24610d516",
+    "customer_id": "bce3e794-aa7f-46dc-ae3e-a1079063d496",
+    "product_type": "Investment",
+    "product_name": "Gold Investment",
+    "current_balance": "526761.51",
+    "currency_code": "USD",
+    "account_status": "active"
+  },
+  {
+    "account_id": "5ca55b7b-b272-4d30-8ccd-feeb20116d4e",
+    "customer_id": "bce3e794-aa7f-46dc-ae3e-a1079063d496",
+    "product_type": "Credit Card",
+    "product_name": "Gold Rewards Card",
+    "current_balance": -11054,
+    "currency_code": "USD",
+    "account_status": "active"
+  },
+  {
+    "account_id": "60e1c628-5489-41d4-8619-0c1ee5db3d90",
+    "customer_id": "34518746-2032-45df-b08b-57e7958b1305",
+    "product_type": "Mortgage",
+    "product_name": "Lake Mortgage",
+    "current_balance": -1687793,
+    "currency_code": "USD",
+    "account_status": "dormant"
+  },
+  {
+    "account_id": "00423fb6-bc21-4075-93a1-4146177b7eb3",
+    "customer_id": "34518746-2032-45df-b08b-57e7958b1305",
+    "product_type": "Savings",
+    "product_name": "Standard Savings",
+    "current_balance": "25089.42",
+    "currency_code": "USD",
+    "account_status": "active"
+  },
+  {
+    "account_id": "a664ce49-e7e4-476d-b065-7104b03244b4",
+    "customer_id": "cf178039-05b6-4a7c-ad93-989e4c5c70f8",
+    "product_type": "Investment",
+    "product_name": "Silver Investment",
+    "current_balance": "254800.37",
+    "currency_code": "USD",
+    "account_status": "active"
+  },
+  {
+    "account_id": "6705f285-4db1-4b91-855a-ef98acb1f0d1",
+    "customer_id": "cf178039-05b6-4a7c-ad93-989e4c5c70f8",
+    "product_type": "Savings",
+    "product_name": "Silver Savings",
+    "current_balance": "777438.22",
+    "currency_code": "USD",
+    "account_status": "active"
+  },
+  {
+    "account_id": "50bf7f29-a783-4230-8979-6084b85c413f",
+    "customer_id": "857e4335-9d05-42f3-911b-c33cabe1c33b",
+    "product_type": "Investment",
+    "product_name": "Silver Investment",
+    "current_balance": "930117.52",
+    "currency_code": "USD",
+    "account_status": "active"
+  },
+  {
+    "account_id": "f0acfa16-2b55-4013-b11d-8c193a031af6",
+    "customer_id": "857e4335-9d05-42f3-911b-c33cabe1c33b",
+    "product_type": "Savings",
+    "product_name": "Silver Savings",
+    "current_balance": "625203.20",
+    "currency_code": "USD",
+    "account_status": "active"
+  },
+  {
+    "account_id": "2abfc5ba-7a89-43fa-b84b-64027452eb90",
+    "customer_id": "23c9da99-7f33-43b1-b7f8-53fc7706b819",
+    "product_type": "Investment",
+    "product_name": "UHNW Investment",
+    "current_balance": "394275.83",
+    "currency_code": "USD",
+    "account_status": "active"
+  },
+  {
+    "account_id": "de218d33-43a6-40a1-a4a1-dbefbfdacbc9",
+    "customer_id": "23c9da99-7f33-43b1-b7f8-53fc7706b819",
+    "product_type": "Mortgage",
+    "product_name": "Lake Mortgage",
+    "current_balance": -734463,
+    "currency_code": "USD",
+    "account_status": "active"
+  },
+  {
+    "account_id": "1dafc450-45e6-43fe-9fd8-e29d01fdf353",
+    "customer_id": "23c9da99-7f33-43b1-b7f8-53fc7706b819",
+    "product_type": "Credit Card",
+    "product_name": "UHNW Rewards Card",
+    "current_balance": -3791,
+    "currency_code": "USD",
+    "account_status": "active"
+  },
+  {
+    "account_id": "2135925e-a78f-49f1-ba37-e594f07f3f72",
+    "customer_id": "23c9da99-7f33-43b1-b7f8-53fc7706b819",
+    "product_type": "Savings",
+    "product_name": "UHNW Savings",
+    "current_balance": "500478.15",
+    "currency_code": "USD",
+    "account_status": "active"
+  },
+  {
+    "account_id": "4b093bdc-846f-49d2-8e07-82868ef9a7f1",
+    "customer_id": "e7813b7a-5ae1-427d-b261-346fc4afa453",
+    "product_type": "Investment",
+    "product_name": "Standard Investment",
+    "current_balance": "488831.10",
+    "currency_code": "USD",
+    "account_status": "active"
+  },
+  {
+    "account_id": "c5a78925-8e07-4640-8111-d1216144dfeb",
+    "customer_id": "e7813b7a-5ae1-427d-b261-346fc4afa453",
+    "product_type": "Checking",
+    "product_name": "Standard Checking",
+    "current_balance": "157705.07",
+    "currency_code": "USD",
+    "account_status": "active"
+  },
+  {
+    "account_id": "6d2a20f6-c4de-4e40-8b51-70973c2f3c06",
+    "customer_id": "e7813b7a-5ae1-427d-b261-346fc4afa453",
+    "product_type": "Investment",
+    "product_name": "Standard Investment",
+    "current_balance": "278669.61",
+    "currency_code": "USD",
+    "account_status": "active"
+  },
+  {
+    "account_id": "6dc63eae-fbae-4196-b58d-60ca2f61eaa0",
+    "customer_id": "e35f4fb3-d6a7-4c79-b3bc-69f8ed2890fc",
+    "product_type": "Checking",
+    "product_name": "UHNW Checking",
+    "current_balance": "368624.22",
+    "currency_code": "USD",
+    "account_status": "active"
+  },
+  {
+    "account_id": "25143bd8-a18f-4610-9203-f5fb1ea03d02",
+    "customer_id": "d152ef25-547a-4a2f-ae3b-249088802585",
+    "product_type": "Checking",
+    "product_name": "Gold Checking",
+    "current_balance": "352812.88",
+    "currency_code": "USD",
+    "account_status": "active"
+  },
+  {
+    "account_id": "2006ec74-ec88-49a9-b797-7ed87c469c22",
+    "customer_id": "d152ef25-547a-4a2f-ae3b-249088802585",
+    "product_type": "Savings",
+    "product_name": "Gold Savings",
+    "current_balance": "486176.64",
+    "currency_code": "USD",
+    "account_status": "dormant"
+  },
+  {
+    "account_id": "3b988704-3b8f-4c82-9fe7-c7f94ed2b72a",
+    "customer_id": "d152ef25-547a-4a2f-ae3b-249088802585",
+    "product_type": "Credit Card",
+    "product_name": "Gold Rewards Card",
+    "current_balance": -31083,
+    "currency_code": "USD",
+    "account_status": "active"
+  },
+  {
+    "account_id": "2b8df655-4f63-4e09-b5b8-6a612208f681",
+    "customer_id": "d152ef25-547a-4a2f-ae3b-249088802585",
+    "product_type": "Savings",
+    "product_name": "Gold Savings",
+    "current_balance": "582560.32",
+    "currency_code": "USD",
+    "account_status": "dormant"
+  },
+  {
+    "account_id": "ebf9b317-b4ed-4445-9e11-9c63b012cd71",
+    "customer_id": "d152ef25-547a-4a2f-ae3b-249088802585",
+    "product_type": "Savings",
+    "product_name": "Gold Savings",
+    "current_balance": "543979.33",
+    "currency_code": "USD",
+    "account_status": "active"
+  },
+  {
+    "account_id": "e4f083a8-b50e-4efa-8771-28338b80e216",
+    "customer_id": "b504ffc4-1f5b-47bc-b6f8-aca021bd90f3",
+    "product_type": "Checking",
+    "product_name": "Standard Checking",
+    "current_balance": "125761.98",
+    "currency_code": "USD",
+    "account_status": "dormant"
+  },
+  {
+    "account_id": "4a228158-79b6-496b-9a4e-dafe9b8e671f",
+    "customer_id": "3bc48f8f-1d28-47bb-a6d5-009d2788f631",
+    "product_type": "Mortgage",
+    "product_name": "City Mortgage",
+    "current_balance": -717933,
+    "currency_code": "USD",
+    "account_status": "active"
+  },
+  {
+    "account_id": "631b2b6e-d2a8-496d-bd1f-14bdacd147c2",
+    "customer_id": "3bc48f8f-1d28-47bb-a6d5-009d2788f631",
+    "product_type": "Checking",
+    "product_name": "Platinum Checking",
+    "current_balance": "332463.66",
+    "currency_code": "USD",
+    "account_status": "active"
+  },
+  {
+    "account_id": "606782af-2d78-4a06-829d-f2118f0f52c0",
+    "customer_id": "ba0ef0b4-34fc-4abb-845c-c69aae5033e6",
+    "product_type": "Mortgage",
+    "product_name": "City Mortgage",
+    "current_balance": -1071873,
+    "currency_code": "USD",
+    "account_status": "active"
+  },
+  {
+    "account_id": "cbbc400c-4543-48ac-afa9-88b72ddbb936",
+    "customer_id": "ba0ef0b4-34fc-4abb-845c-c69aae5033e6",
+    "product_type": "Mortgage",
+    "product_name": "Estate Mortgage",
+    "current_balance": -1592810,
+    "currency_code": "USD",
+    "account_status": "active"
+  }
+]

@@ -1,0 +1,152 @@
+[
+  {
+    "party_id": "8b965b32-fedf-4d44-8439-31eab6a9e648",
+    "party_type": "individual",
+    "segment": "Tech"
+  },
+  {
+    "party_id": "8c71387e-ccd6-4507-b4a2-074ead81ee2f",
+    "party_type": "individual",
+    "segment": "Retail"
+  },
+  {
+    "party_id": "1a23f052-e109-47d9-b236-30d0f5a8cb48",
+    "party_type": "individual",
+    "segment": "Mfg"
+  },
+  {
+    "party_id": "ebf23684-9abe-4d6b-a399-c4f3f46fd53f",
+    "party_type": "individual",
+    "segment": "Tech"
+  },
+  {
+    "party_id": "835ec38d-558f-4def-8b36-5d7947e469fa",
+    "party_type": "individual",
+    "segment": "Tech"
+  },
+  {
+    "party_id": "305f72b7-1b72-41bf-8d96-c6a383a9f95c",
+    "party_type": "individual",
+    "segment": "Healthcare"
+  },
+  {
+    "party_id": "3faad8c9-ede2-40f0-a6c1-ae7f7500e522",
+    "party_type": "individual",
+    "segment": "Tech"
+  },
+  {
+    "party_id": "1470c139-cd1e-4f6f-b452-3bef46d221d3",
+    "party_type": "individual",
+    "segment": "Tech"
+  },
+  {
+    "party_id": "43c3933b-0661-41a0-9a22-97cba59b6378",
+    "party_type": "individual",
+    "segment": "Tech"
+  },
+  {
+    "party_id": "9954047d-945d-45d2-8508-33bf46e1f338",
+    "party_type": "individual",
+    "segment": "Tech"
+  },
+  {
+    "party_id": "047a2212-e1c0-4e3f-971c-6b9553cbf8cf",
+    "party_type": "individual",
+    "segment": "Mfg"
+  },
+  {
+    "party_id": "595ba1c0-7d71-43fe-847d-8af1498e3c3e",
+    "party_type": "individual",
+    "segment": "Healthcare"
+  },
+  {
+    "party_id": "48b6e84f-588c-4117-b355-0565595ec92a",
+    "party_type": "individual",
+    "segment": "Mfg"
+  },
+  {
+    "party_id": "b915cbab-9037-425d-aad3-daafc9e85a4d",
+    "party_type": "individual",
+    "segment": "Mfg"
+  },
+  {
+    "party_id": "8aa54de5-22d5-4ce8-bd31-c1ce47ec05a9",
+    "party_type": "individual",
+    "segment": "Mfg"
+  },
+  {
+    "party_id": "86ebd5d5-e9b5-45e2-b916-6157680c6fb1",
+    "party_type": "individual",
+    "segment": "Tech"
+  },
+  {
+    "party_id": "f0739849-d088-4ce1-8171-c56cd7f24928",
+    "party_type": "individual",
+    "segment": "Tech"
+  },
+  {
+    "party_id": "48798da7-a2f5-49f8-8d92-4570b40c568e",
+    "party_type": "individual",
+    "segment": "Healthcare"
+  },
+  {
+    "party_id": "f3c9aa8c-6c60-4c9d-b370-eafa24ad496e",
+    "party_type": "individual",
+    "segment": "Mfg"
+  },
+  {
+    "party_id": "005956aa-1ae3-45ef-a066-dcc0c3c4f4d3",
+    "party_type": "individual",
+    "segment": "Healthcare"
+  },
+  {
+    "party_id": "c39d77cc-a8af-43c4-8114-c9a1b3d70f6b",
+    "party_type": "corporate",
+    "segment": "Mfg"
+  },
+  {
+    "party_id": "714ae641-3283-4433-93c4-f110cc597a6d",
+    "party_type": "corporate",
+    "segment": "Healthcare"
+  },
+  {
+    "party_id": "c0a10dde-bef8-44e7-a603-0cd9d4f4cc1a",
+    "party_type": "corporate",
+    "segment": "Retail"
+  },
+  {
+    "party_id": "26540839-da8e-4b9d-97ef-3bb4867e3a93",
+    "party_type": "corporate",
+    "segment": "Healthcare"
+  },
+  {
+    "party_id": "636346d4-ce42-4641-998b-f43b6abbc1b9",
+    "party_type": "corporate",
+    "segment": "Tech"
+  },
+  {
+    "party_id": "92a8587a-95fe-47c7-9f80-6d405a74017e",
+    "party_type": "corporate",
+    "segment": "Mfg"
+  },
+  {
+    "party_id": "7c5ea2a9-5cf5-4baa-b313-1f693887e35f",
+    "party_type": "corporate",
+    "segment": "Retail"
+  },
+  {
+    "party_id": "5ddd09b7-ac0f-4098-a53d-7bce8cfa2f44",
+    "party_type": "corporate",
+    "segment": "Retail"
+  },
+  {
+    "party_id": "c9152355-7715-47bf-bae9-5fd01ed8484a",
+    "party_type": "corporate",
+    "segment": "Tech"
+  },
+  {
+    "party_id": "35f04149-8e46-469d-b2c9-bbaf0416d68d",
+    "party_type": "corporate",
+    "segment": "Tech"
+  }
+]

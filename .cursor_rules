@@ -1,0 +1,8 @@
+# .cursor_rules
+
+## Behavioral Enforcement
+
+1.  **Read AGENTS.md**: Before starting any task, you MUST read `AGENTS.md` to understand the architectural laws and constraints of this workspace.
+2.  **Planning Mode**: You MUST operate in 'Planning' mode for all major feature requests. Do not write code until an Implementation Plan is created and approved.
+3.  **Insforge Integration**: You MUST use the `insforge` MCP tool for backend operations. Always fetch docs before guessing syntax.
+4.  **Premium UI**: Maintain a high standard of design quality (Premium Banking Interface).

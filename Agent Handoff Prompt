@@ -1,0 +1,559 @@
+# BANKING CRM V2.5 — AGENT CONTEXT TRANSFER & OPERATIONAL DIRECTIVE
+
+**You are taking over development of Banking CRM Version 2.5 — Product Development.**
+
+This document is your complete context. Read it entirely before making any changes.
+
+---
+
+## 1. PROJECT IDENTITY
+
+- **Project**: Banking CRM — Enterprise Relationship Management Platform
+- **Version**: 2.5.0 (Product Development)
+- **Previous Version**: 2.0 (Demo & Validation) — completed P0 through P8
+- **Workspace**: `d:\00 WorkSpace\bankingcrm2.5`
+- **Original (DO NOT MODIFY)**: `d:\00 WorkSpace\bankingcrm2`
+- **Staging URL**: `https://eig7swuu.insforge.site`
+- **Initialized**: 2026-02-21
+
+---
+
+## 2. TECHNOLOGY STACK (DO NOT CHANGE WITHOUT EXPLICIT APPROVAL)
+
+| Layer | Technology | Version |
+|-------|------------|---------|
+| Framework | Next.js (App Router) | 15.5.7 |
+| Language | TypeScript | 5.9.3 |
+| React | React | 19.2.3 |
+| Styling | Tailwind CSS + Shadcn-UI | 3.4.17 |
+| Backend | InsForge (PostgreSQL + Auth + Storage + Edge Functions) | SDK 1.1.5 |
+| UI Components | Radix UI primitives via Shadcn | Multiple |
+| Charts | Recharts + custom SVG | 3.7.0 |
+| Icons | Lucide React | 0.574.0 |
+| UUID | uuid | 13.0.0 |
+| Toast | Sonner | 2.0.7 |
+| Deployment | InsForge CI/CD → Vercel | — |
+
+### InsForge Backend Configuration
+
+```
+Base URL: https://eig7swuu.us-east.insforge.app
+Anon Key: In .env file (NEXT_PUBLIC_INSFORGE_ANON_KEY)
+```
+
+The InsForge SDK is initialized in two files:
+- `src/lib/insforge-client.ts` — client-side (browser) instance
+- `src/lib/insforge.ts` — server-side instance
+
+Both read from `NEXT_PUBLIC_INSFORGE_BASE_URL` and `NEXT_PUBLIC_INSFORGE_ANON_KEY`.
+
+---
+
+## 3. COMPLETE DATABASE SCHEMA (32 Tables + 3 Views)
+
+### 3.1 Table Inventory
+
+| Table | Columns | RLS | Policies | Phase | Purpose |
+|-------|---------|-----|----------|-------|---------|
+| `parties` | 5 | ✅ | 4 | P0 | Master party table (individuals + corporates) |
+| `individual_parties` | 8 | ✅ | 1 | P0 | Personal details — FK → parties.party_id |
+| `corporate_parties` | 6 | ✅ | 1 | P0 | Company details — FK → parties.party_id |
+| `party_relationships` | 6 | ✅ | 1 | P0 | Party-to-party links — dual FK → parties |
+| `interactions` | 7 | ✅ | 1 | P0 | Communication log — FK → parties.party_id |
+| `sales_opportunities` | 13 | ✅ | 2 | P2 | Pipeline — FK → parties, credit_offers |
+| `leads` | 11 | ✅ | 2 | P2/P7 | Lead capture + campaign-spawned leads |
+| `rm_alerts` | 7 | ✅ | 2 | P2 | RM notifications — FK → parties, service_cases |
+| `service_cases` | 16 | ✅ | 1 | P3 | Omnichannel case management — FK → parties |
+| `case_complaint_details` | 12 | ✅ | 2 | P3 | Regulatory complaint data — FK → service_cases |
+| `case_sla_events` | 9 | ✅ | 3 | P3 | SLA tracking — FK → service_cases |
+| `knowledge_articles` | 9 | ✅ | 2 | P1 | KB for service agents |
+| `knowledge_feedback` | 5 | ✅ | 2 | P1 | Article helpfulness — FK → articles, cases |
+| `onboarding_applications` | 45 | ✅ | 2 | P4 | Digital account opening wizard state |
+| `onboarding_documents` | 9 | ✅ | 2 | P4 | KYC document uploads — FK → applications |
+| `onboarding_kyc_checks` | 7 | ✅ | 2 | P4 | eKYC verification results — FK → applications |
+| `onboarding_edd_records` | 13 | ✅ | 2 | P4 | Enhanced due diligence — FK → applications |
+| `sanctions_logs` | 5 | ✅ | 1 | P4 | AML screening results — FK → parties |
+| `credit_applications` | 22 | ✅ | 2 | P5 | Loan/credit origination — FK → parties, opportunities |
+| `credit_bureau_reports` | 12 | ✅ | 2 | P5 | Bureau pull results — FK → credit_applications |
+| `credit_financial_spreads` | 27 | ✅ | 2 | P5 | Income/balance sheet spreads — FK → applications |
+| `credit_policy_results` | 9 | ✅ | 2 | P5 | Automated rule evaluation — FK → applications |
+| `credit_offers` | 20 | ✅ | 2 | P5 | Loan offers — FK → applications |
+| `credit_adverse_actions` | 7 | ✅ | 2 | P5 | Reg B adverse action notices — FK → applications |
+| `compliance_profiles` | 8 | ✅ | 3 | P6 | AML risk ratings per party — FK → parties |
+| `compliance_resolutions` | 13 | ✅ | 2 | P6 | False positive / resolution records |
+| `audit_logs` | 11 | ✅ | 3 | P6 | **IMMUTABLE** — INSERT-only RLS, no UPDATE/DELETE |
+| `marketing_journeys` | 8 | ✅ | 2 | P7 | Campaign journey definitions |
+| `journey_nodes` | 9 | ✅ | 2 | P7 | Nodes within journeys — FK → marketing_journeys |
+| `journey_executions` | 12 | ✅ | 2 | P7 | Activation results — FK → marketing_journeys |
+| `marketing_consent` | 12 | ✅ | 2 | P7 | DNC/GDPR/TCPA consent flags (200 seed) |
+| `marketing_fatigue_log` | 6 | ✅ | 2 | P7 | Message send/suppress log — FK → marketing_journeys |
+
+### 3.2 Views
+
+| View | Source Tables | Purpose |
+|------|--------------|---------|
+| `compliance_dashboard_metrics` | compliance_profiles, compliance_resolutions, service_cases | 6 KPI scorecards |
+| `marketing_analytics_daily` | marketing_fatigue_log | Daily sent/suppressed by channel |
+| `onboarding_dashboard_metrics` | onboarding_applications, onboarding_kyc_checks | Onboarding funnel metrics |
+
+### 3.3 Foreign Key Constraint Map (31 FKs)
+
+```
+parties ← individual_parties.party_id
+parties ← corporate_parties.party_id
+parties ← party_relationships.from_party_id
+parties ← party_relationships.to_party_id
+parties ← interactions.party_id
+parties ← compliance_profiles.party_id
+parties ← sanctions_logs.party_id
+parties ← sales_opportunities.customer_id
+parties ← service_cases.customer_id
+parties ← rm_alerts.customer_id
+parties ← credit_applications.customer_id
+service_cases ← case_complaint_details.case_id
+service_cases ← case_sla_events.case_id
+service_cases ← knowledge_feedback.case_id
+service_cases ← rm_alerts.case_id
+service_cases ← onboarding_applications.compliance_case_id
+knowledge_articles ← knowledge_feedback.article_id
+credit_applications ← credit_bureau_reports.application_id
+credit_applications ← credit_financial_spreads.application_id
+credit_applications ← credit_policy_results.application_id
+credit_applications ← credit_adverse_actions.application_id
+credit_applications ← credit_offers.application_id
+credit_offers ← sales_opportunities.credit_offer_id
+sales_opportunities ← credit_applications.opportunity_id
+onboarding_applications ← onboarding_documents.application_id
+onboarding_applications ← onboarding_kyc_checks.application_id
+onboarding_applications ← onboarding_edd_records.application_id
+marketing_journeys ← journey_nodes.journey_id
+marketing_journeys ← journey_executions.journey_id
+marketing_journeys ← marketing_fatigue_log.campaign_id
+```
+
+### 3.4 Current Seed Data
+
+| Table | Row Count | Notes |
+|-------|-----------|-------|
+| parties | 200 | 180 individuals + 20 corporates |
+| compliance_profiles | 200 | ~65 HIGH, ~42 MEDIUM, ~93 LOW |
+| interactions | 500 | Mixed types |
+| sales_opportunities | 80 | 7 pipeline stages |
+| service_cases | 50 | Mixed P1–P4 priority |
+| credit_applications | 8 | From P5 testing |
+| marketing_consent | 200 | ~7% DNC, ~7% GDPR, ~5% TCPA |
+| marketing_fatigue_log | ~1500 | 30 days × 50/day × 3 channels |
+| leads | 4 | Campaign-spawned from P7 activation |
+| audit_logs | 9 | From compliance resolutions + journey activations |
+
+---
+
+## 4. COMPLETE API ROUTE INVENTORY (35 Routes)
+
+### Authentication
+| Route | Method | Purpose |
+|-------|--------|---------|
+| `/api/auth` | POST/GET | InsForge auth handler |
+
+### Edge Functions
+| Route | Method | Purpose |
+|-------|--------|---------|
+| `/api/edge-proxy/[slug]` | GET/POST | Proxy to InsForge edge functions |
+| `/api/generate-pitch` | POST | AI pitch generation via edge function |
+
+### Knowledge Base (P1)
+| Route | Method | Purpose |
+|-------|--------|---------|
+| `/api/knowledge/articles` | GET | List knowledge articles |
+| `/api/knowledge/feedback` | POST | Submit article feedback |
+
+### Leads (P2)
+| Route | Method | Purpose |
+|-------|--------|---------|
+| `/api/leads/create` | POST | Create new lead. Required: `full_name` |
+
+### Opportunities (P2)
+| Route | Method | Purpose |
+|-------|--------|---------|
+| `/api/opportunities/create` | POST | Create sales opportunity |
+| `/api/opportunities/update-stage` | POST | Update pipeline stage |
+
+### Service Cases (P3)
+| Route | Method | Purpose |
+|-------|--------|---------|
+| `/api/service-cases/create` | POST | Create omnichannel case |
+| `/api/service-cases/intake` | POST | Intake form submission |
+| `/api/service-cases/update` | POST | Update case status/details |
+| `/api/service-cases/push-rm-alert` | POST | Create RM alert from case |
+| `/api/complaint/upsert-details` | POST | Upsert complaint regulatory details |
+
+### Onboarding (P4)
+| Route | Method | Purpose |
+|-------|--------|---------|
+| `/api/onboarding/save-progress` | POST | Save wizard step data |
+| `/api/onboarding/get-application` | GET | Retrieve application state |
+| `/api/onboarding/ekyc-simulate` | POST | Simulate identity verification |
+| `/api/onboarding/sanctions-screen` | POST | AML sanctions screening (CLEAR/HIT) |
+
+### Credit (P5)
+| Route | Method | Purpose |
+|-------|--------|---------|
+| `/api/credit/intake` | POST | Create credit application |
+| `/api/credit/list-applications` | GET | List all applications |
+| `/api/credit/bureau-pull` | POST | Simulate bureau credit pull |
+| `/api/credit/save-spreading` | POST | Save financial spread data |
+| `/api/credit/evaluate-policy` | POST | Run automated policy rules |
+| `/api/credit/create-offer` | POST | Generate loan offer |
+| `/api/credit/generate-adverse-action` | POST | Create Reg B adverse notice |
+| `/api/credit/attach-to-opportunity` | POST | Link offer to sales opportunity |
+
+### Compliance (P6)
+| Route | Method | Purpose |
+|-------|--------|---------|
+| `/api/compliance/dashboard-metrics` | GET | 6 KPI scorecards from view |
+| `/api/compliance/queues` | GET | AML/KYC/Suitability queue data |
+| `/api/compliance/resolve` | POST | Record resolution + audit log |
+| `/api/compliance/audit-trail` | GET | Paginated immutable audit entries |
+| `/api/compliance/log-screen` | POST | Log compliance screening event |
+
+### Marketing (P7)
+| Route | Method | Purpose |
+|-------|--------|---------|
+| `/api/marketing/save-journey` | POST | Upsert journey + nodes |
+| `/api/marketing/list-journeys` | GET | List saved journeys |
+| `/api/marketing/activate-journey` | POST | Execute journey: consent check → fatigue cap → spawn leads/tasks → audit |
+| `/api/marketing/check-consent` | GET | Real consent scrub metrics |
+| `/api/marketing/analytics-timeseries` | GET | 30-day daily sent/suppressed chart data |
+
+---
+
+## 5. PAGE AND COMPONENT INVENTORY (20 Pages, 104+ Components)
+
+### Pages
+
+| Route | File | Type | Phase |
+|-------|------|------|-------|
+| `/` | `src/app/page.tsx` | Landing | P0 |
+| `/dashboard` | `src/app/dashboard/page.tsx` | RM Dashboard | P0 |
+| `/customer` | `src/app/customer/page.tsx` | Customer directory | P0 |
+| `/customer/[id]` | `src/app/customer/[id]/page.tsx` | Customer 360 (4 tabs) | P0 |
+| `/leads` | `src/app/leads/page.tsx` | Lead workspace | P2 |
+| `/opportunities` | `src/app/opportunities/page.tsx` | Sales pipeline | P2 |
+| `/servicing` | `src/app/servicing/page.tsx` | Service inbox | P3 |
+| `/service` | `src/app/service/page.tsx` | Service (alt route) | P3 |
+| `/onboarding` | `src/app/onboarding/page.tsx` | 6-step digital onboarding | P4 |
+| `/credit` | `src/app/credit/page.tsx` | Underwriting workbench | P5 |
+| `/compliance` | `src/app/compliance/page.tsx` | Compliance dashboard | P6 |
+| `/campaigns` | `src/app/campaigns/page.tsx` | Marketing orchestration | P7 |
+| `/fna` | `src/app/fna/page.tsx` | Financial needs analysis | P0 |
+| `/portfolio` | `src/app/portfolio/page.tsx` | Portfolio management | P0 |
+| `/quotes` | `src/app/quotes/page.tsx` | Quote generation | P0 |
+| `/p1-validation` | `src/app/p1-validation/page.tsx` | Edge function test panel | P1 |
+| `/debug-customer/[id]` | `src/app/debug-customer/[id]/page.tsx` | Debug SSG | P0 |
+| `/test-static` | `src/app/test-static/page.tsx` | Static test | P0 |
+
+### Key Component Directories
+
+| Directory | Count | Key Components |
+|-----------|-------|---------------|
+| `components/compliance/` | 7 | AMLHitQueue, AuditTrailExplorer, ComplianceDashboardClient, FalsePositiveResolutionSheet, KYCRefreshQueue, SuitabilityOverrides |
+| `components/credit/` | 12 | ApplicationTriageQueue, CreditWorkbenchClient, FinancialSpreadingTool, CreditBureauPanel, PolicyEnginePanel, OfferQuotePanel, DecisioningModule |
+| `components/customer-360/` | 10 | Customer360Tabs, CustomerHeaderLive, RiskComplianceTab, InteractionTimeline, FinancialProfileDonut, NextBestActionWidget |
+| `components/home/` | 4 | PersonaLayout, PersonaSwitcher, WidgetRegistry, WidgetRenderer |
+| `components/leads/` | 6 | LeadDataTable, LeadIngestionPanel, LeadQualificationForm, LeadsClient, RoutingControl, ScoreSheet |
+| `components/marketing/` | 3 | JourneyBuilder, ConsentGuard, CampaignAnalytics |
+| `components/onboarding/` | 1 | OnboardingWizard (massive — 6-step wizard with AML split-path) |
+| `components/rm-dashboard/` | 6+ | PerformanceScorecard, AlertsQueue, PipelineFunnel, TaskQueue, TerritoryAnalytics |
+| `components/service/` | 5+ | ServiceInbox, CaseDetailView, ComplaintPanel, SLATracker |
+| `components/ui/` | 20+ | Shadcn primitives: Button, Card, Dialog, Badge, Tabs, Select, Progress, etc. |
+
+### Key Lib Files
+
+| File | Purpose |
+|------|---------|
+| `lib/insforge-client.ts` | Client-side InsForge SDK instance |
+| `lib/insforge.ts` | Server-side InsForge SDK instance |
+| `lib/crm-service.ts` | Data access layer: `getParty360()`, `getDashboardMetrics()`, etc. |
+| `lib/audit.ts` | `writeAuditEntry()` — writes to immutable audit_logs |
+| `lib/credit-scoring.ts` | DTI, DSCR, risk rating calculations |
+| `lib/onboarding-scoring.ts` | Onboarding risk scoring |
+| `lib/nba-ranking.ts` | Next-best-action ranking algorithm |
+| `lib/marketing-mock-data.ts` | Node library definitions for journey builder |
+| `lib/mock-data.ts` | Dashboard mock data (RM personas, widgets) |
+| `lib/utils.ts` | Utility functions (cn, formatters) |
+
+---
+
+## 6. PHASES COMPLETED (P0–P8 SUMMARY)
+
+### P0 — Foundation & Defect Resolution
+- Created all baseline tables: parties, individual_parties, corporate_parties, interactions, sales_opportunities, rm_alerts
+- Fixed 17 original defects (missing tables, SSR hydration, blank pages)
+- Customer 360 with 4-tab view bound to live DB
+
+### P1 — Data Fabric & Edge Functions
+- Knowledge base (articles + feedback)
+- Edge function proxy (`/api/edge-proxy/[slug]`)
+- AI pitch generation
+
+### P2 — RM Productivity & Lead Management
+- Lead capture, scoring (BANT), qualification, routing
+- Opportunity pipeline with stage management
+- RM dashboard with scorecards, pipeline funnel, task queue, territory analytics
+- Persona switcher (Sarah/Michael/Priya)
+
+### P3 — Omnichannel Service
+- Service case inbox with priority filters (P1–P4)
+- Case creation, update, SLA tracking
+- Complaint regulatory details
+- Knowledge base integration for agent assist
+- RM alert push from service cases
+
+### P4 — Digital Onboarding
+- 6-step wizard: Personal Details → eKYC → CDD → FATCA/CRS → Sanctions → Review
+- AML split-path: Sanctions CLEAR (continue) vs HIT (block + compliance case)
+- Save & continue later functionality
+- Document upload simulation
+
+### P5 — Credit Origination
+- Underwriting workbench with triage queue
+- Routing: STP / Standard / Specialist paths
+- Financial spreading tool (income statement + balance sheet → DTI, DSCR)
+- Bureau pull simulation (FICO, trade lines, derogatory marks)
+- Automated policy engine (5 rules)
+- Offer generation with term/rate/collateral
+- Adverse action notice (Reg B)
+- Attach offer to sales opportunity
+
+### P6 — Compliance & Regulatory
+- 6 KPI scorecards from compliance_dashboard_metrics view
+- AML Hit Queue, KYC Refresh Queue, Suitability Overrides tabs
+- False positive resolution with audit trail
+- **Immutable audit log** — INSERT-only RLS, UPDATE/DELETE blocked
+- Audit trail explorer with domain filter and pagination
+
+### P7 — Marketing Orchestration
+- Journey builder with drag-drop canvas (12 node types: triggers, logic, actions)
+- Save/Load/Activate journeys to DB
+- Activation engine: consent check → frequency cap → spawn leads → spawn RM tasks → log fatigue → audit
+- ConsentGuard: real DB scrub against marketing_consent (DNC/GDPR/TCPA/channel opt-outs)
+- CampaignAnalytics: KPI cards + pure SVG fatigue/suppression time-series chart from marketing_analytics_daily view
+- A/B test results display
+- Actionable insights panel
+
+### P8 — NFR, CI/CD & E2E Regression
+- Security hygiene sweep: 0 eval(), 0 dangerouslySetInnerHTML, 0 hard-coded secrets
+- RLS enabled on all 32 tables (6 were previously DISABLED — fixed in P8)
+- Audit log immutability test: UPDATE returns 0 rows (RLS blocks)
+- TypeScript: 0 errors (`npx tsc --noEmit`)
+- Production build: 0 errors, First Load JS shared = 102 KB
+- 17 original defect re-verification: all pass
+- 7 E2E journey traversals: all pass (local + staging)
+- Staging deployment: `https://eig7swuu.insforge.site` — status READY
+- 9 staging smoke tests: all pass (7 routes + 2 API endpoints)
+
+---
+
+## 7. ARCHITECTURAL GUARDRAILS (MUST ENFORCE)
+
+### 7.1 SSR Determinism
+- **NO `Math.random()` in SSR paths** — currently 0 instances (verified P8)
+- **NO `Date.now()` in SSR paths** — currently 0 instances (verified P8)
+- All volatile/interactive content must be inside `"use client"` components
+- Server components that fetch data use `export const dynamic = 'force-dynamic'`
+
+### 7.2 Row Level Security
+- **ALL 32 tables have RLS ENABLED** — verified P8
+- Currently using `anon` role policies (read/write for all) — this is v2.0 demo-grade
+- **v2.5 MUST upgrade to user-level RLS** keyed on `auth.uid()` with role-based access
+
+### 7.3 Audit Log Immutability
+- `audit_logs` table has 3 RLS policies: SELECT (anon), INSERT (anon), NO UPDATE, NO DELETE
+- Any attempt to UPDATE or DELETE returns 0 rows affected
+- The `writeAuditEntry()` function in `lib/audit.ts` is the ONLY way to write audit entries
+- **NEVER create UPDATE/DELETE policies on audit_logs**
+
+### 7.4 UI Standards
+- **Tailwind CSS + Shadcn-UI ONLY** — no generic CSS, no external UI libraries
+- Dark mode design system (slate-950 backgrounds, cyan/emerald/violet accents)
+- All interactive elements must have unique IDs for testability
+- Error boundaries: all components must fallback gracefully
+- Responsive layout via PersonaLayout wrapper
+
+### 7.5 Data Access Patterns
+- Server components fetch data directly via `insforge.database.from('table').select()`
+- Client components fetch via API routes (`/api/...`)
+- **NEVER expose raw SQL to client** — all DB access goes through API routes or server components
+- The `crm-service.ts` file contains shared data access functions
+
+### 7.6 InsForge MCP Tools Available
+You have access to InsForge MCP tools:
+- `run-raw-sql` — Execute SQL directly on the database
+- `get-table-schema` — Inspect table structure
+- `get-backend-metadata` — Full backend inventory
+- `create-deployment` — Deploy to staging
+- `create-function` / `update-function` — Edge functions
+- `create-bucket` — Storage buckets
+- `bulk-upsert` — Data import
+- `get-container-logs` — Debug logs
+- `fetch-docs` / `fetch-sdk-docs` — SDK documentation
+
+---
+
+## 8. KNOWN RISKS & TECHNICAL DEBT
+
+| # | Risk | Severity | Description | Recommended Fix |
+|---|------|----------|-------------|-----------------|
+| 1 | Double journey activation | MEDIUM | No idempotency guard — activating same journey twice creates duplicate leads and execution records | Add `status` column check: block re-activation if already `completed` |
+| 2 | No channel CHECK constraint | LOW | `marketing_fatigue_log.channel` accepts any string — no `CHECK (channel IN ('email','sms','push'))` | Add CHECK constraint via migration |
+| 3 | Min 1 lead always spawned | LOW | `activate-journey` uses `Math.max(1, ...)` so at least 1 lead is created even with 0 reachable audience | Change to `Math.max(0, ...)` or add guard |
+| 4 | Campaign rm_alerts have NULL FKs | LOW | Campaign-spawned RM alerts have `customer_id=NULL` and `case_id=NULL` — both are nullable FKs | Consider linking to first spawned lead or using a sentinel party |
+| 5 | No DB indexes beyond PKs | HIGH | No custom indexes — queries will degrade at scale (10K+ rows) | Add indexes on frequently filtered columns (see v2.5 transition doc) |
+| 6 | Schema files fragmented | MEDIUM | 3 separate SQL files: `schema.sql`, `schema_leads.sql`, `schema_refinement.sql` | Consolidate into numbered migrations directory |
+| 7 | Single environment | HIGH | One `.env` file, one InsForge project — no dev/staging/prod separation | Create environment-specific configs |
+| 8 | No automated tests | HIGH | Zero test files — all validation was manual/browser-based | Implement Jest + Playwright test suites |
+| 9 | Customer/[id] 404 on staging | MEDIUM | Dynamic route `/customer/[id]` returns 404 on deployed staging site | Investigate Vercel dynamic route configuration |
+
+---
+
+## 9. VERSION 2.5 OBJECTIVES
+
+The transition from v2.0 (Demo & Validation) to v2.5 (Product Development) requires:
+
+### Priority 1 — Foundation (Do First)
+1. **Environment separation**: Create `.env.development`, `.env.staging`, `.env.production`
+2. **Schema migration consolidation**: Single `migrations/` directory with numbered files
+3. **Fix customer/[id] 404 on staging**: Investigate and fix dynamic route deployment
+
+### Priority 2 — Security Hardening
+4. **next.config.ts**: Add CSP headers, standalone output, image optimization
+5. **User-level RLS policies**: Replace anon-role with `auth.uid()`-keyed policies
+6. **Middleware upgrades**: Rate limiting, request validation, CORS for production domains
+
+### Priority 3 — Quality Infrastructure
+7. **Jest configuration**: `jest.config.ts`, ts-jest, path aliases, 80%+ coverage thresholds
+8. **Playwright configuration**: `playwright.config.ts`, `tests/e2e/` with runnable scripts
+9. **Unit tests**: Credit scoring, consent engine, frequency cap, audit entry logic
+10. **API integration tests**: All 35 routes with valid + invalid payloads
+
+### Priority 4 — Production Readiness
+11. **DB indexes**: On `leads.source_channel`, `marketing_fatigue_log.sent_at`, `compliance_profiles.aml_risk_rating`, `service_cases.status`, `credit_applications.status`
+12. **Versioning strategy**: CHANGELOG.md, git tagging, SemVer discipline
+13. **CI/CD pipeline**: Automated build → test → deploy workflow
+14. **Monitoring & alerting**: Error boundary reporting, API latency logging
+15. **Backup & recovery**: Automated PostgreSQL backup schedule
+
+### Priority 5 — Feature Gaps to Close
+16. **Known risk fixes**: Double activation guard, channel CHECK constraint, min-0 lead spawn
+17. **Structured logging**: Replace console.log with structured logger
+18. **Feature flags**: Toggle system for progressive rollout
+
+---
+
+## 10. FILE STRUCTURE REFERENCE
+
+```
+bankingcrm2.5/
+├── src/
+│   ├── app/
+│   │   ├── api/                    # 35 API routes
+│   │   │   ├── auth/               # InsForge auth
+│   │   │   ├── compliance/         # 5 routes
+│   │   │   ├── credit/             # 8 routes
+│   │   │   ├── edge-proxy/         # Dynamic edge function proxy
+│   │   │   ├── knowledge/          # 2 routes
+│   │   │   ├── leads/              # 1 route
+│   │   │   ├── marketing/          # 5 routes
+│   │   │   ├── onboarding/         # 4 routes
+│   │   │   ├── opportunities/      # 2 routes
+│   │   │   ├── service-cases/      # 4 routes
+│   │   │   ├── complaint/          # 1 route
+│   │   │   └── generate-pitch/     # 1 route
+│   │   ├── campaigns/page.tsx      # Marketing orchestration
+│   │   ├── compliance/page.tsx     # Compliance dashboard
+│   │   ├── credit/page.tsx         # Credit workbench
+│   │   ├── customer/
+│   │   │   ├── page.tsx            # Customer directory
+│   │   │   └── [id]/page.tsx       # Customer 360
+│   │   ├── dashboard/page.tsx      # RM dashboard
+│   │   ├── leads/page.tsx          # Lead workspace
+│   │   ├── onboarding/page.tsx     # Digital onboarding
+│   │   ├── opportunities/page.tsx  # Sales pipeline
+│   │   ├── servicing/page.tsx      # Service inbox
+│   │   ├── layout.tsx              # Root layout
+│   │   ├── globals.css             # Tailwind globals
+│   │   └── page.tsx                # Landing
+│   ├── components/                 # 104+ components (see §5)
+│   ├── lib/                        # 20 modules (see §5)
+│   └── insforge-functions/         # Edge function source files
+├── scripts/                        # Seed data generators
+├── seed/                           # SQL seed files
+├── schema.sql                      # Original schema (P0)
+├── schema_leads.sql                # Leads schema extension
+├── schema_refinement.sql           # Multi-phase schema additions
+├── .env                            # Environment variables
+├── next.config.ts                  # Next.js configuration
+├── tailwind.config.ts              # Tailwind configuration
+├── tsconfig.json                   # TypeScript configuration
+├── package.json                    # v2.5.0
+├── VERSION                         # Version marker
+├── V2.5_PHASE_TRANSITION_ARTIFACTS.md  # Required updates list
+├── AGENTS.md                       # Agent operational directives
+└── README.md                       # Project documentation
+```
+
+---
+
+## 11. OPERATIONAL MODES
+
+### PLANNING MODE
+- **Trigger**: New feature, architectural change, schema change
+- **Action**: Read existing code → produce Implementation Plan → await approval
+- **Constraint**: DO NOT write code until plan is approved
+
+### FAST MODE (EXECUTION)
+- **Trigger**: Approved plan, bug fix, or isolated change
+- **Action**: Execute precisely within the approved plan scope
+- **Constraint**: Do not deviate from plan without re-entering PLANNING
+
+### VERIFICATION MODE
+- **Trigger**: After code changes
+- **Action**: Run `npx tsc --noEmit`, test in browser, verify DB state
+- **Constraint**: Never ship without verification
+
+### CRITICAL RULES
+1. **NEVER modify `bankingcrm2` (the original project)**
+2. **NEVER disable RLS on any table**
+3. **NEVER add UPDATE/DELETE policies to `audit_logs`**
+4. **NEVER use `Math.random()` or `Date.now()` outside of `useEffect()` client hooks**
+5. **NEVER hard-code secrets, PII, or API keys in source files**
+6. **ALWAYS use Tailwind CSS + Shadcn-UI for styling — no external CSS frameworks**
+7. **ALWAYS run `npx tsc --noEmit` after code changes**
+8. **ALWAYS verify production build with `npm run build` before deployment**
+9. **ALWAYS write audit log entries for compliance-sensitive operations**
+10. **ALWAYS preserve ALL existing functionality when adding new features**
+
+---
+
+## 12. QUICK START COMMANDS
+
+```bash
+# Development
+npm install
+npm run dev              # http://localhost:3000
+
+# Validation
+npx tsc --noEmit         # Must return 0 errors
+npm run build            # Must return 0 errors
+
+# Database inspection (via InsForge MCP)
+# Use run-raw-sql tool for: SELECT * FROM parties LIMIT 5;
+# Use get-table-schema tool for column details
+
+# Deployment
+# Use create-deployment MCP tool with sourceDirectory
+```
+
+---
+
+**END OF CONTEXT TRANSFER. You are now the agent for Banking CRM v2.5. Read `V2.5_PHASE_TRANSITION_ARTIFACTS.md` in the project root for the prioritized update roadmap. Begin with Priority 1 items unless instructed otherwise by the user.**

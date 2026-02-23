@@ -1,0 +1,452 @@
+[
+  {
+    "compliance_id": "a8a04d42-1586-4207-82df-34727e08b9a4",
+    "customer_id": "42a8bde7-483e-4125-ae04-eca109870c38",
+    "kyc_refresh_due_date": "2026-01-01",
+    "aml_risk_rating": "High",
+    "pep_status_flag": false,
+    "fatca_classification": "Compliant",
+    "crs_tax_residency": "Reportable"
+  },
+  {
+    "compliance_id": "b5bd1b7b-6aa7-464f-97cb-00db025ca27c",
+    "customer_id": "3efcd709-a369-4674-98b3-61a3b62f4a0a",
+    "kyc_refresh_due_date": "2026-01-01",
+    "aml_risk_rating": "High",
+    "pep_status_flag": false,
+    "fatca_classification": "Compliant",
+    "crs_tax_residency": "Reportable"
+  },
+  {
+    "compliance_id": "e1baff35-c35c-4fcc-825a-bb35786b973d",
+    "customer_id": "6b018190-c4e0-4e67-8c95-edc99a2aa61f",
+    "kyc_refresh_due_date": "2026-01-01",
+    "aml_risk_rating": "High",
+    "pep_status_flag": false,
+    "fatca_classification": "Compliant",
+    "crs_tax_residency": "Reportable"
+  },
+  {
+    "compliance_id": "28c8d509-f38b-4ba3-95fc-f3655e7b553a",
+    "customer_id": "3c3d24f1-a18b-4f2d-a32d-7631981d8e32",
+    "kyc_refresh_due_date": "2026-01-01",
+    "aml_risk_rating": "High",
+    "pep_status_flag": false,
+    "fatca_classification": "Compliant",
+    "crs_tax_residency": "Reportable"
+  },
+  {
+    "compliance_id": "0d228e97-f38a-4527-a557-848a4cb85b34",
+    "customer_id": "75d7fb01-a61f-4b08-b953-648c115d02ae",
+    "kyc_refresh_due_date": "2026-01-01",
+    "aml_risk_rating": "Medium",
+    "pep_status_flag": false,
+    "fatca_classification": "Compliant",
+    "crs_tax_residency": "Reportable"
+  },
+  {
+    "compliance_id": "76f53040-808d-400b-8c11-6f1c820ba8ff",
+    "customer_id": "cb84d38d-488c-445a-8796-e63cc92608f7",
+    "kyc_refresh_due_date": "2026-01-01",
+    "aml_risk_rating": "Low",
+    "pep_status_flag": false,
+    "fatca_classification": "Compliant",
+    "crs_tax_residency": "Reportable"
+  },
+  {
+    "compliance_id": "7d999ed1-b60c-475b-869c-c2f9a66e6d1c",
+    "customer_id": "e057936e-21af-426c-9666-aab2d173a0f4",
+    "kyc_refresh_due_date": "2026-01-01",
+    "aml_risk_rating": "Medium",
+    "pep_status_flag": false,
+    "fatca_classification": "Compliant",
+    "crs_tax_residency": "Reportable"
+  },
+  {
+    "compliance_id": "8fa66b93-8b68-42e7-8e01-dea9ecf52b2d",
+    "customer_id": "f6ea4beb-e345-4d43-be20-dba05cf071b5",
+    "kyc_refresh_due_date": "2026-01-01",
+    "aml_risk_rating": "Low",
+    "pep_status_flag": false,
+    "fatca_classification": "Compliant",
+    "crs_tax_residency": "Reportable"
+  },
+  {
+    "compliance_id": "462076da-17d5-4735-90ba-401dd782d87e",
+    "customer_id": "ee18f5f4-8d97-440f-b486-965d0b2516ba",
+    "kyc_refresh_due_date": "2026-01-01",
+    "aml_risk_rating": "High",
+    "pep_status_flag": false,
+    "fatca_classification": "Compliant",
+    "crs_tax_residency": "Reportable"
+  },
+  {
+    "compliance_id": "bfb89a23-4f8e-491b-a277-86d1b5021407",
+    "customer_id": "981695ac-76b4-4568-a02f-2fa78ff2814f",
+    "kyc_refresh_due_date": "2026-01-01",
+    "aml_risk_rating": "Low",
+    "pep_status_flag": false,
+    "fatca_classification": "Compliant",
+    "crs_tax_residency": "Reportable"
+  },
+  {
+    "compliance_id": "dbc4f855-4a5d-4f7d-8e84-5ef491e6f115",
+    "customer_id": "6391c619-9645-4667-b716-6fa88e23cbc6",
+    "kyc_refresh_due_date": "2026-01-01",
+    "aml_risk_rating": "High",
+    "pep_status_flag": false,
+    "fatca_classification": "Compliant",
+    "crs_tax_residency": "Reportable"
+  },
+  {
+    "compliance_id": "079517a8-ae81-4bbe-892c-edcf799d7aa7",
+    "customer_id": "3824e5ae-3905-4501-b8f5-a2a06e2956a2",
+    "kyc_refresh_due_date": "2026-01-01",
+    "aml_risk_rating": "Medium",
+    "pep_status_flag": false,
+    "fatca_classification": "Compliant",
+    "crs_tax_residency": "Reportable"
+  },
+  {
+    "compliance_id": "32fed9fa-6dc9-462d-9a0f-acf08b6b36a5",
+    "customer_id": "b5f0f29c-116e-46db-900a-d84b581719de",
+    "kyc_refresh_due_date": "2026-01-01",
+    "aml_risk_rating": "Low",
+    "pep_status_flag": false,
+    "fatca_classification": "Compliant",
+    "crs_tax_residency": "Reportable"
+  },
+  {
+    "compliance_id": "e5d81a81-f520-4d37-b3e9-b46397abbd45",
+    "customer_id": "d157ea6d-4d64-4b24-93fd-0f1f89039826",
+    "kyc_refresh_due_date": "2026-01-01",
+    "aml_risk_rating": "High",
+    "pep_status_flag": false,
+    "fatca_classification": "Compliant",
+    "crs_tax_residency": "Reportable"
+  },
+  {
+    "compliance_id": "1a69c452-10bc-4498-b553-469663a76ffa",
+    "customer_id": "7d41dfad-d0fd-477d-b804-958d515a67a5",
+    "kyc_refresh_due_date": "2026-01-01",
+    "aml_risk_rating": "Low",
+    "pep_status_flag": false,
+    "fatca_classification": "Compliant",
+    "crs_tax_residency": "Reportable"
+  },
+  {
+    "compliance_id": "eaccd730-55fa-4138-bc8f-55866ac5e2c8",
+    "customer_id": "c54cd7d5-a05f-4552-a4e4-2519a588cee1",
+    "kyc_refresh_due_date": "2026-01-01",
+    "aml_risk_rating": "Low",
+    "pep_status_flag": false,
+    "fatca_classification": "Compliant",
+    "crs_tax_residency": "Reportable"
+  },
+  {
+    "compliance_id": "1ca483ff-d95c-455a-bb8a-bfeb7e769346",
+    "customer_id": "3bb3a360-fc56-4509-ad84-a05ce3b44eb6",
+    "kyc_refresh_due_date": "2026-01-01",
+    "aml_risk_rating": "Low",
+    "pep_status_flag": false,
+    "fatca_classification": "Compliant",
+    "crs_tax_residency": "Reportable"
+  },
+  {
+    "compliance_id": "e8e529d0-803c-49bc-b174-5c06089015b5",
+    "customer_id": "9763a691-c79f-459f-ba6b-3d34fbe6650d",
+    "kyc_refresh_due_date": "2026-01-01",
+    "aml_risk_rating": "Medium",
+    "pep_status_flag": false,
+    "fatca_classification": "Compliant",
+    "crs_tax_residency": "Reportable"
+  },
+  {
+    "compliance_id": "cff1032c-ded3-44b9-b77c-0ae493e85bfd",
+    "customer_id": "71037cca-2af5-445f-a682-350c33e5e0cd",
+    "kyc_refresh_due_date": "2026-01-01",
+    "aml_risk_rating": "Low",
+    "pep_status_flag": false,
+    "fatca_classification": "Compliant",
+    "crs_tax_residency": "Reportable"
+  },
+  {
+    "compliance_id": "dc8456d5-6a45-4358-8af9-61c2af614da3",
+    "customer_id": "03359c26-bbe8-4178-8ba1-bba04f41bb39",
+    "kyc_refresh_due_date": "2026-01-01",
+    "aml_risk_rating": "Low",
+    "pep_status_flag": false,
+    "fatca_classification": "Compliant",
+    "crs_tax_residency": "Reportable"
+  },
+  {
+    "compliance_id": "b93fb3b1-df4f-4f9b-8eed-c6935c96d132",
+    "customer_id": "ba28640b-6ecd-4203-8aa7-224b9982952f",
+    "kyc_refresh_due_date": "2026-01-01",
+    "aml_risk_rating": "Low",
+    "pep_status_flag": false,
+    "fatca_classification": "Compliant",
+    "crs_tax_residency": "Reportable"
+  },
+  {
+    "compliance_id": "a56a7953-4055-4388-b5bf-dd85df26733e",
+    "customer_id": "0ce24d32-53f3-45f7-b749-206cf1420958",
+    "kyc_refresh_due_date": "2026-01-01",
+    "aml_risk_rating": "Low",
+    "pep_status_flag": true,
+    "fatca_classification": "Compliant",
+    "crs_tax_residency": "Reportable"
+  },
+  {
+    "compliance_id": "b9e7e43f-01cd-44e4-a937-d0741ad9a91d",
+    "customer_id": "6c487664-3b42-4d2d-a4c0-aaccb8ea2644",
+    "kyc_refresh_due_date": "2026-01-01",
+    "aml_risk_rating": "High",
+    "pep_status_flag": false,
+    "fatca_classification": "Compliant",
+    "crs_tax_residency": "Reportable"
+  },
+  {
+    "compliance_id": "2ecee69e-7ea4-4451-ac9d-7926e69958b0",
+    "customer_id": "1e84f3fe-00ed-4b26-a267-6cdaee53fd12",
+    "kyc_refresh_due_date": "2026-01-01",
+    "aml_risk_rating": "Low",
+    "pep_status_flag": false,
+    "fatca_classification": "Compliant",
+    "crs_tax_residency": "Reportable"
+  },
+  {
+    "compliance_id": "b87c7ffd-5047-44e8-aa9e-0c03589a67b6",
+    "customer_id": "67b02fcd-e910-455b-890e-7dff016c351e",
+    "kyc_refresh_due_date": "2026-01-01",
+    "aml_risk_rating": "Low",
+    "pep_status_flag": false,
+    "fatca_classification": "Compliant",
+    "crs_tax_residency": "Reportable"
+  },
+  {
+    "compliance_id": "3ff26019-f943-4d23-850e-986faac3133e",
+    "customer_id": "b467609d-679f-4785-b14c-da778898ebcd",
+    "kyc_refresh_due_date": "2026-01-01",
+    "aml_risk_rating": "High",
+    "pep_status_flag": false,
+    "fatca_classification": "Compliant",
+    "crs_tax_residency": "Reportable"
+  },
+  {
+    "compliance_id": "cfae33be-3c9c-44e2-bfab-bd2689b488a9",
+    "customer_id": "9b395e81-d4cf-455a-b5b9-4321e235f883",
+    "kyc_refresh_due_date": "2026-01-01",
+    "aml_risk_rating": "Low",
+    "pep_status_flag": false,
+    "fatca_classification": "Compliant",
+    "crs_tax_residency": "Reportable"
+  },
+  {
+    "compliance_id": "a556372b-fa80-44c7-873e-bc30350150fc",
+    "customer_id": "0482afbe-b4b6-45bb-8388-dc357a38a7f5",
+    "kyc_refresh_due_date": "2026-01-01",
+    "aml_risk_rating": "Medium",
+    "pep_status_flag": false,
+    "fatca_classification": "Compliant",
+    "crs_tax_residency": "Reportable"
+  },
+  {
+    "compliance_id": "41dec369-fbbd-4c57-be64-c9a98c310e26",
+    "customer_id": "a3ff0efc-8dfd-41e0-a31c-78b45511356a",
+    "kyc_refresh_due_date": "2026-01-01",
+    "aml_risk_rating": "Low",
+    "pep_status_flag": false,
+    "fatca_classification": "Compliant",
+    "crs_tax_residency": "Reportable"
+  },
+  {
+    "compliance_id": "f985d171-fc30-4f5a-8bca-aef0ab6666bb",
+    "customer_id": "4f1f88f7-f41e-4e5b-8a78-2e6f4c3eab33",
+    "kyc_refresh_due_date": "2026-01-01",
+    "aml_risk_rating": "High",
+    "pep_status_flag": false,
+    "fatca_classification": "Compliant",
+    "crs_tax_residency": "Reportable"
+  },
+  {
+    "compliance_id": "01044032-246b-4be9-88d0-bf483f0120c3",
+    "customer_id": "205f3bd6-d528-43da-b82b-bd5f08e7b614",
+    "kyc_refresh_due_date": "2026-01-01",
+    "aml_risk_rating": "High",
+    "pep_status_flag": false,
+    "fatca_classification": "Compliant",
+    "crs_tax_residency": "Reportable"
+  },
+  {
+    "compliance_id": "12dad9fc-81a0-47d5-a11c-dc75b2daf5a9",
+    "customer_id": "3513cc44-4fee-49c2-9f8e-d66ad5163ad3",
+    "kyc_refresh_due_date": "2026-01-01",
+    "aml_risk_rating": "Medium",
+    "pep_status_flag": false,
+    "fatca_classification": "Compliant",
+    "crs_tax_residency": "Reportable"
+  },
+  {
+    "compliance_id": "e2a0e05c-32a6-42ac-be8d-c3c7ce102099",
+    "customer_id": "22391b88-d5b0-467a-9917-883b55cd2cff",
+    "kyc_refresh_due_date": "2026-01-01",
+    "aml_risk_rating": "Low",
+    "pep_status_flag": false,
+    "fatca_classification": "Compliant",
+    "crs_tax_residency": "Reportable"
+  },
+  {
+    "compliance_id": "6d3a8cb0-4430-4daf-a7a9-29a47ff321c7",
+    "customer_id": "4fbd7490-6a29-4164-807f-561f567ed22c",
+    "kyc_refresh_due_date": "2026-01-01",
+    "aml_risk_rating": "Low",
+    "pep_status_flag": false,
+    "fatca_classification": "Compliant",
+    "crs_tax_residency": "Reportable"
+  },
+  {
+    "compliance_id": "5d4de327-951d-48e1-b2ae-4d44e0440bcc",
+    "customer_id": "f382564a-cffb-4db7-be0b-84236bf9d8fe",
+    "kyc_refresh_due_date": "2026-01-01",
+    "aml_risk_rating": "Low",
+    "pep_status_flag": false,
+    "fatca_classification": "Compliant",
+    "crs_tax_residency": "Reportable"
+  },
+  {
+    "compliance_id": "762f6ee7-9a61-4d61-a6a8-361e4521d0c9",
+    "customer_id": "1549d4f1-5156-4232-a02e-6787ff77cb90",
+    "kyc_refresh_due_date": "2026-01-01",
+    "aml_risk_rating": "Medium",
+    "pep_status_flag": false,
+    "fatca_classification": "Compliant",
+    "crs_tax_residency": "Reportable"
+  },
+  {
+    "compliance_id": "f9e12aac-e77c-42ce-b9b2-321f8b1c1fce",
+    "customer_id": "8bd513bc-ab62-4ad5-89b9-23f57b13069c",
+    "kyc_refresh_due_date": "2026-01-01",
+    "aml_risk_rating": "Low",
+    "pep_status_flag": false,
+    "fatca_classification": "Compliant",
+    "crs_tax_residency": "Reportable"
+  },
+  {
+    "compliance_id": "fbc64977-3be5-4d7f-840f-cc399037d28e",
+    "customer_id": "366da732-bb60-4e1c-bf66-c8bb002154d5",
+    "kyc_refresh_due_date": "2026-01-01",
+    "aml_risk_rating": "High",
+    "pep_status_flag": false,
+    "fatca_classification": "Compliant",
+    "crs_tax_residency": "Reportable"
+  },
+  {
+    "compliance_id": "59ba666b-b7f2-4974-9e3c-0e3ebe372775",
+    "customer_id": "5a2abf4b-a442-4b23-8254-a4d8bd7bb498",
+    "kyc_refresh_due_date": "2026-01-01",
+    "aml_risk_rating": "Low",
+    "pep_status_flag": false,
+    "fatca_classification": "Compliant",
+    "crs_tax_residency": "Reportable"
+  },
+  {
+    "compliance_id": "7bdd2b9c-1448-4d7e-9776-f0ac548c8b64",
+    "customer_id": "bce3e794-aa7f-46dc-ae3e-a1079063d496",
+    "kyc_refresh_due_date": "2026-01-01",
+    "aml_risk_rating": "Low",
+    "pep_status_flag": false,
+    "fatca_classification": "Compliant",
+    "crs_tax_residency": "Reportable"
+  },
+  {
+    "compliance_id": "b45259d2-2e5e-44fe-93bd-93c3fcdc5946",
+    "customer_id": "34518746-2032-45df-b08b-57e7958b1305",
+    "kyc_refresh_due_date": "2026-01-01",
+    "aml_risk_rating": "Low",
+    "pep_status_flag": false,
+    "fatca_classification": "Compliant",
+    "crs_tax_residency": "Reportable"
+  },
+  {
+    "compliance_id": "3516a3e0-0ab1-4ce8-bd42-1168b1811c24",
+    "customer_id": "cf178039-05b6-4a7c-ad93-989e4c5c70f8",
+    "kyc_refresh_due_date": "2026-01-01",
+    "aml_risk_rating": "Medium",
+    "pep_status_flag": false,
+    "fatca_classification": "Compliant",
+    "crs_tax_residency": "Reportable"
+  },
+  {
+    "compliance_id": "dc3fb862-9f84-4495-a80f-9dae5b5e4514",
+    "customer_id": "857e4335-9d05-42f3-911b-c33cabe1c33b",
+    "kyc_refresh_due_date": "2026-01-01",
+    "aml_risk_rating": "Medium",
+    "pep_status_flag": false,
+    "fatca_classification": "Compliant",
+    "crs_tax_residency": "Reportable"
+  },
+  {
+    "compliance_id": "d657193e-d4ec-427a-bb3d-855356e9fbe5",
+    "customer_id": "23c9da99-7f33-43b1-b7f8-53fc7706b819",
+    "kyc_refresh_due_date": "2026-01-01",
+    "aml_risk_rating": "High",
+    "pep_status_flag": false,
+    "fatca_classification": "Compliant",
+    "crs_tax_residency": "Reportable"
+  },
+  {
+    "compliance_id": "dd1f75e6-4ae1-49b5-9fbb-8b0238bf886f",
+    "customer_id": "e7813b7a-5ae1-427d-b261-346fc4afa453",
+    "kyc_refresh_due_date": "2026-01-01",
+    "aml_risk_rating": "Low",
+    "pep_status_flag": false,
+    "fatca_classification": "Compliant",
+    "crs_tax_residency": "Reportable"
+  },
+  {
+    "compliance_id": "da31f3f8-6465-4b41-b9ea-9b2fc20edebe",
+    "customer_id": "e35f4fb3-d6a7-4c79-b3bc-69f8ed2890fc",
+    "kyc_refresh_due_date": "2026-01-01",
+    "aml_risk_rating": "Low",
+    "pep_status_flag": true,
+    "fatca_classification": "Compliant",
+    "crs_tax_residency": "Reportable"
+  },
+  {
+    "compliance_id": "ff7f5877-5fe2-4600-831f-e62df7f9738d",
+    "customer_id": "d152ef25-547a-4a2f-ae3b-249088802585",
+    "kyc_refresh_due_date": "2026-01-01",
+    "aml_risk_rating": "Low",
+    "pep_status_flag": false,
+    "fatca_classification": "Compliant",
+    "crs_tax_residency": "Reportable"
+  },
+  {
+    "compliance_id": "1fe65d9c-418b-4bb7-98e1-6347ee4a60ae",
+    "customer_id": "b504ffc4-1f5b-47bc-b6f8-aca021bd90f3",
+    "kyc_refresh_due_date": "2026-01-01",
+    "aml_risk_rating": "Low",
+    "pep_status_flag": false,
+    "fatca_classification": "Compliant",
+    "crs_tax_residency": "Reportable"
+  },
+  {
+    "compliance_id": "932e4df8-8c67-4ed9-bd15-bcd58ff28103",
+    "customer_id": "3bc48f8f-1d28-47bb-a6d5-009d2788f631",
+    "kyc_refresh_due_date": "2026-01-01",
+    "aml_risk_rating": "High",
+    "pep_status_flag": false,
+    "fatca_classification": "Compliant",
+    "crs_tax_residency": "Reportable"
+  },
+  {
+    "compliance_id": "830d964f-822a-43fc-a0cb-6a54a602f37a",
+    "customer_id": "ba0ef0b4-34fc-4abb-845c-c69aae5033e6",
+    "kyc_refresh_due_date": "2026-01-01",
+    "aml_risk_rating": "Medium",
+    "pep_status_flag": false,
+    "fatca_classification": "Compliant",
+    "crs_tax_residency": "Reportable"
+  }
+]
