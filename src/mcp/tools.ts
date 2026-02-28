@@ -68,37 +68,37 @@ export const BANKING_CRM_TOOLS: Tool[] = [
     {
         name: 'mcp_bankingcrm_ingest_lead',
         description: 'Create a new lead entering the Banking CRM pipeline.',
-        inputSchema: zodToJsonSchema(IngestLeadSchema) as any
+        inputSchema: zodToJsonSchema(IngestLeadSchema as any) as any
     },
     {
         name: 'mcp_bankingcrm_update_bant',
         description: 'Update BANT qualification parameters for a specific lead.',
-        inputSchema: zodToJsonSchema(UpdateBANTSchema) as any
+        inputSchema: zodToJsonSchema(UpdateBANTSchema as any) as any
     },
     {
         name: 'mcp_bankingcrm_convert_lead',
         description: 'Convert a qualified Lead into an Opportunity.',
-        inputSchema: zodToJsonSchema(ConvertLeadSchema) as any
+        inputSchema: zodToJsonSchema(ConvertLeadSchema as any) as any
     },
     {
         name: 'mcp_bankingcrm_submit_credit_app',
         description: 'Submit a new credit application for instant triaging.',
-        inputSchema: zodToJsonSchema(SubmitCreditSchema) as any
+        inputSchema: zodToJsonSchema(SubmitCreditSchema as any) as any
     },
     {
         name: 'mcp_bankingcrm_update_credit_decision',
         description: 'Update the decision on an existing credit application.',
-        inputSchema: zodToJsonSchema(UpdateCreditDecisionSchema) as any
+        inputSchema: zodToJsonSchema(UpdateCreditDecisionSchema as any) as any
     },
     {
         name: 'mcp_bankingcrm_save_onboarding_progress',
         description: 'Save progress on a customer onboarding wizard application.',
-        inputSchema: zodToJsonSchema(SaveOnboardingProgressSchema) as any
+        inputSchema: zodToJsonSchema(SaveOnboardingProgressSchema as any) as any
     },
     {
         name: 'mcp_bankingcrm_complete_onboarding',
         description: 'Mark an onboarding application as fully completed.',
-        inputSchema: zodToJsonSchema(CompleteOnboardingSchema) as any
+        inputSchema: zodToJsonSchema(CompleteOnboardingSchema as any) as any
     }
 ];
 

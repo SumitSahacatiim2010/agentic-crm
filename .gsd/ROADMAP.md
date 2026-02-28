@@ -11,7 +11,6 @@
 - [x] Live database binding via InsForge
 - [x] Demo-ready quality (no trust-breakers)
 - [ ] Production build + deployment
-- [ ] Auth/RBAC
 - [ ] AI agent integrations
 
 ---
@@ -88,27 +87,31 @@ Planned tasks:
 
 ---
 
-### Phase 6: Authentication & RBAC
-**Status**: ⬜ Not Started
-**Objective**: Implement real authentication, role-based access control, and per-persona route guards using InsForge Auth.
-**Requirements**: REQ-P6-01 through REQ-P6-04
+### Phase 6: Headless Journey Microservices & MCP Tools Layer
+**Status**: ✅ Complete
+**Objective**: Decompose the 3 hero journeys (J1: Retail Walk-In, J2: Digital Lead Capture, J3: Branch-Led Onboarding) into headless, architecture-based microservices. Then expose these as MCP-layered tools that AI agents can invoke for goal-oriented task execution.
+**Source Docs**: `Story1.md`, `Story2.md`, `Story3.md` (project root)
+**Requirements**: REQ-P6-01 through REQ-P6-06
 
 Planned tasks:
-- InsForge Auth integration (sign-up, sign-in, session management)
-- Role-to-persona mapping (10 roles)
-- Route-level middleware guards
-- RLS policy migration from allow-all to role-based
-- Profile management (replace demo profile panel with real user data)
+- Analyze J1/J2/J3 journey step maps and extract discrete business operations
+- Build headless microservices for each atomic operation (lead capture, BANT qualification, lead→opportunity conversion, credit application intake, onboarding step progression, case creation, etc.)
+- Expose each microservice as an MCP tool with typed inputs/outputs
+- Create MCP tool manifest describing available actions, parameters, and return schemas
+- Integration tests proving each tool can be invoked independently
+- Documentation: tool catalog with usage examples for agent consumption
 
 ---
 
 ### Phase 7: AI Agent Integration
 **Status**: ⬜ Not Started
-**Objective**: Integrate autonomous AI agents for email drafting, financial statement summarization, meeting prep, compliance checks, and campaign optimization.
+**Objective**: Build goal-oriented AI agents that consume the Phase 6 MCP tools to autonomously execute journey steps, draft communications, summarize financials, and optimize campaigns.
+**Depends on**: Phase 6 (MCP tools must exist first)
 **Requirements**: REQ-P7-01 through REQ-P7-05
 
 Planned tasks:
 - InsForge AI SDK integration
+- Journey orchestration agents (use MCP tools to execute J1/J2/J3 steps)
 - Email Drafting Agent (RM workspace)
 - Financial Statement Summarizer (Wealth workspace)
 - Meeting Prep Agent (Customer 360)

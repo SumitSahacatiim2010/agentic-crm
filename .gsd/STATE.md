@@ -4,17 +4,19 @@
 
 ## Current Position
 - **Milestone**: v2.5 Production Readiness
-- **Phase**: 6
-- **Task**: Planning complete
-- **Status**: Ready for execution
-
-## Next Steps
-1. /execute 6
+- **Phase**: 6 (completed)
+- **Task**: All tasks complete
+- **Status**: Executed, awaiting verification
 
 ## Session Context
 ### What was just completed
-- Split Phase 6 into "Headless Microservices + MCP Tools" and "AI Agent Integration" (Phase 7).
-- Created execution plans `6-1-PLAN.md` and `6-2-PLAN.md`.
+- Extracted `lead-service.ts`, `opportunity-service.ts`, `onboarding-service.ts`, and `credit-service.ts`.
+- Refactored `api/leads`, `api/opportunities`, `api/onboarding`, and `api/credit` to use headless services.
+- Created `src/mcp/server.ts` and `src/mcp/tools.ts` with Zod schemas for 7 journey tools.
+- Phase 6 Execution fully completed.
+
+## Next Steps
+1. /verify 6
 
 ### Key files modified recently
 - `src/components/home/PersonaLayout.tsx` — profile dropdown, Global Admin quick links
