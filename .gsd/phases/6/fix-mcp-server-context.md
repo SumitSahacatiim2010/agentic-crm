@@ -12,7 +12,7 @@ Currently, J1 and J3 headless services (`lead-service.ts`, `credit-service.ts`) 
 
 ## Tasks
 
-<task type="auto">
+<task type="auto" status="done">
   <name>Refactor Services to use Client Context</name>
   <files>src/services/lead-service.ts, src/services/credit-service.ts</files>
   <action>
@@ -23,7 +23,7 @@ Currently, J1 and J3 headless services (`lead-service.ts`, `credit-service.ts`) 
   <done>No service relies on `next/headers`</done>
 </task>
 
-<task type="auto">
+<task type="auto" status="done">
   <name>Verify Server Startup</name>
   <files>src/mcp/server.ts</files>
   <action>

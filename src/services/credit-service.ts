@@ -1,4 +1,4 @@
-import { getInsforgeServer } from '@/lib/insforge';
+// Remove unused getInsforgeServer
 import { insforge as insforgeClient } from '@/lib/insforge-client';
 import { computeCreditScore, computeRiskRating, computeFraudFlag, computeTriageRouting } from '@/lib/credit-scoring';
 import { writeAuditEntry } from '@/lib/audit';
@@ -17,7 +17,7 @@ export const submitCreditApplication = async (body: any): Promise<ServiceRespons
         const routing_path = computeTriageRouting(credit_score, loan_amount, risk_rating, fraud_flag, product_type);
         const status = routing_path === 'STP' ? 'Underwriting' : 'Pending Triage';
 
-        const db = (await getInsforgeServer()).database;
+        const db = insforgeClient.database;
         const { data, error } = await db.from('credit_applications').insert([{
             applicant_name,
             company_name: business_name,
@@ -95,7 +95,7 @@ export const getCreditApplications = async (params: { limit?: number; page?: num
         const start = (page - 1) * limit;
         const end = start + limit - 1;
 
-        const db = (await getInsforgeServer()).database;
+        const db = insforgeClient.database;
         let query = db
             .from('credit_applications')
             .select('*, individual_parties(full_name), corporate_parties(legal_name)', { count: 'exact' });

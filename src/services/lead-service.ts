@@ -1,4 +1,4 @@
-import { getInsforgeServer } from '@/lib/insforge';
+import { insforge as insforgeClient } from '@/lib/insforge-client';
 
 export interface ServiceResponse<T> {
     data?: T;
@@ -11,7 +11,7 @@ export interface ServiceResponse<T> {
 
 export const ingestLead = async (body: any): Promise<ServiceResponse<any>> => {
     try {
-        const db = (await getInsforgeServer()).database;
+        const db = insforgeClient.database;
         const { data, error } = await db
             .from('leads')
             .insert([{ ...body, created_at: new Date().toISOString() }])
@@ -30,7 +30,7 @@ export const ingestLead = async (body: any): Promise<ServiceResponse<any>> => {
 
 export const updateBANT = async (id: string, bantData: any): Promise<ServiceResponse<any>> => {
     try {
-        const db = (await getInsforgeServer()).database;
+        const db = insforgeClient.database;
         const { data, error } = await db
             .from('leads')
             .update(bantData)
@@ -49,7 +49,7 @@ export const updateBANT = async (id: string, bantData: any): Promise<ServiceResp
 
 export const convertLeadToOpportunity = async (id: string): Promise<ServiceResponse<any>> => {
     try {
-        const db = (await getInsforgeServer()).database;
+        const db = insforgeClient.database;
 
         // 1. Get Lead
         const { data: lead, error: leadError } = await db
@@ -103,7 +103,7 @@ export const getLeads = async (params: { limit?: number; page?: number; status?:
         const start = (page - 1) * limit;
         const end = start + limit - 1;
 
-        const db = (await getInsforgeServer()).database;
+        const db = insforgeClient.database;
         let query = db
             .from('leads')
             .select('*', { count: 'exact' });
@@ -129,7 +129,7 @@ export const getLeads = async (params: { limit?: number; page?: number; status?:
 
 export const getLeadById = async (id: string): Promise<ServiceResponse<any>> => {
     try {
-        const db = (await getInsforgeServer()).database;
+        const db = insforgeClient.database;
         const { data, error } = await db
             .from('leads')
             .select('*')
