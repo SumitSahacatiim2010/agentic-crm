@@ -1,0 +1,35 @@
+{
+    "name": "bankingcrm-headless-services",
+    "version": "1.0.0",
+    "description": "MCP Server exposing the underlying Banking CRM core microservices. Enables autonomous AI agents to execute goals across the Retail Walk-in, Digital Lead, and Branch Onboarding journeys.",
+    "tools": [
+        {
+            "name": "mcp_bankingcrm_ingest_lead",
+            "description": "Create a new lead entering the Banking CRM pipeline. Requires basic personal info and product interest."
+        },
+        {
+            "name": "mcp_bankingcrm_update_bant",
+            "description": "Update Budget, Authority, Need, and Timeline qualification parameters for a specific lead."
+        },
+        {
+            "name": "mcp_bankingcrm_convert_lead",
+            "description": "Convert a fully qualified Lead into a structured Pipeline Opportunity and update the lead status."
+        },
+        {
+            "name": "mcp_bankingcrm_submit_credit_app",
+            "description": "Submit a credit application for instant triaging (STP or manual review) using core Banking algorithms."
+        },
+        {
+            "name": "mcp_bankingcrm_update_credit_decision",
+            "description": "Update the decision on an in-progress credit application (Approve, Decline, Counter_Offer)."
+        },
+        {
+            "name": "mcp_bankingcrm_save_onboarding_progress",
+            "description": "Create or save progress on a customer onboarding wizard application step by step."
+        },
+        {
+            "name": "mcp_bankingcrm_complete_onboarding",
+            "description": "Mark an onboarding application as fully completed and transitioned to a booked status."
+        }
+    ]
+}
