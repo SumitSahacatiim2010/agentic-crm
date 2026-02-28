@@ -1,33 +1,20 @@
 import { NextResponse } from 'next/server';
-import { insforge } from '@/lib/insforge';
+import { getCreditApplications } from '@/services/credit-service';
 
 export async function GET(request: Request) {
     try {
         const { searchParams } = new URL(request.url);
         const limit = parseInt(searchParams.get('limit') || '50', 10);
         const page = parseInt(searchParams.get('page') || '1', 10);
-        const start = (page - 1) * limit;
-        const end = start + limit - 1;
+        const status = searchParams.get('status') || undefined;
 
-        let query = insforge.database
-            .from('credit_applications')
-            .select('*, individual_parties(full_name), corporate_parties(legal_name)', { count: 'exact' });
+        const response = await getCreditApplications({ limit, page, status });
 
-        const status = searchParams.get('status');
-        if (status) query = query.eq('status', status);
-
-        const { data, error, count } = await query
-            .order('created_at', { ascending: false })
-            .range(start, end);
-
-        if (error) {
-            return NextResponse.json({ error: { code: error.code, message: error.message } }, { status: 500 });
+        if (response.error) {
+            return NextResponse.json({ error: response.error }, { status: 500 });
         }
 
-        return NextResponse.json({
-            data,
-            meta: { total: count, limit, page }
-        });
+        return NextResponse.json(response);
     } catch (e: any) {
         return NextResponse.json({ error: { code: 'INTERNAL_ERROR', message: e.message } }, { status: 500 });
     }
