@@ -4,9 +4,8 @@
 
 ## Current Position
 - **Milestone**: v2.5 Production Readiness
-- **Phase**: 6 (completed)
-- **Task**: All tasks complete
-- **Status**: Executed, awaiting verification
+- **Phase**: 6 (verified)
+- **Status**: ✅ Complete and verified
 
 ## Session Context
 ### What was just completed
@@ -16,7 +15,7 @@
 - Phase 6 Execution fully completed.
 
 ## Next Steps
-1. /verify 6
+1. /execute 7
 
 ### Key files modified recently
 - `src/components/home/PersonaLayout.tsx` — profile dropdown, Global Admin quick links
