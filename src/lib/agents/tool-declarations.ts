@@ -13,16 +13,16 @@ export const crmToolDeclarations = [
         parameters: {
             type: Type.OBJECT,
             properties: {
-                fullname: { type: Type.STRING, description: 'Full name of the lead' },
+                full_name: { type: Type.STRING, description: 'Full name of the lead' },
                 email: { type: Type.STRING, description: 'Email address' },
                 phone: { type: Type.STRING, description: 'Phone number' },
-                source: { type: Type.STRING, description: 'Lead source (e.g., Walk-in, Website, Referral, Campaign)' },
-                productinterest: { type: Type.STRING, description: 'Product the lead is interested in' },
+                source_channel: { type: Type.STRING, description: 'Lead source (e.g., Walk-in, Website, Referral, Campaign)' },
+                product_interest: { type: Type.STRING, description: 'Product the lead is interested in' },
                 segment: { type: Type.STRING, description: 'Customer segment (Retail, Corporate, SME, HNW)' },
                 branch_id: { type: Type.STRING, description: 'Branch ID if known' },
                 assigned_rm: { type: Type.STRING, description: 'Assigned relationship manager' },
             },
-            required: ['fullname'],
+            required: ['full_name'],
         },
     },
     {
