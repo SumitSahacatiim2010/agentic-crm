@@ -9,6 +9,7 @@ import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { AlertTriangle, ChevronRight, Clock, DollarSign } from "lucide-react";
 import { toast } from "sonner";
+import { useRealtimeChannel } from "@/hooks/useRealtimeChannel";
 import { WinLossPanel } from "./WinLossPanel";
 import { DealDetailSheet } from "./DealDetailSheet";
 import { fmtDate } from "@/lib/date-utils";
@@ -94,6 +95,11 @@ export function OpportunityKanban({ initialOpps }: OpportunityKanbanProps) {
     const [saving, setSaving] = useState(false);
     const [closingOpp, setClosingOpp] = useState<OpportunityRecord | null>(null);
     const [detailOpp, setDetailOpp] = useState<OpportunityRecord | null>(null);
+
+    // Real-time: pipeline sync across tabs/users
+    useRealtimeChannel('pipeline', 'UPDATE_opportunity', () => {
+        mutate();
+    });
 
     const formatValue = (v?: number) => {
         if (!v) return '$0';

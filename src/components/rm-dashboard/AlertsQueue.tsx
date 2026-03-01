@@ -1,7 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { insforge } from "@/lib/insforge";
+import { useState } from "react";
 import { toast } from "sonner";
 import { fmtDate } from "@/lib/date-utils";
 
@@ -10,6 +9,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { AlertCircle, ArrowRight, CheckCircle2, Clock, Bell } from "lucide-react";
+import { useRealtimeChannel } from "@/hooks/useRealtimeChannel";
 
 // Flexible interface to handle both standard and simulated alerts
 interface AlertItem {
@@ -30,52 +30,23 @@ interface AlertsQueueProps {
 export function AlertsQueue({ alerts: initialAlerts }: AlertsQueueProps) {
     const [alerts, setAlerts] = useState<AlertItem[]>(initialAlerts);
 
-    useEffect(() => {
-        let isMounted = true;
-
-        async function setupRealtime() {
-            try {
-                if (!insforge.realtime.isConnected) {
-                    await insforge.realtime.connect();
-                }
-                await insforge.realtime.subscribe('activities');
-
-                insforge.realtime.on('INSERT_activity', (payload: any) => {
-                    if (!isMounted) return;
-
-                    const newAlert: AlertItem = {
-                        id: payload.activity_id,
-                        title: payload.subject,
-                        priority: payload.activity_type === 'Call' ? 'High' : 'Medium',
-                        type: payload.activity_type,
-                        customer: 'New Assigned Task',
-                        due: fmtDate(payload.due_date || new Date()),
-                        description: payload.notes,
-                    };
-
-                    setAlerts((prev) => [newAlert, ...prev]);
-
-                    toast.success(`New Task Assigned: ${payload.subject}`, {
-                        description: `Due: ${newAlert.due}`,
-                        duration: 5000,
-                    });
-                });
-            } catch (error) {
-                console.error("Realtime connection error:", error);
-            }
-        }
-
-        setupRealtime();
-
-        return () => {
-            isMounted = false;
-            // Note: insforge.realtime.unsubscribe and disconnect should be managed globally 
-            // but we can unsubscribe this specific channel
-            try {
-                insforge.realtime.unsubscribe('activities');
-            } catch (e) { }
+    // Real-time: new tasks appear instantly
+    useRealtimeChannel('activities', 'INSERT_activity', (payload: any) => {
+        const newAlert: AlertItem = {
+            id: payload.activity_id,
+            title: payload.subject,
+            priority: payload.activity_type === 'Call' ? 'High' : 'Medium',
+            type: payload.activity_type,
+            customer: 'New Assigned Task',
+            due: fmtDate(payload.due_date || new Date()),
+            description: payload.notes,
         };
-    }, []);
+        setAlerts((prev) => [newAlert, ...prev]);
+        toast.success(`New Task Assigned: ${payload.subject}`, {
+            description: `Due: ${newAlert.due}`,
+            duration: 5000,
+        });
+    });
 
     const getPriorityColor = (p: string) => {
         switch (p) {

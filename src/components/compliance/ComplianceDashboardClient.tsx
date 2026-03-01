@@ -6,6 +6,7 @@ import { SuitabilityOverrides } from "./SuitabilityOverrides";
 import { AuditTrailExplorer } from "./AuditTrailExplorer";
 import { ShieldCheck, AlertTriangle, Users, CheckCircle2, Clock, Lock, Download, RefreshCw } from "lucide-react";
 import { toast } from "sonner";
+import { useRealtimeChannel } from "@/hooks/useRealtimeChannel";
 
 interface Metrics {
     open_aml_cases: number; kyc_reviews_due: number;
@@ -38,6 +39,16 @@ export function ComplianceDashboardClient({ metrics: init, queues: initQ, auditR
     const [queues, setQueues] = useState<Queues>(initQ);
     const [tab, setTab] = useState<typeof TABS[number]['id']>('aml');
 
+    // Real-time: compliance screening alerts
+    useRealtimeChannel('compliance_alerts', 'INSERT_screening_alert', (payload: any) => {
+        toast.warning(`⚠️ Screening Alert: ${payload.party_name || 'Unknown Party'}`, {
+            description: `Match type: ${payload.match_type || 'Sanctions'} — Score: ${payload.score || 'N/A'}`,
+            duration: 8000,
+        });
+        // Auto-refresh queues
+        fetch('/api/compliance/queues').then(r => r.json()).then(q => setQueues(q)).catch(() => { });
+    });
+
     const refresh = useCallback(async () => {
         const [mRes, qRes] = await Promise.all([fetch('/api/compliance/dashboard-metrics'), fetch('/api/compliance/queues')]);
         if (mRes.ok) setMetrics(await mRes.json());
@@ -50,17 +61,19 @@ export function ComplianceDashboardClient({ metrics: init, queues: initQ, auditR
     }, []);
 
     const m = {
-        open_aml_cases: metrics?.open_aml_cases ?? queues?.amlCases?.length ?? 0,
-        kyc_reviews_due: metrics?.kyc_reviews_due ?? queues?.kycItems?.length ?? 0,
-        high_risk_count: metrics?.high_risk_count ?? 0,
-        medium_risk_count: metrics?.medium_risk_count ?? 0,
-        low_risk_count: metrics?.low_risk_count ?? 0,
-        false_positives_cleared: metrics?.false_positives_cleared ?? 0,
+        open_aml_cases: Number(metrics?.open_aml_cases ?? queues?.amlCases?.length ?? 0),
+        kyc_reviews_due: Number(metrics?.kyc_reviews_due ?? queues?.kycItems?.length ?? 0),
+        high_risk_count: Number(metrics?.high_risk_count ?? 0),
+        medium_risk_count: Number(metrics?.medium_risk_count ?? 0),
+        low_risk_count: Number(metrics?.low_risk_count ?? 0),
+        false_positives_cleared: Number(metrics?.false_positives_cleared ?? 0),
         avg_resolution_hours: Number(metrics?.avg_resolution_hours || 0),
-        active_preventive_controls: metrics?.active_preventive_controls ?? queues?.amlHits?.filter(h => h.preventive_control_log).length ?? 0
+        active_preventive_controls: Number(metrics?.active_preventive_controls ?? queues?.amlHits?.filter(h => h.preventive_control_log).length ?? 0)
     };
 
-    const totalRisk = m.high_risk_count + m.medium_risk_count + m.low_risk_count || 1;
+    const totalRisk = (m.high_risk_count + m.medium_risk_count + m.low_risk_count) || 1;
+    const highRiskPct = totalRisk > 0 ? ((m.high_risk_count / totalRisk) * 100).toFixed(0) : "0";
+    const avgRes = isNaN(m.avg_resolution_hours) ? 0 : m.avg_resolution_hours;
 
     return (
         <div className="min-h-screen bg-slate-950 text-slate-100">
@@ -93,13 +106,13 @@ export function ComplianceDashboardClient({ metrics: init, queues: initQ, auditR
                     sub="Within 30 days" />
                 <KPICard icon={<Users className="h-3.5 w-3.5" />} label="Risk Distribution"
                     value={`${m.high_risk_count}H · ${m.medium_risk_count}M · ${m.low_risk_count}L`}
-                    color="text-white" sub={`${((m.high_risk_count / totalRisk) * 100).toFixed(0)}% high risk`} />
+                    color="text-white" sub={`${highRiskPct}% high risk`} />
                 <KPICard icon={<CheckCircle2 className="h-3.5 w-3.5" />} label="False Pos. Cleared"
                     value={m.false_positives_cleared} color="text-emerald-400"
                     sub="All-time resolutions" />
                 <KPICard icon={<Clock className="h-3.5 w-3.5" />} label="Avg Resolution"
-                    value={`${m.avg_resolution_hours.toFixed(1)}h`}
-                    color={m.avg_resolution_hours > 8 ? 'text-amber-400' : 'text-emerald-400'}
+                    value={`${avgRes.toFixed(1)}h`}
+                    color={avgRes > 8 ? 'text-amber-400' : 'text-emerald-400'}
                     sub="Mean time to resolve" />
                 <KPICard icon={<Lock className="h-3.5 w-3.5" />} label="Active P.Controls"
                     value={m.active_preventive_controls} color={m.active_preventive_controls > 0 ? 'text-red-400' : 'text-emerald-400'}

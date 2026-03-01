@@ -6,8 +6,8 @@ import { Badge } from "@/components/ui/badge";
 import { SLATimer } from "@/components/service/SLATimer";
 import { ServiceCase, MOCK_CASES } from "@/lib/service-mock-data";
 import { Phone, Globe, MessageSquare, MapPin } from "lucide-react";
-import { insforge } from "@/lib/insforge";
 import { toast } from "sonner";
+import { useRealtimeChannel } from "@/hooks/useRealtimeChannel";
 
 interface ServiceInboxProps {
     selectedId?: string;
@@ -25,67 +25,76 @@ const ChannelIcon = ({ channel }: { channel: string }) => {
 };
 
 export function ServiceInbox({ selectedId, onSelect }: ServiceInboxProps) {
-    const [cases, setCases] = useState<ServiceCase[]>(MOCK_CASES);
+    const [cases, setCases] = useState<ServiceCase[]>([]);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         let isMounted = true;
-
-        async function setupRealtime() {
+        async function fetchInitial() {
             try {
-                if (!insforge.realtime.isConnected) {
-                    await insforge.realtime.connect();
+                const res = await fetch('/api/service/cases?limit=50');
+                const json = await res.json();
+                if (isMounted && json.data) {
+                    setCases(json.data);
                 }
-                await insforge.realtime.subscribe('service_inbox');
-
-                insforge.realtime.on('INSERT_lead', (payload: any) => {
-                    if (!isMounted) return;
-
-                    const newCase: ServiceCase = {
-                        id: `INQ-${Math.floor(Math.random() * 10000)}`,
-                        customerId: payload.lead_id,
-                        subject: 'New Lead Inquiry',
-                        customerName: `Lead ID: ${payload.lead_id.substring(0, 8)}`,
-                        priority: 'High',
-                        status: 'New',
-                        createdAt: payload.created_at || new Date().toISOString(),
-                        slaDeadline: new Date(Date.now() + 2 * 60 * 60 * 1000).toISOString(),
-                        channel: 'Web',
-                        category: 'General'
-                    };
-
-                    setCases((prev) => [newCase, ...prev]);
-
-                    toast.info(`New Service Case: Web Inquiry`, {
-                        description: `SLA Deadline: 2 hours`,
-                        duration: 5000,
-                    });
-                });
-            } catch (error) {
-                console.error("Realtime connection error:", error);
+            } catch (e) {
+                console.error("Failed to fetch cases:", e);
+            } finally {
+                if (isMounted) setLoading(false);
             }
         }
-
-        setupRealtime();
-
-        return () => {
-            isMounted = false;
-            try {
-                insforge.realtime.unsubscribe('service_inbox');
-            } catch (e) { }
-        };
+        fetchInitial();
+        return () => { isMounted = false; };
     }, []);
+
+    // Real-time: new cases appear instantly
+    useRealtimeChannel('service_inbox', 'INSERT_service_cases', (payload: any) => {
+        const newCase: ServiceCase = {
+            id: payload.id,
+            case_id: payload.id,
+            subject: payload.subject,
+            priority: payload.priority || 'Medium',
+            priority_band: payload.priority_band || 'P3',
+            status: payload.status || 'Open',
+            createdAt: payload.created_at,
+            created_at: payload.created_at,
+            slaDeadline: payload.sla_deadline,
+            sla_deadline: payload.sla_deadline,
+            channel: payload.channel || 'Web'
+        };
+        setCases((prev) => [newCase, ...prev]);
+        toast.info(`New Service Case: ${payload.subject}`, {
+            description: `Priority: ${payload.priority_band || 'P3'}`,
+            duration: 5000,
+        });
+    });
+
+    const displayCases = cases.map(c => ({
+        ...c,
+        id: c.case_id || (c as any).id, // Fallback for very brief transition
+        customerName: c.customer_name || c.customerName || 'Standard Customer',
+        slaDeadline: c.sla_deadline || c.slaDeadline || new Date().toISOString(),
+        createdAt: c.created_at || c.createdAt || new Date().toISOString(),
+        priority: (c.priority || 'Medium').replace('P1-', '').replace('P2-', '').replace('P3-', '').replace('P4-', '')
+    }));
     return (
         <div className="h-full bg-slate-900 border-r border-slate-800 flex flex-col w-80">
             <div className="p-4 border-b border-slate-800">
                 <h2 className="font-semibold text-slate-100">Unified Inbox</h2>
-                <div className="text-xs text-slate-500 mt-1">{cases.length} Active Cases</div>
+                <div className="text-xs text-slate-500 mt-1">{displayCases.length} Active Cases</div>
             </div>
             <ScrollArea className="flex-1">
+                {loading && (
+                    <div className="p-8 text-center text-slate-500 text-xs">Loading inbox...</div>
+                )}
+                {!loading && displayCases.length === 0 && (
+                    <div className="p-8 text-center text-slate-500 text-xs">No active cases found.</div>
+                )}
                 <div className="divide-y divide-slate-800">
-                    {cases.map((c) => (
+                    {displayCases.map((c) => (
                         <div
                             key={c.id}
-                            onClick={() => onSelect(c)}
+                            onClick={() => onSelect(c as any)}
                             className={`
                         p-4 cursor-pointer hover:bg-slate-800/50 transition-colors
                         ${selectedId === c.id ? 'bg-indigo-900/20 border-l-2 border-indigo-500' : 'border-l-2 border-transparent'}
@@ -97,7 +106,7 @@ export function ServiceInbox({ selectedId, onSelect }: ServiceInboxProps) {
                                         <ChannelIcon channel={c.channel} />
                                         {c.channel}
                                     </Badge>
-                                    <span className="text-xs font-mono text-slate-500">{c.id}</span>
+                                    <span className="text-xs font-mono text-slate-500">{c.id.substring(0, 8)}</span>
                                 </div>
                                 <SLATimer deadline={c.slaDeadline} />
                             </div>
@@ -105,14 +114,14 @@ export function ServiceInbox({ selectedId, onSelect }: ServiceInboxProps) {
                             <h3 className={`text-sm font-medium mt-2 line-clamp-1 ${selectedId === c.id ? 'text-indigo-300' : 'text-slate-200'}`}>
                                 {c.subject}
                             </h3>
-                            <div className="text-xs text-slate-400 mt-1">{c.customerName}</div>
+                            <p className="text-xs text-slate-400 mt-1">{c.customerName}</p>
 
                             <div className="flex items-center gap-2 mt-2">
                                 <Badge variant="outline" className={`
                             text-[10px] h-4 px-1
-                            ${c.priority === 'High' ? 'text-rose-400 border-rose-900/50' : 'text-slate-400 border-slate-700'}
+                            ${c.priority === 'High' || c.priority === 'Critical' ? 'text-rose-400 border-rose-900/50' : 'text-slate-400 border-slate-700'}
                          `}>
-                                    {c.priority} Legacy
+                                    {c.priority}
                                 </Badge>
                                 <span className="text-[10px] text-slate-600 ml-auto">
                                     {new Date(c.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
