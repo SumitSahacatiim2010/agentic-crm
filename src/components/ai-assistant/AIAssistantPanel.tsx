@@ -1,9 +1,10 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Bot, Send, X, Sparkles, Loader2, ChevronDown, ChevronUp, Wrench } from "lucide-react";
+import ReactMarkdown from "react-markdown";
 
 interface ChatMessage {
     role: "user" | "assistant";
@@ -13,7 +14,12 @@ interface ChatMessage {
 
 export function AIAssistantPanel() {
     const [open, setOpen] = useState(false);
-    const [messages, setMessages] = useState<ChatMessage[]>([]);
+    const [messages, setMessages] = useState<ChatMessage[]>(() => {
+        if (typeof window !== 'undefined') {
+            try { return JSON.parse(sessionStorage.getItem('ai_chat_history') || '[]'); } catch { return []; }
+        }
+        return [];
+    });
     const [input, setInput] = useState("");
     const [loading, setLoading] = useState(false);
     const messagesEndRef = useRef<HTMLDivElement>(null);
@@ -21,6 +27,9 @@ export function AIAssistantPanel() {
 
     useEffect(() => {
         messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+        if (typeof window !== 'undefined' && messages.length > 0) {
+            sessionStorage.setItem('ai_chat_history', JSON.stringify(messages.slice(-50)));
+        }
     }, [messages]);
 
     useEffect(() => {
@@ -120,7 +129,11 @@ export function AIAssistantPanel() {
                                     key={qa.label}
                                     onClick={() => {
                                         setInput(qa.prompt);
-                                        setTimeout(() => inputRef.current?.focus(), 50);
+                                        // BUG-018: Auto-submit quick actions
+                                        setTimeout(() => {
+                                            const form = document.querySelector<HTMLFormElement>('[data-ai-form]');
+                                            if (form) form.requestSubmit();
+                                        }, 100);
                                     }}
                                     className="px-3 py-1.5 text-xs rounded-full border border-slate-700 text-slate-400 hover:text-indigo-300 hover:border-indigo-500/50 transition-colors"
                                 >
@@ -138,11 +151,13 @@ export function AIAssistantPanel() {
                     >
                         <div
                             className={`max-w-[85%] rounded-2xl px-4 py-2.5 text-sm leading-relaxed ${msg.role === "user"
-                                    ? "bg-indigo-600 text-white rounded-br-md"
-                                    : "bg-slate-900 border border-slate-800 text-slate-200 rounded-bl-md"
+                                ? "bg-indigo-600 text-white rounded-br-md"
+                                : "bg-slate-900 border border-slate-800 text-slate-200 rounded-bl-md"
                                 }`}
                         >
-                            <div className="whitespace-pre-wrap">{msg.content}</div>
+                            <div className="prose prose-invert prose-sm max-w-none prose-p:my-1 prose-ul:my-1 prose-li:my-0.5 prose-headings:my-1.5">
+                                <ReactMarkdown>{msg.content}</ReactMarkdown>
+                            </div>
 
                             {/* Tool call badges */}
                             {msg.toolCalls && msg.toolCalls.length > 0 && (
@@ -166,6 +181,7 @@ export function AIAssistantPanel() {
             {/* Input */}
             <div className="p-3 border-t border-slate-800 bg-slate-950">
                 <form
+                    data-ai-form
                     onSubmit={(e) => {
                         e.preventDefault();
                         sendMessage();

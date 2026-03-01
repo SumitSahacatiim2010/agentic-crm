@@ -17,7 +17,7 @@ export interface ToolCallResult {
 
 const toolMap: Record<string, (args: any) => Promise<any>> = {
     ingest_lead: (args) => ingestLead(args),
-    update_bant: (args) => updateBANT(args.lead_id, args),
+    update_bant: (args) => { const { lead_id, ...bant } = args; return updateBANT(lead_id, bant); },
     convert_lead_to_opportunity: (args) => convertLeadToOpportunity(args.lead_id),
     create_opportunity: (args) => createOpportunity(args),
     save_onboarding_progress: (args) => saveOnboardingProgress(args),

@@ -27,15 +27,15 @@ export const crmToolDeclarations = [
     },
     {
         name: 'update_bant',
-        description: 'Update BANT qualification scores for an existing lead. BANT = Budget, Authority, Need, Timeline.',
+        description: 'Update BANT qualification flags for an existing lead. BANT = Budget, Authority, Need, Timeline. Each is true/false.',
         parameters: {
             type: Type.OBJECT,
             properties: {
                 lead_id: { type: Type.STRING, description: 'UUID of the lead to update' },
-                budget_score: { type: Type.NUMBER, description: 'Budget score 1-5' },
-                authority_score: { type: Type.NUMBER, description: 'Authority score 1-5' },
-                need_score: { type: Type.NUMBER, description: 'Need score 1-5' },
-                timeline_score: { type: Type.NUMBER, description: 'Timeline score 1-5' },
+                bant_budget: { type: Type.BOOLEAN, description: 'Does the lead have budget? true/false' },
+                bant_authority: { type: Type.BOOLEAN, description: 'Is the lead a decision-maker? true/false' },
+                bant_need: { type: Type.BOOLEAN, description: 'Does the lead have a clear need? true/false' },
+                bant_timeline: { type: Type.BOOLEAN, description: 'Is there an active timeline? true/false' },
             },
             required: ['lead_id'],
         },

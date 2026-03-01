@@ -64,12 +64,12 @@ export const convertLeadToOpportunity = async (id: string): Promise<ServiceRespo
 
         // 2. Create Opportunity
         const oppData = {
-            customer_id: lead.customer_id, // assuming it's linked
-            deal_name: `${lead.productinterest || 'New'} Deal - ${lead.fullname || 'Lead'}`,
+            customer_id: lead.converted_customer_id || null,
+            deal_name: `${lead.product_interest || 'New'} — ${lead.full_name || 'Lead'}`,
             pipeline_stage: 'Qualification',
             deal_value: 0,
-            probability: 10,
-            assigned_rm: 'System', // Or mapped from lead
+            probability: 20,
+            assigned_rm: lead.assigned_rm || 'Unassigned',
             created_at: new Date().toISOString()
         };
 
