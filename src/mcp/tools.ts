@@ -52,7 +52,7 @@ const SaveOnboardingProgressSchema = z.object({
     application_id: z.string().uuid().optional(),
     resume_token: z.string().optional(),
     wizard_step: z.number().int().min(1).max(5),
-    wizard_state: z.record(z.any()),
+    wizard_state: z.record(z.string(), z.any()),
     edd_required: z.boolean().optional(),
     full_name: z.string().optional(),
     email: z.string().email().optional()

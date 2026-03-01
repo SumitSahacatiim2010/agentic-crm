@@ -6,11 +6,11 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
 const PRODUCTS = [
-    { val: 'working_capital', label: 'Working Capital Line' },
-    { val: 'term_loan', label: 'Term Loan' },
-    { val: 'equipment_finance', label: 'Equipment Finance' },
-    { val: 'commercial_real_estate', label: 'Commercial Real Estate' },
-    { val: 'sba_7a', label: 'SBA 7(a)' },
+    { val: 'Term Loan', label: 'Term Loan' },
+    { val: 'Line of Credit', label: 'Line of Credit (Working Capital)' },
+    { val: 'Mortgage', label: 'Mortgage (CRE)' },
+    { val: 'Auto', label: 'Auto / Equipment Finance' },
+    { val: 'Personal', label: 'Personal Loan' },
 ];
 const COLLATERAL = [
     { val: 'unsecured', label: 'Unsecured' }, { val: 'residential', label: 'Residential' },
@@ -21,7 +21,7 @@ const COLLATERAL = [
 interface Props { onCreated: () => void; onClose: () => void; }
 
 export function ApplicationIntakeSheet({ onCreated, onClose }: Props) {
-    const [form, setForm] = useState({ applicant_name: '', business_name: '', loan_amount: '', product_type: 'term_loan', purpose: '', collateral_type: 'unsecured', collateral_value: '' });
+    const [form, setForm] = useState({ applicant_name: '', business_name: '', loan_amount: '', product_type: 'Term Loan', purpose: '', collateral_type: 'unsecured', collateral_value: '' });
     const [submitting, setSub] = useState(false);
 
     const set = (k: string) => (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => setForm(p => ({ ...p, [k]: e.target.value }));

@@ -25,9 +25,9 @@ export function ClientProfileBanner() {
                         <Crown className="h-8 w-8" />
                     </div>
                     <div>
-                        <div className="flex items-center gap-2">
-                            <h2 className="text-2xl font-bold text-white">Robert Fox</h2>
-                            <Badge variant="outline" className="text-amber-400 border-amber-500/30 bg-amber-500/10">
+                        <div className="flex items-center flex-wrap gap-2 min-w-0">
+                            <h2 className="text-2xl font-bold text-white truncate break-words">Robert Fox</h2>
+                            <Badge variant="outline" className="text-amber-400 border-amber-500/30 bg-amber-500/10 shrink-0">
                                 {investorClassification}
                             </Badge>
                         </div>

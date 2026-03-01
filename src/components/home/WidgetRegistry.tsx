@@ -473,58 +473,87 @@ export function BranchComplianceCard(props: any) {
     );
 }
 
+import Link from "next/link";
+
 // ----------------------------------------------------------------------
 // SERVICE AGENT WIDGETS
 // ----------------------------------------------------------------------
 export function MyCasesCard(props: any) {
+    const [cases, setCases] = useState<any[]>([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        fetch('/api/service/cases?limit=3')
+            .then(r => r.json())
+            .then(json => {
+                if (json.data) setCases(json.data);
+                setLoading(false);
+            })
+            .catch(() => setLoading(false));
+    }, []);
+
+    if (loading) return <BaseWidget {...props}><div className="p-4 text-slate-500 text-xs text-center">Loading cases...</div></BaseWidget>;
+    if (cases.length === 0) return <BaseWidget {...props}><div className="p-4 text-slate-500 text-xs text-center">No active cases.</div></BaseWidget>;
+
     return (
         <BaseWidget {...props}>
             <div className="space-y-4 mt-2">
-                {[
-                    { id: "CAS-9921", status: "Open", sla: "1h 15m left", prio: "High", desc: "Wire transfer missing" },
-                    { id: "CAS-9910", status: "Pending", sla: "Paused", prio: "Med", desc: "Change of address form" },
-                    { id: "CAS-9884", status: "Open", sla: "4h left", prio: "Low", desc: "Online banking password reset" },
-                ].map((item, i) => (
-                    <a href="/servicing" key={i} className="flex flex-col border border-slate-800 p-3 rounded bg-slate-900 shadow-sm hover:border-indigo-500/50 transition-colors cursor-pointer">
+                {cases.map((item, i) => (
+                    <Link href={`/servicing?id=${item.case_id}`} key={i} className="flex flex-col border border-slate-800 p-3 rounded bg-slate-900 shadow-sm hover:border-indigo-500/50 transition-colors cursor-pointer">
                         <div className="flex justify-between mb-2">
-                            <span className="text-xs font-medium text-indigo-400">{item.id}</span>
-                            <Badge variant="outline" className={item.prio === 'High' ? 'text-red-400 border-red-900' : 'text-slate-400'}>{item.prio}</Badge>
+                            <span className="text-xs font-medium text-indigo-400">{(item.case_id || '').substring(0, 8)}</span>
+                            <Badge variant="outline" className={['P1', 'P2'].includes(item.priority_band) ? 'text-red-400 border-red-900' : 'text-slate-400'}>{item.priority_band || 'P3'}</Badge>
                         </div>
-                        <div className="text-sm text-slate-200 mb-2">{item.desc}</div>
+                        <div className="text-sm text-slate-200 mb-2">{item.subject}</div>
                         <div className="text-xs text-slate-500 flex justify-between">
                             <span>Status: {item.status}</span>
-                            <span className={item.sla.includes('left') ? 'text-amber-400' : ''}>SLA: {item.sla}</span>
+                            <span>{item.created_at ? new Date(item.created_at).toLocaleDateString() : ''}</span>
                         </div>
-                    </a>
+                    </Link>
                 ))}
             </div>
         </BaseWidget>
     );
 }
+
 export function OmniInboxCard(props: any) {
+    const [counts, setCounts] = useState({ total: 0, p1: 0, reg: 0 });
+
+    useEffect(() => {
+        fetch('/api/service/cases?limit=100')
+            .then(r => r.json())
+            .then(json => {
+                if (json.data) {
+                    const data = json.data as any[];
+                    setCounts({
+                        total: data.length,
+                        p1: data.filter(c => c.priority_band === 'P1').length,
+                        reg: data.filter(c => c.is_regulatory).length
+                    });
+                }
+            })
+            .catch(console.error);
+    }, []);
+
     return (
         <BaseWidget {...props}>
             <div className="grid grid-cols-2 gap-4 mt-2">
-                <a href="/servicing" className="flex flex-col items-center justify-center p-4 bg-slate-800/30 rounded border border-slate-800 hover:border-indigo-500/50 cursor-pointer transition-colors">
-                    <Phone className="h-6 w-6 text-blue-400 mb-2" />
-                    <div className="text-2xl font-light">2</div>
-                    <div className="text-xs text-slate-500">Inbound Calls</div>
-                </a>
-                <a href="/servicing" className="flex flex-col items-center justify-center p-4 bg-slate-800/30 rounded border border-slate-800 hover:border-indigo-500/50 cursor-pointer transition-colors">
-                    <Mail className="h-6 w-6 text-emerald-400 mb-2" />
-                    <div className="text-2xl font-light">14</div>
-                    <div className="text-xs text-slate-500">Emails</div>
-                </a>
-                <a href="/servicing" className="flex flex-col items-center justify-center p-4 bg-slate-800/30 rounded border border-slate-800 hover:border-indigo-500/50 cursor-pointer transition-colors">
-                    <MessageSquare className="h-6 w-6 text-purple-400 mb-2" />
-                    <div className="text-2xl font-light">5</div>
-                    <div className="text-xs text-slate-500">Live Chats</div>
-                </a>
-                <a href="/servicing" className="flex flex-col items-center justify-center p-4 bg-slate-800/30 rounded border border-slate-800 hover:border-indigo-500/50 cursor-pointer transition-colors">
-                    <Users className="h-6 w-6 text-pink-400 mb-2" />
-                    <div className="text-2xl font-light">1</div>
-                    <div className="text-xs text-slate-500">Social Msgs</div>
-                </a>
+                <Link href="/servicing" className="flex flex-col items-center justify-center p-4 bg-slate-800/30 rounded border border-slate-800 hover:border-indigo-500/50 cursor-pointer transition-colors">
+                    <span className="text-2xl font-light text-white">{counts.total}</span>
+                    <div className="text-xs text-slate-500">Total Cases</div>
+                </Link>
+                <Link href="/servicing?filter=p1" className="flex flex-col items-center justify-center p-4 bg-red-900/10 rounded border border-red-900/30 hover:border-red-500/50 cursor-pointer transition-colors">
+                    <span className="text-2xl font-light text-red-400">{counts.p1}</span>
+                    <div className="text-xs text-slate-500">P1 Critical</div>
+                </Link>
+                <Link href="/servicing?filter=regulatory" className="flex flex-col items-center justify-center p-4 bg-amber-900/10 rounded border border-amber-900/30 hover:border-amber-500/50 cursor-pointer transition-colors">
+                    <span className="text-2xl font-light text-amber-400">{counts.reg}</span>
+                    <div className="text-xs text-slate-500">Regulatory</div>
+                </Link>
+                <Link href="/servicing" className="flex flex-col items-center justify-center p-4 bg-slate-800/30 rounded border border-slate-800 hover:border-indigo-500/50 cursor-pointer transition-colors">
+                    <MessageSquare className="h-6 w-6 text-purple-400 mb-1" />
+                    <div className="text-xs text-slate-300">Open Inbox</div>
+                </Link>
             </div>
         </BaseWidget>
     );

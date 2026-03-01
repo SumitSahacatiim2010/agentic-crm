@@ -22,7 +22,10 @@ export function Step1Identity({ state, updateState }: Props) {
 
             <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                    <Label className="text-slate-300">First Name</Label>
+                    <div className="flex justify-between">
+                        <Label className="text-slate-300">First Name</Label>
+                        {!state.firstName && <span className="text-xs text-rose-500">* Required</span>}
+                    </div>
                     <Input
                         value={state.firstName}
                         onChange={e => updateState({ firstName: e.target.value })}
@@ -31,7 +34,10 @@ export function Step1Identity({ state, updateState }: Props) {
                     />
                 </div>
                 <div>
-                    <Label className="text-slate-300">Last Name</Label>
+                    <div className="flex justify-between">
+                        <Label className="text-slate-300">Last Name</Label>
+                        {!state.lastName && <span className="text-xs text-rose-500">* Required</span>}
+                    </div>
                     <Input
                         value={state.lastName}
                         onChange={e => updateState({ lastName: e.target.value })}
@@ -41,16 +47,24 @@ export function Step1Identity({ state, updateState }: Props) {
                 </div>
 
                 <div>
-                    <Label className="text-slate-300">Date of Birth</Label>
+                    <div className="flex justify-between">
+                        <Label className="text-slate-300">Date of Birth</Label>
+                        {!state.dob && <span className="text-xs text-rose-500">* Required</span>}
+                    </div>
                     <Input
-                        type="date"
+                        type="text"
                         value={state.dob}
                         onChange={e => updateState({ dob: e.target.value })}
                         className="bg-slate-900 border-slate-700 text-slate-100 mt-2"
+                        placeholder="YYYY-MM-DD"
                     />
+                    <p className="text-[10px] text-slate-500 mt-1">Use format YYYY-MM-DD (e.g., 1985-06-15)</p>
                 </div>
                 <div>
-                    <Label className="text-slate-300">Nationality</Label>
+                    <div className="flex justify-between">
+                        <Label className="text-slate-300">Nationality</Label>
+                        {!state.nationality && <span className="text-xs text-rose-500">* Required</span>}
+                    </div>
                     <Select value={state.nationality} onValueChange={(val) => updateState({ nationality: val })}>
                         <SelectTrigger className="bg-slate-900 border-slate-700 text-slate-100 mt-2">
                             <SelectValue placeholder="Select Country" />
@@ -79,7 +93,10 @@ export function Step1Identity({ state, updateState }: Props) {
                     </Select>
                 </div>
                 <div>
-                    <Label className="text-slate-300">ID Number</Label>
+                    <div className="flex justify-between">
+                        <Label className="text-slate-300">ID Number</Label>
+                        {!state.idNumber && <span className="text-xs text-rose-500">* Required</span>}
+                    </div>
                     <Input
                         value={state.idNumber}
                         onChange={e => updateState({ idNumber: e.target.value })}

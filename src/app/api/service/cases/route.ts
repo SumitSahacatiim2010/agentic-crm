@@ -10,6 +10,7 @@ export async function GET(request: Request) {
         const end = start + limit - 1;
 
         const db = (await getInsforgeServer()).database;
+
         let query = db
             .from('service_cases')
             .select('*', { count: 'exact' });
@@ -34,7 +35,7 @@ export async function GET(request: Request) {
         }
 
         return NextResponse.json({
-            data,
+            data: data || [],
             meta: { total: count, limit, page }
         });
     } catch (e: any) {
@@ -73,12 +74,12 @@ export async function POST(request: Request) {
         let routingReason = 'Assigned to default agent pool due to missing criteria.';
 
         if (customer_id) {
-            const { data: customerData } = await db.from('individual_parties').select('segment_tier, assigned_rm, nationality').eq('party_id', customer_id).single();
+            const { data: customerData } = await db.from('individual_parties').select('tier, assigned_rm, nationality').eq('id', customer_id).single();
             if (customerData) {
-                if (['HNW', 'UHNW'].includes(customerData.segment_tier)) {
+                if (['HNW', 'UHNW', 'Platinum'].includes(customerData.tier)) {
                     assignedAgent = customerData.assigned_rm || 'Senior Agent Desk';
                     routingRule = 'VIP Routing';
-                    routingReason = 'Customer is HNW/UHNW. Routed to designated RM/Senior Agent.';
+                    routingReason = 'Customer is high-tier. Routed to designated RM/Senior Agent.';
                 } else if (category === 'Technical') {
                     assignedAgent = 'Technical Support Desk';
                     routingRule = 'Skill Routing';
@@ -101,14 +102,14 @@ export async function POST(request: Request) {
                 customer_id: customer_id || null,
                 subject,
                 description: description || null,
-                priority: band === 'P1' ? 'critical' : band === 'P2' ? 'high' : band === 'P3' ? 'medium' : 'low',
+                priority: band === 'P1' ? 'P1-Critical' : band === 'P2' ? 'P2-High' : band === 'P3' ? 'P3-Medium' : 'P4-Low',
                 priority_band: band,
-                channel: channel || 'web',
+                channel: channel || 'Web',
                 is_regulatory: isRegulatory,
-                status: 'open',
+                status: 'Open',
                 sla_deadline: slaDeadline.toISOString(),
                 assigned_agent: assignedAgent,
-                // store routing reasons directly in description for now if no columns exist
+                case_type: category === 'Technical' ? 'Technical' : (isRegulatory || category === 'Complaint' ? 'Complaint' : 'Service Request')
             }])
             .select('case_id')
             .limit(1);
@@ -139,4 +140,3 @@ export async function POST(request: Request) {
         return NextResponse.json({ error: e.message }, { status: 500 });
     }
 }
-

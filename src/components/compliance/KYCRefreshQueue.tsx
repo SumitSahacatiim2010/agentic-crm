@@ -12,6 +12,7 @@ interface KYCItem {
 
 export function KYCRefreshQueue({ items, onRefresh }: { items: KYCItem[]; onRefresh: () => void }) {
     const [refreshing, setRefreshing] = useState<string | null>(null);
+    const [viewing, setViewing] = useState<KYCItem | null>(null);
 
     const handleRefresh = async (item: KYCItem) => {
         setRefreshing(item.compliance_id);
@@ -33,6 +34,55 @@ export function KYCRefreshQueue({ items, onRefresh }: { items: KYCItem[]; onRefr
 
     return (
         <div className="space-y-3">
+            {viewing && (
+                <div className="fixed inset-0 z-50 flex items-center justify-end bg-black/50 backdrop-blur-sm" onClick={() => setViewing(null)}>
+                    <div className="bg-slate-900 border-l border-slate-700 w-full max-w-sm h-full shadow-2xl p-6 overflow-y-auto" onClick={e => e.stopPropagation()}>
+                        <div className="flex justify-between items-start mb-6">
+                            <div>
+                                <h2 className="text-lg font-bold text-white">KYC/AML Profile Review</h2>
+                                <p className="text-[10px] text-slate-500 font-mono">ID: {viewing.compliance_id}</p>
+                            </div>
+                            <button onClick={() => setViewing(null)} className="text-slate-500 hover:text-white text-xl">×</button>
+                        </div>
+
+                        <div className="space-y-5">
+                            <div className="bg-slate-950 p-4 rounded-xl border border-slate-800 space-y-3">
+                                <h3 className="text-xs font-bold text-slate-400 uppercase tracking-widest">Identity Context</h3>
+                                <div className="grid grid-cols-2 gap-y-2 text-[11px]">
+                                    <span className="text-slate-500">Party ID</span>
+                                    <span className="text-white font-mono text-right">{viewing.party_id}</span>
+                                    <span className="text-slate-500">PEP Status</span>
+                                    <span className={`text-right font-bold ${viewing.pep_status ? 'text-red-400' : 'text-emerald-400'}`}>{viewing.pep_status ? 'YES (Politically Exposed)' : 'Clear'}</span>
+                                    <span className="text-slate-500">FATCA/CRS</span>
+                                    <span className="text-white text-right">{viewing.fatca_crs_status || 'Non-US/Non-Reportable'}</span>
+                                </div>
+                            </div>
+
+                            <div className="bg-slate-950 p-4 rounded-xl border border-slate-800 space-y-3">
+                                <h3 className="text-xs font-bold text-slate-400 uppercase tracking-widest">Review Cycle</h3>
+                                <div className="grid grid-cols-2 gap-y-2 text-[11px]">
+                                    <span className="text-slate-500">Risk Rating</span>
+                                    <span className={`text-right font-bold ${riskColor[viewing.aml_risk_rating ?? 'Low']}`}>{viewing.aml_risk_rating || 'Low'}</span>
+                                    <span className="text-slate-500">Last Review</span>
+                                    <span className="text-white text-right">{fmtDate(viewing.kyc_last_review)}</span>
+                                    <span className="text-slate-500">Next Review Due</span>
+                                    <span className={`text-right font-bold ${isOverdue(viewing.kyc_next_review) ? 'text-red-400' : 'text-slate-300'}`}>{fmtDate(viewing.kyc_next_review)}</span>
+                                </div>
+                            </div>
+
+                            <div className="pt-6 space-y-3">
+                                <Button className="w-full bg-emerald-700 hover:bg-emerald-600" onClick={() => { handleRefresh(viewing); setViewing(null); }}>
+                                    ✓ Complete Refresh Review
+                                </Button>
+                                <Button className="w-full border-slate-700 text-slate-300" variant="outline" onClick={() => setViewing(null)}>
+                                    Close
+                                </Button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )}
+
             {items.map(item => (
                 <div key={item.compliance_id} className={`bg-slate-900 border rounded-xl p-4 space-y-3 ${isOverdue(item.kyc_next_review) ? 'border-red-800/40' : 'border-slate-800'}`}>
                     <div className="flex items-center justify-between">
@@ -51,14 +101,15 @@ export function KYCRefreshQueue({ items, onRefresh }: { items: KYCItem[]; onRefr
                         <span>PEP: <span className={item.pep_status ? 'text-red-400' : 'text-slate-400'}>{item.pep_status ? 'Yes' : 'No'}</span></span>
                         <span>Last Review: {fmtDate(item.kyc_last_review)}</span>
                         <span>Next Due: {fmtDate(item.kyc_next_review)}</span>
-                        <span>FATCA/CRS: {item.fatca_crs_status ?? '—'}</span>
                     </div>
                     <div className="flex gap-2">
+                        <Button size="sm" variant="outline" className="border-slate-700 text-slate-400 text-xs h-7 hover:text-white" onClick={() => setViewing(item)}>
+                            🔍 Review Profile
+                        </Button>
                         <Button size="sm" className="bg-emerald-700 hover:bg-emerald-600 text-xs h-7"
                             disabled={refreshing === item.compliance_id} onClick={() => handleRefresh(item)}>
                             {refreshing === item.compliance_id ? 'Refreshing…' : '✓ Mark Refreshed'}
                         </Button>
-                        <Button size="sm" variant="outline" className="border-slate-700 text-slate-400 text-xs h-7">📧 Send Reminder</Button>
                     </div>
                 </div>
             ))}

@@ -5,15 +5,23 @@ export type Priority = 'High' | 'Medium' | 'Low';
 
 export interface ServiceCase {
     id: string;
-    customerId: string;
-    customerName: string;
+    case_id?: string; // API alias
+    customer_id?: string;
+    customerId?: string; // Legacy/Migration compatibility
+    customerName?: string;
+    customer_name?: string;
     subject: string;
-    channel: Channel;
-    status: CaseStatus;
-    priority: Priority;
-    slaDeadline: string; // ISO String
-    createdAt: string;
+    channel: string;
+    status: string;
+    priority: string;
+    priority_band?: string;
+    is_regulatory?: boolean;
+    sla_deadline?: string;
+    slaDeadline?: string; // Legacy/Migration compatibility
+    created_at?: string;
+    createdAt?: string; // Legacy/Migration compatibility
     category?: string;
+    case_type?: string;
 }
 
 export interface KnowledgeArticle {

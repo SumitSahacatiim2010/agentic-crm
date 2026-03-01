@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useMemo } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -8,6 +8,7 @@ import { AlertTriangle, PhoneCall, Globe, MessageSquare, Building2, Mail, Scale,
 import { CaseIntakeSheet } from "@/components/servicing/CaseIntakeSheet";
 import { CaseDetailPanel } from "@/components/servicing/CaseDetailPanel";
 import useSWR from "swr";
+import { useSearchParams } from "next/navigation";
 
 const fetcher = (url: string) => fetch(url).then(r => r.json());
 
@@ -38,6 +39,7 @@ const CHANNEL_ICONS: Record<string, React.ReactNode> = {
     chatbot: <MessageSquare className="h-3 w-3" />,
     branch: <Building2 className="h-3 w-3" />,
     email: <Mail className="h-3 w-3" />,
+    mobile: <Globe className="h-3 w-3" />,
 };
 
 const BAND_COLORS: Record<string, string> = {
@@ -75,11 +77,12 @@ function SlaChip({ dueAt }: { dueAt?: string }) {
 
 const TABS = ['All', 'P1', 'Regulatory', 'My Cases'] as const;
 type Tab = typeof TABS[number];
-const CHANNELS = ['all', 'ivr', 'web', 'chatbot', 'branch', 'email'] as const;
+const CHANNELS = ['all', 'ivr', 'web', 'chatbot', 'branch', 'email', 'mobile'] as const;
 
 export function CaseInboxClient({ initialCases, slaEvents }: CaseInboxClientProps) {
+    const searchParams = useSearchParams();
     const { data: swrData, mutate } = useSWR('/api/service/cases?limit=100', fetcher, { fallbackData: { data: initialCases } });
-    const cases: ServiceCase[] = swrData?.data || [];
+    const cases: ServiceCase[] = useMemo(() => swrData?.data || [], [swrData]);
 
     const [localSlaEvents, setLocalSlaEvents] = useState(slaEvents);
     const [tab, setTab] = useState<Tab>('All');
@@ -87,6 +90,19 @@ export function CaseInboxClient({ initialCases, slaEvents }: CaseInboxClientProp
     const [search, setSearch] = useState('');
     const [selectedCase, setSelectedCase] = useState<ServiceCase | null>(null);
     const [intakeOpen, setIntakeOpen] = useState(false);
+
+    useEffect(() => {
+        const urlId = searchParams.get('id');
+        const urlFilter = searchParams.get('filter');
+
+        if (urlId && cases.length > 0) {
+            const found = cases.find(c => c.case_id === urlId);
+            if (found) setSelectedCase(found);
+        }
+
+        if (urlFilter === 'p1') setTab('P1');
+        if (urlFilter === 'regulatory') setTab('Regulatory');
+    }, [searchParams, cases]);
 
     const handleCaseCreated = useCallback((newCase: ServiceCase, events?: any[]) => {
         if (events && events.length) {
@@ -104,7 +120,7 @@ export function CaseInboxClient({ initialCases, slaEvents }: CaseInboxClientProp
     const filtered = cases.filter(c => {
         if (tab === 'P1' && c.priority_band !== 'P1') return false;
         if (tab === 'Regulatory' && !c.is_regulatory) return false;
-        if (channel !== 'all' && c.channel !== channel) return false;
+        if (channel !== 'all' && c.channel.toLowerCase() !== channel) return false;
         if (search && !c.subject.toLowerCase().includes(search.toLowerCase())) return false;
         return true;
     });

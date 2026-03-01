@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -24,6 +24,17 @@ export function NewDealDialog({ open, onOpenChange }: NewDealDialogProps) {
     const [probability, setProbability] = useState("50");
     const [expectedCloseDate, setExpectedCloseDate] = useState("");
     const [rmAssigned, setRmAssigned] = useState("");
+    const [pipelineStage, setPipelineStage] = useState("Prospecting");
+
+    const [customers, setCustomers] = useState<{ id: string, full_name: string }[]>([]);
+
+    useEffect(() => {
+        if (open) {
+            fetch('/api/customers?limit=20').then(r => r.json()).then(d => {
+                if (d.data) setCustomers(d.data);
+            }).catch(console.error);
+        }
+    }, [open]);
 
     const handleSubmit = async () => {
         if (!customerId || !dealName || !dealValue || !expectedCloseDate || !productType || !rmAssigned || !probability) {
@@ -44,7 +55,7 @@ export function NewDealDialog({ open, onOpenChange }: NewDealDialogProps) {
                     probability_weighting: parseInt(probability, 10),
                     expected_close_date: new Date(expectedCloseDate).toISOString(),
                     assigned_to: rmAssigned,
-                    pipeline_stage: 'Prospecting',
+                    pipeline_stage: pipelineStage,
                     status: 'Open'
                 })
             });
@@ -54,7 +65,7 @@ export function NewDealDialog({ open, onOpenChange }: NewDealDialogProps) {
                 mutate('/api/opportunities?limit=100'); // Refresh kanban board
                 onOpenChange(false);
                 // Reset form
-                setCustomerId(""); setProductType(""); setDealName(""); setDealValue(""); setProbability("50"); setExpectedCloseDate(""); setRmAssigned("");
+                setCustomerId(""); setProductType(""); setDealName(""); setDealValue(""); setProbability("50"); setExpectedCloseDate(""); setRmAssigned(""); setPipelineStage("Prospecting");
             } else {
                 const err = await res.json();
                 toast.error("Failed to create deal", { description: err.error || "Unknown error" });
@@ -74,8 +85,17 @@ export function NewDealDialog({ open, onOpenChange }: NewDealDialogProps) {
                 </DialogHeader>
                 <div className="grid grid-cols-2 gap-4 py-4">
                     <div className="space-y-2 col-span-2">
-                        <Label className="text-xs text-slate-300">Customer ID *</Label>
-                        <Input value={customerId} onChange={e => setCustomerId(e.target.value)} placeholder="e.g. CUST-123" className="bg-slate-950 border-slate-700 text-slate-100" />
+                        <Label className="text-xs text-slate-300">Customer *</Label>
+                        <Select value={customerId} onValueChange={setCustomerId}>
+                            <SelectTrigger className="bg-slate-950 border-slate-700 text-slate-100">
+                                <SelectValue placeholder="Select Customer" />
+                            </SelectTrigger>
+                            <SelectContent className="bg-slate-900 border-slate-700 text-slate-100 max-h-48">
+                                {customers.map(c => (
+                                    <SelectItem key={c.id} value={c.id}>{c.full_name || 'Unnamed Customer'}</SelectItem>
+                                ))}
+                            </SelectContent>
+                        </Select>
                     </div>
                     <div className="space-y-2 col-span-2">
                         <Label className="text-xs text-slate-300">Deal Name *</Label>
@@ -107,7 +127,22 @@ export function NewDealDialog({ open, onOpenChange }: NewDealDialogProps) {
                         <Label className="text-xs text-slate-300">Expected Close Date *</Label>
                         <Input type="date" value={expectedCloseDate} onChange={e => setExpectedCloseDate(e.target.value)} className="bg-slate-950 border-slate-700 text-slate-100" />
                     </div>
-                    <div className="space-y-2 col-span-2">
+                    <div className="space-y-2">
+                        <Label className="text-xs text-slate-300">Pipeline Stage *</Label>
+                        <Select value={pipelineStage} onValueChange={setPipelineStage}>
+                            <SelectTrigger className="bg-slate-950 border-slate-700 text-slate-100">
+                                <SelectValue placeholder="Select Stage" />
+                            </SelectTrigger>
+                            <SelectContent className="bg-slate-900 border-slate-700 text-slate-100">
+                                <SelectItem value="Prospecting">Prospecting</SelectItem>
+                                <SelectItem value="Qualification">Qualification</SelectItem>
+                                <SelectItem value="Needs Analysis">Needs Analysis</SelectItem>
+                                <SelectItem value="Proposal">Proposal</SelectItem>
+                                <SelectItem value="Negotiation">Negotiation</SelectItem>
+                            </SelectContent>
+                        </Select>
+                    </div>
+                    <div className="space-y-2 border-t border-slate-800 pt-4 col-span-2">
                         <Label className="text-xs text-slate-300">Assigned RM *</Label>
                         <Input value={rmAssigned} onChange={e => setRmAssigned(e.target.value)} placeholder="Full Name" className="bg-slate-950 border-slate-700 text-slate-100" />
                     </div>

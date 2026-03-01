@@ -3,7 +3,7 @@ import { useState, useMemo } from "react";
 import { AlertTriangle } from "lucide-react";
 
 const ROUTING_COLORS: Record<string, string> = { STP: 'bg-emerald-950/50 text-emerald-300 border-emerald-700/30', Standard: 'bg-indigo-950/50 text-indigo-300 border-indigo-700/30', Specialist: 'bg-amber-950/50 text-amber-300 border-amber-700/30' };
-const STATUS_TABS = ['All', 'pending_triage', 'underwriting', 'approved', 'declined'];
+const STATUS_TABS = ['All', 'Pending Triage', 'Underwriting', 'Approved', 'Declined', 'Booked'];
 
 export interface CreditApp {
     application_id: string; applicant_name: string; business_name?: string;
@@ -51,7 +51,7 @@ export function TriageQueuePanel({ apps, selectedId, onSelect }: Props) {
                 {STATUS_TABS.map(t => (
                     <button key={t} onClick={() => setStatusFilter(t)}
                         className={`text-[10px] px-2 py-1 rounded font-semibold whitespace-nowrap ${statusFilter === t ? 'bg-indigo-600 text-white' : 'text-slate-500 hover:text-slate-300'}`}>
-                        {t === 'All' ? 'All' : t.replace('_', ' ').replace(/\b\w/g, l => l.toUpperCase())}
+                        {t}
                     </button>
                 ))}
             </div>

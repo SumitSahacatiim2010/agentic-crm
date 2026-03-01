@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { PersonaId, PERSONA_CONFIG } from "@/config/personaConfig";
 import { PersonaSwitcher } from "./PersonaSwitcher";
-import { ArrowLeft, UserCircle } from "lucide-react";
+import { ArrowLeft, UserCircle, LogOut, Settings, Shield } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { WidgetRenderer } from "./WidgetRenderer";
 
@@ -11,6 +11,7 @@ export function PersonaLayout() {
     // Determine initial state
     const [mounted, setMounted] = useState(false);
     const [personaId, setPersonaId] = useState<PersonaId>("RETAIL_RM");
+    const [showProfile, setShowProfile] = useState(false);
 
     // Hydrate from localStorage if available
     useEffect(() => {
@@ -98,13 +99,45 @@ export function PersonaLayout() {
                             <ArrowLeft className="mr-2 h-3.5 w-3.5" />
                             Change Persona
                         </Button>
-                        <button
-                            aria-label="User profile"
-                            title="User Profile"
-                            className="hidden md:flex items-center justify-center h-10 w-10 rounded-full bg-slate-800 border border-slate-700 text-slate-400 hover:bg-slate-700 hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
-                        >
-                            <UserCircle className="h-6 w-6" />
-                        </button>
+                        <div className="relative">
+                            <button
+                                aria-label="User profile"
+                                title="User Profile"
+                                onClick={() => setShowProfile(!showProfile)}
+                                className="hidden md:flex items-center justify-center h-10 w-10 rounded-full bg-slate-800 border border-slate-700 text-slate-400 hover:bg-slate-700 hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+                            >
+                                <UserCircle className="h-6 w-6" />
+                            </button>
+                            {showProfile && (
+                                <div className="absolute right-0 top-12 w-72 bg-slate-900 border border-slate-700 rounded-xl shadow-2xl z-50 animate-in fade-in slide-in-from-top-2 duration-200">
+                                    <div className="p-4 border-b border-slate-800">
+                                        <div className="flex items-center gap-3">
+                                            <div className="h-10 w-10 rounded-full bg-indigo-600 flex items-center justify-center text-white font-bold text-sm">
+                                                {activeDef.label.charAt(0)}
+                                            </div>
+                                            <div>
+                                                <p className="text-sm font-semibold text-white">{activeDef.label}</p>
+                                                <p className="text-[11px] text-slate-400">demo@bankingcrm.com</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="p-2 space-y-1">
+                                        <button className="w-full flex items-center gap-2 px-3 py-2 text-xs text-slate-300 hover:bg-slate-800 rounded-lg transition-colors">
+                                            <Settings className="h-3.5 w-3.5 text-slate-500" /> Account Settings
+                                        </button>
+                                        <button className="w-full flex items-center gap-2 px-3 py-2 text-xs text-slate-300 hover:bg-slate-800 rounded-lg transition-colors">
+                                            <Shield className="h-3.5 w-3.5 text-slate-500" /> Security &amp; Privacy
+                                        </button>
+                                        <button onClick={handleBackToPersonas} className="w-full flex items-center gap-2 px-3 py-2 text-xs text-slate-300 hover:bg-slate-800 rounded-lg transition-colors">
+                                            <LogOut className="h-3.5 w-3.5 text-slate-500" /> Switch Persona
+                                        </button>
+                                    </div>
+                                    <div className="p-3 border-t border-slate-800">
+                                        <p className="text-[10px] text-slate-600 text-center">Auth/RBAC deferred to Phase 5</p>
+                                    </div>
+                                </div>
+                            )}
+                        </div>
                     </div>
                 </header>
 
@@ -120,7 +153,10 @@ export function PersonaLayout() {
                         <a href="/credit" className="px-4 py-2 bg-violet-600/10 hover:bg-violet-600/20 text-violet-400 border border-violet-500/30 text-sm font-medium rounded-lg transition-colors flex items-center gap-2">🏦 Credit</a>
                         <a href="/compliance" className="px-4 py-2 bg-rose-600/10 hover:bg-rose-600/20 text-rose-400 border border-rose-500/30 text-sm font-medium rounded-lg transition-colors flex items-center gap-2">🛡️ Compliance</a>
                         <a href="/campaigns" className="px-4 py-2 bg-orange-600/10 hover:bg-orange-600/20 text-orange-400 border border-orange-500/30 text-sm font-medium rounded-lg transition-colors flex items-center gap-2">📣 Campaigns</a>
-                        <a href="/wealth" className="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 text-sm font-medium rounded-lg transition-colors">Wealth Portfolio</a>
+                        <a href="/wealth" className="px-4 py-2 bg-amber-600/10 hover:bg-amber-600/20 text-amber-400 border border-amber-500/30 text-sm font-medium rounded-lg transition-colors flex items-center gap-2">💰 Wealth Portfolio</a>
+                        <a href="/branch" className="px-4 py-2 bg-teal-600/10 hover:bg-teal-600/20 text-teal-400 border border-teal-500/30 text-sm font-medium rounded-lg transition-colors flex items-center gap-2">🏢 Branch Ops</a>
+                        <a href="/analytics" className="px-4 py-2 bg-sky-600/10 hover:bg-sky-600/20 text-sky-400 border border-sky-500/30 text-sm font-medium rounded-lg transition-colors flex items-center gap-2">📊 Analytics</a>
+                        <a href="/knowledge" className="px-4 py-2 bg-purple-600/10 hover:bg-purple-600/20 text-purple-400 border border-purple-500/30 text-sm font-medium rounded-lg transition-colors flex items-center gap-2">📚 Knowledge Base</a>
                     </div>
                 )}
 

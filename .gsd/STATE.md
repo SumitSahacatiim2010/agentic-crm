@@ -4,18 +4,20 @@
 
 ## Current Position
 - **Milestone**: v2.5 Production Readiness
-- **Phase**: 8 (completed)
-- **Status**: ✅ Event Architecture & Real-time complete
+- **Phase**: 9 (completed)
+- **Status**: ✅ Production Deployment complete — LIVE at https://eig7swuu.insforge.site
 
 ## Session Context
 ### What was just completed
-- Created `useRealtimeChannel` hook (singleton connect, auto-subscribe/cleanup).
-- Refactored `ServiceInbox.tsx` and `AlertsQueue.tsx` to use shared hook.
-- Added real-time to `LeadDataTable`, `BranchLeadQueue`, `OpportunityKanban`, and `ComplianceDashboardClient`.
-- Phase 8 Execution fully completed.
+- Created `activities` table on `my-first-project` backend.
+- Updated `.env` with fresh anon key from `my-first-project`.
+- Production build passed (`next build`, exit 0).
+- Deployed via `create-deployment` MCP tool.
+- Live URL verified: https://eig7swuu.insforge.site
+- Phase 9 Execution fully completed.
 
 ## Next Steps
-1. /verify 8
+1. All 9 phases complete. Project is production-ready.
 
 ### Key files modified recently
 - `src/components/home/PersonaLayout.tsx` — profile dropdown, Global Admin quick links

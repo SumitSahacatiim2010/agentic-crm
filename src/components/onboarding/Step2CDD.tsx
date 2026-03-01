@@ -42,7 +42,10 @@ export function Step2CDD({ state, identityState, updateState }: Props) {
 
             <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                    <Label className="text-slate-300">Employment Status</Label>
+                    <div className="flex justify-between">
+                        <Label className="text-slate-300">Employment Status</Label>
+                        {!state.occupation && <span className="text-xs text-rose-500">* Required</span>}
+                    </div>
                     <Select value={state.occupation} onValueChange={(val) => updateState({ occupation: val })}>
                         <SelectTrigger className="bg-slate-900 border-slate-700 text-slate-100 mt-2">
                             <SelectValue placeholder="Select Status" />
@@ -52,66 +55,82 @@ export function Step2CDD({ state, identityState, updateState }: Props) {
                             <SelectItem value="Self-Employed">Self-Employed</SelectItem>
                             <SelectItem value="Retired">Retired</SelectItem>
                             <SelectItem value="Student">Student</SelectItem>
+                            <SelectItem value="Unemployed">Unemployed</SelectItem>
                         </SelectContent>
                     </Select>
                 </div>
                 <div>
-                    <Label className="text-slate-300">Employer Name</Label>
+                    <div className="flex justify-between">
+                        <Label className="text-slate-300">Employer Name</Label>
+                        {state.occupation === 'Employed' && !state.employer && <span className="text-xs text-rose-500">* Required</span>}
+                    </div>
                     <Input
                         value={state.employer}
                         onChange={e => updateState({ employer: e.target.value })}
                         className="bg-slate-900 border-slate-700 text-slate-100 mt-2"
-                        placeholder="e.g. Acme Corp"
+                        placeholder="Organization name"
                     />
                 </div>
 
                 <div>
-                    <Label className="text-slate-300">Annual Income ($)</Label>
+                    <div className="flex justify-between">
+                        <Label className="text-slate-300">Annual Income ($)</Label>
+                        {!state.annualIncome && <span className="text-xs text-rose-500">* Required</span>}
+                    </div>
                     <Input
                         type="number"
                         value={state.annualIncome}
                         onChange={e => updateState({ annualIncome: e.target.value })}
                         className="bg-slate-900 border-slate-700 text-slate-100 mt-2"
-                        placeholder="150000"
+                        placeholder="e.g. 120000"
                     />
                 </div>
                 <div>
-                    <Label className="text-slate-300">Estimated Net Worth ($)</Label>
+                    <div className="flex justify-between">
+                        <Label className="text-slate-300">Estimated Net Worth ($)</Label>
+                        {!state.netWorth && <span className="text-xs text-rose-500">* Required</span>}
+                    </div>
                     <Input
                         type="number"
                         value={state.netWorth}
                         onChange={e => updateState({ netWorth: e.target.value })}
                         className="bg-slate-900 border-slate-700 text-slate-100 mt-2"
-                        placeholder="500000"
+                        placeholder="e.g. 500000"
                     />
                 </div>
 
                 <div>
-                    <Label className="text-slate-300">Source of Wealth</Label>
+                    <div className="flex justify-between">
+                        <Label className="text-slate-300">Source of Wealth</Label>
+                        {!state.sourceOfWealth && <span className="text-xs text-rose-500">* Required</span>}
+                    </div>
                     <Select value={state.sourceOfWealth} onValueChange={(val) => updateState({ sourceOfWealth: val })}>
                         <SelectTrigger className="bg-slate-900 border-slate-700 text-slate-100 mt-2">
                             <SelectValue placeholder="Select Source" />
                         </SelectTrigger>
                         <SelectContent className="bg-slate-800 border-slate-700 text-white">
-                            <SelectItem value="Salary">Salary / Savings</SelectItem>
-                            <SelectItem value="Property">Property Sale</SelectItem>
-                            <SelectItem value="Investments">Investments</SelectItem>
+                            <SelectItem value="Salary / Savings">Salary / Savings</SelectItem>
+                            <SelectItem value="Business Profits">Business Profits</SelectItem>
                             <SelectItem value="Inheritance">Inheritance</SelectItem>
-                            <SelectItem value="Business">Business Ownership</SelectItem>
+                            <SelectItem value="Investment Income">Investment Income</SelectItem>
+                            <SelectItem value="Sale of Assets">Sale of Assets</SelectItem>
                         </SelectContent>
                     </Select>
                 </div>
                 <div>
-                    <Label className="text-slate-300">Purpose of Account</Label>
+                    <div className="flex justify-between">
+                        <Label className="text-slate-300">Purpose of Account</Label>
+                        {!state.purpose && <span className="text-xs text-rose-500">* Required</span>}
+                    </div>
                     <Select value={state.purpose} onValueChange={(val) => updateState({ purpose: val })}>
                         <SelectTrigger className="bg-slate-900 border-slate-700 text-slate-100 mt-2">
                             <SelectValue placeholder="Select Purpose" />
                         </SelectTrigger>
                         <SelectContent className="bg-slate-800 border-slate-700 text-white">
-                            <SelectItem value="Savings">Savings & Deposits</SelectItem>
-                            <SelectItem value="Transactions">Daily Transactions</SelectItem>
-                            <SelectItem value="Investment">Wealth / Investment</SelectItem>
-                            <SelectItem value="Lending">Lending / Mortgage</SelectItem>
+                            <SelectItem value="Savings & Deposits">Savings & Deposits</SelectItem>
+                            <SelectItem value="Investment Portfolio">Investment Portfolio</SelectItem>
+                            <SelectItem value="Business Operations">Business Operations</SelectItem>
+                            <SelectItem value="Wealth Management">Wealth Management</SelectItem>
                         </SelectContent>
                     </Select>
                 </div>

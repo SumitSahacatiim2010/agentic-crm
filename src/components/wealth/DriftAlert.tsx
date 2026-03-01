@@ -1,17 +1,25 @@
 "use client";
 
+import { useState } from "react";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
 import { DRIFT_ANALYSIS } from "@/lib/wealth-mock-data";
-import { AlertTriangle, RefreshCcw } from "lucide-react";
-import { toast } from "sonner"; // Using custom toast if sonner missing, but assume sonner installed now
+import { AlertTriangle, RefreshCcw, Loader2 } from "lucide-react";
+import { toast } from "sonner";
 
 export function DriftAlert() {
+    const [isRebalancing, setIsRebalancing] = useState(false);
+    const [isRebalanced, setIsRebalanced] = useState(false);
+
     const breaches = DRIFT_ANALYSIS.filter(d => d.isBreach);
 
-    if (breaches.length === 0) return null;
+    if (breaches.length === 0 || isRebalanced) return null;
 
-    const handleRebalance = () => {
+    const handleRebalance = async () => {
+        setIsRebalancing(true);
+        await new Promise(resolve => setTimeout(resolve, 2000));
+        setIsRebalancing(false);
+        setIsRebalanced(true);
         toast.success("Rebalance Workflow Initiated", { description: "Orders have been staged for review." });
     };
 
@@ -36,11 +44,12 @@ export function DriftAlert() {
                 </div>
                 <Button
                     onClick={handleRebalance}
+                    disabled={isRebalancing}
                     variant="outline"
                     className="border-amber-500 text-amber-500 hover:bg-amber-500 hover:text-white shrink-0"
                 >
-                    <RefreshCcw className="h-4 w-4 mr-2" />
-                    Rebalance Portfolio
+                    {isRebalancing ? <Loader2 className="h-4 w-4 mr-2 animate-spin" /> : <RefreshCcw className="h-4 w-4 mr-2" />}
+                    {isRebalancing ? 'Rebalancing...' : 'Rebalance Portfolio'}
                 </Button>
             </div>
         </Alert>

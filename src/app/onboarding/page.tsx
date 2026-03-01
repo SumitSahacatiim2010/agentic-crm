@@ -25,7 +25,7 @@ export default function OnboardingPage() {
     const handlePrev = () => setCurrentStep(prev => Math.max(prev - 1, 1));
 
     const canProceed = () => {
-        if (currentStep === 1) return state.identity.firstName && state.identity.lastName && state.identity.idNumber;
+        if (currentStep === 1) return state.identity.firstName && state.identity.lastName && state.identity.dob && state.identity.nationality && state.identity.idNumber;
         if (currentStep === 2) return state.cdd.sourceOfWealth && state.cdd.annualIncome && state.cdd.netWorth && (!state.cdd.requiresEDD || state.cdd.eddNarrative);
         if (currentStep === 3) return state.aml.status === 'cleared';
         if (currentStep === 4) return state.products.selected.length > 0;
