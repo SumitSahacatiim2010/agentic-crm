@@ -13,6 +13,7 @@ import Link from "next/link";
 export default function KnowledgeBasePage() {
     const [searchTerm, setSearchTerm] = useState("");
     const [selectedCategory, setSelectedCategory] = useState<string>("All");
+    const [selectedArticle, setSelectedArticle] = useState<KnowledgeArticle | null>(null);
 
     const categories = ["All", ...Array.from(new Set(KNOWLEDGE_BASE.map(a => a.category)))];
 
@@ -23,6 +24,38 @@ export default function KnowledgeBasePage() {
         const matchesCategory = selectedCategory === "All" || article.category === selectedCategory;
         return matchesSearch && matchesCategory;
     });
+
+    if (selectedArticle) {
+        return (
+            <div className="min-h-screen bg-slate-950 flex flex-col font-sans text-slate-200">
+                <header className="border-b border-slate-800 bg-slate-950 p-6 shrink-0 flex items-center justify-between">
+                    <div>
+                        <h1 className="text-2xl font-bold text-white flex items-center gap-3">
+                            <BookOpen className="h-6 w-6 text-indigo-400" />
+                            {selectedArticle.title}
+                        </h1>
+                        <p className="text-xs text-slate-500 mt-1">{selectedArticle.category} · {selectedArticle.lastUpdated} · {selectedArticle.views} views</p>
+                    </div>
+                    <Button variant="outline" className="border-slate-700 text-slate-300" onClick={() => setSelectedArticle(null)}>
+                        <ArrowLeft className="mr-2 h-4 w-4" /> Back to Articles
+                    </Button>
+                </header>
+                <main className="flex-1 overflow-y-auto w-full">
+                    <div className="max-w-4xl mx-auto p-6 lg:p-8 space-y-6">
+                        <div className="flex items-center gap-2 flex-wrap">
+                            <Tag className="h-3.5 w-3.5 text-slate-500" />
+                            {selectedArticle.tags.map(tag => (
+                                <span key={tag} className="text-xs bg-slate-900 text-indigo-300 px-2 py-0.5 rounded border border-slate-800">{tag}</span>
+                            ))}
+                        </div>
+                        <div className="prose prose-invert prose-sm max-w-none bg-slate-900 border border-slate-800 rounded-xl p-6 lg:p-8">
+                            <div className="whitespace-pre-wrap text-slate-300 leading-relaxed">{selectedArticle.content}</div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        );
+    }
 
     return (
         <div className="min-h-screen bg-slate-950 flex flex-col font-sans text-slate-200">
@@ -72,7 +105,7 @@ export default function KnowledgeBasePage() {
                     {/* Article Grid */}
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                         {filteredArticles.map(article => (
-                            <Card key={article.id} className="bg-slate-900 border-slate-800 hover:border-indigo-500/50 transition-colors cursor-pointer group flex flex-col h-full">
+                            <Card key={article.id} onClick={() => setSelectedArticle(article)} className="bg-slate-900 border-slate-800 hover:border-indigo-500/50 transition-colors cursor-pointer group flex flex-col h-full">
                                 <CardHeader className="pb-3 flex-1">
                                     <div className="flex justify-between items-start mb-2">
                                         <Badge variant="outline" className="bg-slate-800 text-slate-300 border-slate-700">{article.category}</Badge>

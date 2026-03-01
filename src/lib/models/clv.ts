@@ -44,6 +44,10 @@ export async function calculateCLV(customerId: string): Promise<CLVProjection> {
     // Add flat activity value per product
     baseRevenueYr += products.length * 150;
 
+    // Minimum revenue floor per tier so CLV never shows $0 for demo data
+    const MIN_REVENUE: Record<string, number> = { 'Standard': 1200, 'Premium': 4800, 'HNW': 18000, 'UHNW': 48000, 'Default': 1200 };
+    baseRevenueYr = Math.max(baseRevenueYr, MIN_REVENUE[tier] || MIN_REVENUE['Default']);
+
     // 2. Cost to Serve
     const costToServeYr = COST_TO_SERVE_TIERS[tier] || COST_TO_SERVE_TIERS['Default'];
 

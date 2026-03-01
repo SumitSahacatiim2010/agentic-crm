@@ -2,6 +2,7 @@ import { OnboardingState } from "./types";
 import { useEffect, useState, useRef } from "react";
 import { Loader2, CheckCircle2, AlertTriangle, XCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { toast } from "sonner";
 
 interface Props {
     state: OnboardingState['aml'];
@@ -107,7 +108,7 @@ export function Step3AMLScreening({ state, identityState, updateState, onNext }:
                                 <div>
                                     <h4 className="text-amber-400 font-medium">Pending Compliance Review</h4>
                                     <p className="text-sm text-slate-400 mt-1">A potential match or medium risk indicator was found. A compliance officer must manually review this application.</p>
-                                    <Button className="mt-4 bg-amber-600 hover:bg-amber-700 text-white">Escalate to Compliance</Button>
+                                    <Button onClick={() => { toast.success("Escalated to Compliance Team", { description: "A compliance officer has been notified and will review this application within 24 hours." }); }} className="mt-4 bg-amber-600 hover:bg-amber-700 text-white">Escalate to Compliance</Button>
                                 </div>
                             </div>
                         )}
@@ -118,7 +119,7 @@ export function Step3AMLScreening({ state, identityState, updateState, onNext }:
                                 <div>
                                     <h4 className="text-red-400 font-medium">Onboarding Rejected</h4>
                                     <p className="text-sm text-slate-400 mt-1">Critical AML or sanctions block found. Onboarding cannot proceed.</p>
-                                    <Button className="mt-4 bg-red-900 border border-red-800 text-white hover:bg-red-800">Refer to Compliance Officer</Button>
+                                    <Button onClick={() => { toast.info("Referred to Compliance Officer", { description: "This application has been flagged for manual AML/Sanctions review. The applicant will be contacted within 48 hours." }); }} className="mt-4 bg-red-900 border border-red-800 text-white hover:bg-red-800">Refer to Compliance Officer</Button>
                                 </div>
                             </div>
                         )}
