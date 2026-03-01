@@ -1,12 +1,12 @@
 import { NextResponse } from 'next/server';
-import { getLeadById } from '@/services/lead-service';
+import { getBranchWorkqueue } from '@/services/branch-service';
 
-export async function GET(request: Request, context: any) {
+export async function GET(request: Request, { params }: { params: { branchId: string } }) {
     try {
-        const id = context.params?.id;
-        if (!id) return NextResponse.json({ error: 'Missing ID' }, { status: 400 });
+        const { searchParams } = new URL(request.url);
+        const ownerId = searchParams.get('ownerId') || undefined;
 
-        const response = await getLeadById(id);
+        const response = await getBranchWorkqueue(params.branchId, ownerId);
 
         if (response.error) {
             return NextResponse.json({ error: response.error }, { status: 500 });

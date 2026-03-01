@@ -11,6 +11,7 @@ import { toast } from "sonner";
 
 interface LeadQualificationFormProps {
     selectedLead?: any;
+    hideLayout?: boolean;
 }
 
 const SCORE_FACTORS = [
@@ -29,7 +30,7 @@ function computeScore(lead: any) {
     return 45 + base;
 }
 
-export function LeadQualificationForm({ selectedLead }: LeadQualificationFormProps) {
+export function LeadQualificationForm({ selectedLead, hideLayout }: LeadQualificationFormProps) {
     const formId = useId();
 
     const [bant, setBant] = useState({ budget: false, authority: false, need: false, timeline: false });
@@ -114,27 +115,23 @@ export function LeadQualificationForm({ selectedLead }: LeadQualificationFormPro
         }
     };
 
-    return (
-        <Card className="bg-slate-900 border-slate-800 sticky top-6">
-            <CardHeader className="pb-3">
-                <CardTitle className="text-sm font-semibold text-slate-100 uppercase tracking-widest flex items-center gap-2">
-                    <CheckCircle2 className="h-4 w-4 text-indigo-400" />
-                    BANT Qualification
-                </CardTitle>
-            </CardHeader>
-            <CardContent>
-                {!selectedLead ? (
-                    <div className="py-8 text-center text-slate-500 text-sm italic">
-                        Select a lead from the queue to start qualification.
-                    </div>
-                ) : (
-                    <div className="space-y-5">
+    const Content = () => (
+        <>
+            {!selectedLead ? (
+                <div className="py-8 text-center text-slate-500 text-sm italic">
+                    Select a lead from the queue to start qualification.
+                </div>
+            ) : (
+                <div className="space-y-5">
+                    {!hideLayout && (
                         <div className="p-3 bg-indigo-950/30 border border-indigo-500/20 rounded-md">
                             <p className="text-xs text-indigo-300 font-semibold mb-1 uppercase">Active Qualification</p>
                             <p className="text-sm font-bold text-white">{selectedLead.full_name || 'Lead'}</p>
                             <p className="text-xs text-slate-400">{selectedLead.product_interest || 'General Inquiry'}</p>
                         </div>
+                    )}
 
+                    {!hideLayout && (
                         <div className="space-y-2">
                             <div className="flex items-center justify-between">
                                 <p className="text-xs font-bold text-slate-300 uppercase tracking-wide flex items-center gap-1">
@@ -144,52 +141,54 @@ export function LeadQualificationForm({ selectedLead }: LeadQualificationFormPro
                             </div>
                             <div className="text-xs font-semibold text-slate-400 mb-1">Rating: {scoreLabel}</div>
                         </div>
+                    )}
 
-                        <div className="space-y-1.5">
-                            <p className="text-xs font-bold text-slate-300 uppercase tracking-wide">BANT Status (Persistent)</p>
-                            {([
-                                { key: 'budget', label: 'Budget confirmed' },
-                                { key: 'authority', label: 'Decision-maker identified' },
-                                { key: 'need', label: 'Specific product need documented' },
-                                { key: 'timeline', label: 'Timeline established' },
-                            ] as const).map(({ key, label }) => (
-                                <div key={key} className="flex items-center gap-2.5 border border-slate-800 rounded p-2 hover:bg-slate-800/50 cursor-pointer"
-                                    onClick={() => toggleBant(key)}>
-                                    <Checkbox
-                                        id={`${formId}-bant-${key}`}
-                                        checked={bant[key]}
-                                        onCheckedChange={() => toggleBant(key)}
-                                    />
-                                    <label htmlFor={`${formId}-bant-${key}`} className="text-sm text-slate-300 cursor-pointer select-none">{label}</label>
-                                    {bant[key] ? <CheckCircle2 className="h-3.5 w-3.5 text-emerald-400 ml-auto" /> : <XCircle className="h-3.5 w-3.5 text-slate-700 ml-auto" />}
-                                </div>
-                            ))}
-                        </div>
-
-                        <div className="space-y-1.5">
-                            <p className="text-xs font-bold text-slate-300 uppercase tracking-wide flex items-center gap-1">
-                                <ShieldCheck className="h-3 w-3 text-amber-400" /> Banking Eligibility
-                            </p>
-                            {([
-                                { key: 'age', label: 'Age ≥ 18 confirmed' },
-                                { key: 'residency', label: 'Residency status confirmed' },
-                                { key: 'kyc', label: 'ID type on file' },
-                            ] as const).map(({ key, label }) => (
-                                <div key={key} className="flex items-center gap-2.5 border border-slate-800 rounded p-2 hover:bg-slate-800/50 cursor-not-allowed opacity-80">
-                                    <Checkbox id={`${formId}-elig-${key}`} checked={eligibility[key]} disabled />
-                                    <label className="text-sm text-slate-300 select-none">{label}</label>
-                                    {eligibility[key] ? <CheckCircle2 className="h-3.5 w-3.5 text-emerald-400 ml-auto" /> : <XCircle className="h-3.5 w-3.5 text-slate-700 ml-auto" />}
-                                </div>
-                            ))}
-                        </div>
-
-                        {!allChecksPassed && (
-                            <div className="flex items-center gap-2 p-2 bg-amber-900/20 border border-amber-500/20 rounded text-xs text-amber-300">
-                                <AlertTriangle className="h-3.5 w-3.5 shrink-0" />
-                                Complete BANT checks to enable conversion.
+                    <div className="space-y-1.5">
+                        <p className="text-xs font-bold text-slate-300 uppercase tracking-wide">BANT Status (Persistent)</p>
+                        {([
+                            { key: 'budget', label: 'Budget confirmed' },
+                            { key: 'authority', label: 'Decision-maker identified' },
+                            { key: 'need', label: 'Specific product need documented' },
+                            { key: 'timeline', label: 'Timeline established' },
+                        ] as const).map(({ key, label }) => (
+                            <div key={key} className="flex items-center gap-2.5 border border-slate-800 rounded p-2 hover:bg-slate-800/50 cursor-pointer"
+                                onClick={() => toggleBant(key)}>
+                                <Checkbox
+                                    id={`${formId}-bant-${key}`}
+                                    checked={bant[key]}
+                                    onCheckedChange={() => toggleBant(key)}
+                                />
+                                <label htmlFor={`${formId}-bant-${key}`} className="text-sm text-slate-300 cursor-pointer select-none">{label}</label>
+                                {bant[key] ? <CheckCircle2 className="h-3.5 w-3.5 text-emerald-400 ml-auto" /> : <XCircle className="h-3.5 w-3.5 text-slate-700 ml-auto" />}
                             </div>
-                        )}
+                        ))}
+                    </div>
 
+                    <div className="space-y-1.5">
+                        <p className="text-xs font-bold text-slate-300 uppercase tracking-wide flex items-center gap-1">
+                            <ShieldCheck className="h-3 w-3 text-amber-400" /> Banking Eligibility
+                        </p>
+                        {([
+                            { key: 'age', label: 'Age ≥ 18 confirmed' },
+                            { key: 'residency', label: 'Residency status confirmed' },
+                            { key: 'kyc', label: 'ID type on file' },
+                        ] as const).map(({ key, label }) => (
+                            <div key={key} className="flex items-center gap-2.5 border border-slate-800 rounded p-2 hover:bg-slate-800/50 cursor-not-allowed opacity-80">
+                                <Checkbox id={`${formId}-elig-${key}`} checked={eligibility[key as keyof typeof eligibility]} disabled />
+                                <label className="text-sm text-slate-300 select-none">{label}</label>
+                                {eligibility[key as keyof typeof eligibility] ? <CheckCircle2 className="h-3.5 w-3.5 text-emerald-400 ml-auto" /> : <XCircle className="h-3.5 w-3.5 text-slate-700 ml-auto" />}
+                            </div>
+                        ))}
+                    </div>
+
+                    {!allChecksPassed && (
+                        <div className="flex items-center gap-2 p-2 bg-amber-900/20 border border-amber-500/20 rounded text-xs text-amber-300">
+                            <AlertTriangle className="h-3.5 w-3.5 shrink-0" />
+                            Complete BANT checks to enable conversion.
+                        </div>
+                    )}
+
+                    {!hideLayout && (
                         <div className="flex flex-col gap-2">
                             <Button
                                 id={`${formId}-convert-btn`}
@@ -202,8 +201,26 @@ export function LeadQualificationForm({ selectedLead }: LeadQualificationFormPro
                                         : <><Rocket className="h-4 w-4 mr-2" />Convert to Opportunity</>}
                             </Button>
                         </div>
-                    </div>
-                )}
+                    )}
+                </div>
+            )}
+        </>
+    );
+
+    if (hideLayout) {
+        return <Content />;
+    }
+
+    return (
+        <Card className="bg-slate-900 border-slate-800 sticky top-6">
+            <CardHeader className="pb-3">
+                <CardTitle className="text-sm font-semibold text-slate-100 uppercase tracking-widest flex items-center gap-2">
+                    <CheckCircle2 className="h-4 w-4 text-indigo-400" />
+                    BANT Qualification
+                </CardTitle>
+            </CardHeader>
+            <CardContent>
+                <Content />
             </CardContent>
         </Card>
     );

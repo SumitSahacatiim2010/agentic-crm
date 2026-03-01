@@ -78,6 +78,43 @@ function generateName(index: number) {
 async function runSeed() {
     console.log('Starting seed process...');
 
+    // 0. BRANCHES
+    const branches: any[] = [];
+    const branchUUIDs: string[] = [];
+    const branchNames = ['Downtown Main', 'Westside', 'North Hills', 'Southgate', 'East End'];
+    for (let i = 0; i < branchNames.length; i++) {
+        const id = uuidv4();
+        branchUUIDs.push(id);
+        branches.push({
+            id,
+            code: `BR-${100 + i}`,
+            name: branchNames[i],
+            region: pick(['North', 'South', 'East', 'West', 'Central']),
+            attributes: { "is_flagship": i === 0, "has_atm": true },
+            capacity_metrics: { "daily_footfall": rand(50, 200), "active_leads": rand(10, 50) }
+        });
+    }
+    await batchInsert('branches', branches);
+
+    // 0.5 STAFF USERS
+    const staffUsers: any[] = [];
+    const staffUUIDs: string[] = [];
+    const roles = ['BRANCH_MANAGER', 'RM', 'RM', 'BRANCH_TELLER', 'BRANCH_TELLER'];
+    for (let i = 0; i < 25; i++) {
+        const id = uuidv4();
+        staffUUIDs.push(id);
+        staffUsers.push({
+            id,
+            name: generateName(i + 150),
+            email: `staff${i}@insforge.com`,
+            role: roles[i % 5],
+            branch_id: branchUUIDs[i % 5],
+            skills: [pick(['Loans', 'Mortgage', 'Wealth', 'Service'])],
+            workload_metrics: { "assigned_leads": rand(1, 15), "assigned_cases": rand(1, 10) }
+        });
+    }
+    await batchInsert('staff_users', staffUsers);
+
     // 1. INDIVIDUAL PARTIES
     const individualParties: any[] = [];
     const individualUUIDs: string[] = [];
@@ -324,7 +361,10 @@ async function runSeed() {
             lead_rating: rating,
             product_interest: pick(['Savings Account', 'Fixed Deposit', 'Mortgage', 'Auto Loan', 'Investment Portfolio']),
             qualification_stage: 'Suspect',
-            status: 'New'
+            status: 'New',
+            owner_id: pick(staffUUIDs),
+            branch_id: pick(branchUUIDs),
+            sla_due_at: new Date(Date.now() + rand(1, 48) * 3600 * 1000).toISOString()
         });
     }
     await batchInsert('leads', leads);
@@ -373,7 +413,7 @@ async function runSeed() {
             let slb = false;
             if (caseIdx === 1026) slb = true; // EDGE CASE: 1 sla_breached
             cases.push({
-                id: uuidv4(),
+                case_id: uuidv4(),
                 case_number: `CAS-${caseIdx}`,
                 customer_id: pick(individualUUIDs),
                 subject: pick(subjects),
@@ -383,7 +423,10 @@ async function runSeed() {
                 case_type: 'Service Request',
                 sla_target_hours: 24,
                 sla_breached: slb,
-                assigned_agent: 'Agent 1'
+                assigned_agent: 'Agent 1',
+                owner_id: pick(staffUUIDs),
+                branch_id: pick(branchUUIDs),
+                sla_due_at: new Date(Date.now() + rand(1, 48) * 3600 * 1000).toISOString()
             });
             caseIdx++;
         }

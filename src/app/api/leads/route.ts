@@ -7,8 +7,17 @@ export async function GET(request: Request) {
         const limit = parseInt(searchParams.get('limit') || '50', 10);
         const page = parseInt(searchParams.get('page') || '1', 10);
         const status = searchParams.get('status') || undefined;
+        const product = searchParams.get('product') || undefined;
+        const source = searchParams.get('source') || undefined;
+        const owner_id = searchParams.get('owner_id') || undefined;
+        const rating_band = searchParams.get('rating_band') || undefined;
+        const sort_by = searchParams.get('sort_by') || undefined;
+        const sort_dir_param = searchParams.get('sort_dir');
+        const sort_dir = (sort_dir_param === 'asc' || sort_dir_param === 'desc') ? sort_dir_param : undefined;
 
-        const response = await getLeads({ limit, page, status });
+        const response = await getLeads({
+            limit, page, status, product, source, owner_id, rating_band, sort_by, sort_dir
+        });
 
         if (response.error) {
             return NextResponse.json({ error: response.error }, { status: 500 });
