@@ -40,6 +40,28 @@ export const updateOpportunityStage = async (id: string, stage: string): Promise
     }
 };
 
+export const getOpportunityById = async (id: string): Promise<ServiceResponse<any>> => {
+    try {
+        const db = (await getInsforgeServer()).database;
+        const { data, error } = await db
+            .from('opportunities')
+            .select(`
+                *,
+                individual_parties ( full_name )
+            `)
+            .eq('id', id)
+            .single();
+
+        if (error) {
+            return { error: { code: error.code, message: error.message } };
+        }
+
+        return { data };
+    } catch (e: any) {
+        return { error: { code: 'INTERNAL_ERROR', message: e.message } };
+    }
+};
+
 export const getOpportunities = async (params: { limit?: number; page?: number; stage?: string; persona?: string; product_type?: string }): Promise<ServiceResponse<any[]>> => {
     try {
         const limit = params.limit || 50;

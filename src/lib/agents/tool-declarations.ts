@@ -26,6 +26,25 @@ export const crmToolDeclarations = [
         },
     },
     {
+        name: 'update_lead',
+        description: 'Update general information for an existing lead (e.g., residency_status, id_type, age_confirmed, source_channel, email, phone, full_name, etc). Do not use this for BANT scores (use update_bant).',
+        parameters: {
+            type: Type.OBJECT,
+            properties: {
+                lead_id: { type: Type.STRING, description: 'UUID of the lead to update' },
+                full_name: { type: Type.STRING, description: 'Full name' },
+                email: { type: Type.STRING, description: 'Email address' },
+                phone: { type: Type.STRING, description: 'Phone number' },
+                residency_status: { type: Type.STRING, description: 'Residency status (e.g., Citizen, Permanent Resident, Non-Resident)' },
+                id_type: { type: Type.STRING, description: 'ID Type (e.g., Passport, National ID, Driver License)' },
+                age_confirmed: { type: Type.BOOLEAN, description: 'Is age >= 18 confirmed?' },
+                source_channel: { type: Type.STRING, description: 'Lead source channel' },
+                notes: { type: Type.STRING, description: 'Additional notes' }
+            },
+            required: ['lead_id'],
+        },
+    },
+    {
         name: 'update_bant',
         description: 'Update BANT qualification flags for an existing lead. BANT = Budget, Authority, Need, Timeline. Each is true/false.',
         parameters: {
@@ -145,6 +164,17 @@ export const crmToolDeclarations = [
                 limit: { type: Type.NUMBER, description: 'Max results (default 50)' },
                 page: { type: Type.NUMBER, description: 'Page number (default 1)' },
             },
+        },
+    },
+    {
+        name: 'get_opportunity_by_id',
+        description: 'Get details of a specific sales opportunity by its UUID.',
+        parameters: {
+            type: Type.OBJECT,
+            properties: {
+                opportunity_id: { type: Type.STRING, description: 'UUID of the opportunity' },
+            },
+            required: ['opportunity_id'],
         },
     },
     {

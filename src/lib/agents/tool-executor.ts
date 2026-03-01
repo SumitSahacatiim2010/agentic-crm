@@ -4,8 +4,8 @@
  * Dispatches Gemini functionCall objects to the correct
  * Phase 6 headless microservice.
  */
-import { ingestLead, updateBANT, convertLeadToOpportunity, getLeads, getLeadById } from '@/services/lead-service';
-import { createOpportunity, getOpportunities } from '@/services/opportunity-service';
+import { ingestLead, updateLead, updateBANT, convertLeadToOpportunity, getLeads, getLeadById } from '@/services/lead-service';
+import { createOpportunity, getOpportunities, getOpportunityById } from '@/services/opportunity-service';
 import { saveOnboardingProgress } from '@/services/onboarding-service';
 import { submitCreditApplication, updateCreditDecision, getCreditApplications } from '@/services/credit-service';
 
@@ -17,6 +17,7 @@ export interface ToolCallResult {
 
 const toolMap: Record<string, (args: any) => Promise<any>> = {
     ingest_lead: (args) => ingestLead(args),
+    update_lead: (args) => { const { lead_id, ...updates } = args; return updateLead(lead_id, updates); },
     update_bant: (args) => { const { lead_id, ...bant } = args; return updateBANT(lead_id, bant); },
     convert_lead_to_opportunity: (args) => convertLeadToOpportunity(args.lead_id),
     create_opportunity: (args) => createOpportunity(args),
@@ -26,6 +27,7 @@ const toolMap: Record<string, (args: any) => Promise<any>> = {
     get_leads: (args) => getLeads(args || {}),
     get_lead_by_id: (args) => getLeadById(args.lead_id),
     get_opportunities: (args) => getOpportunities(args || {}),
+    get_opportunity_by_id: (args) => getOpportunityById(args.opportunity_id),
     get_credit_applications: (args) => getCreditApplications(args || {}),
 };
 

@@ -12,6 +12,19 @@ export interface ServiceResponse<T> {
 export const ingestLead = async (body: any): Promise<ServiceResponse<any>> => {
     try {
         const db = insforgeClient.database;
+
+        // Make source_channel robust
+        if (body.source_channel) {
+            const sc = body.source_channel.toLowerCase();
+            if (sc.includes('walk') || sc.includes('branch')) body.source_channel = 'Branch';
+            else if (sc.includes('web')) body.source_channel = 'Web';
+            else if (sc.includes('referral') || sc.includes('partner')) body.source_channel = 'Partner';
+            else if (sc.includes('campaign') || sc.includes('marketing')) body.source_channel = 'Marketing';
+            else body.source_channel = 'Web';
+        } else {
+            body.source_channel = 'Web';
+        }
+
         const { data, error } = await db
             .from('leads')
             .insert([{ ...body, created_at: new Date().toISOString() }])
@@ -22,6 +35,27 @@ export const ingestLead = async (body: any): Promise<ServiceResponse<any>> => {
             return { error: { code: error.code, message: error.message } };
         }
 
+        return { data };
+    } catch (e: any) {
+        return { error: { code: 'INTERNAL_ERROR', message: e.message } };
+    }
+};
+
+export const updateLead = async (id: string, updates: any): Promise<ServiceResponse<any>> => {
+    try {
+        const db = insforgeClient.database;
+        // prevent trying to update id
+        const { id: _removedId, ...safeUpdates } = updates;
+        const { data, error } = await db
+            .from('leads')
+            .update({ ...safeUpdates, updated_at: new Date().toISOString() })
+            .eq('id', id)
+            .select()
+            .single();
+
+        if (error) {
+            return { error: { code: error.code, message: error.message } };
+        }
         return { data };
     } catch (e: any) {
         return { error: { code: 'INTERNAL_ERROR', message: e.message } };
