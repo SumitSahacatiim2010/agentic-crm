@@ -8,6 +8,7 @@ export const metadata: Metadata = {
 
 import { InsforgeProvider } from './providers';
 import { AIAssistantPanel } from '@/components/ai-assistant/AIAssistantPanel';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export default function RootLayout({
   children,
@@ -18,6 +19,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className="antialiased" suppressHydrationWarning>
         <InsforgeProvider>
+          <Breadcrumbs />
           {children}
           <AIAssistantPanel />
         </InsforgeProvider>
