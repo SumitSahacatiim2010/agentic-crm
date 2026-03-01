@@ -8,10 +8,11 @@
 - [ ] SEO meta tags on all 22 routes
 - [ ] WCAG 2.1 AA accessibility audit
 
-## Phase 6 Prep
-- [ ] Research InsForge Auth components for Next.js
-- [ ] Design role-to-persona mapping schema
-- [ ] Plan RLS policy migration from allow-all to role-based
+## Phase 6 Prep (Headless Microservices & MCP Tools)
+- [ ] Inventory all atomic operations across J1/J2/J3 journey steps
+- [ ] Design MCP tool schema (typed inputs/outputs for each operation)
+- [ ] Identify which existing API routes can be wrapped vs. need new services
+- [ ] Research InsForge Edge Functions for microservice hosting
 
 ## Technical Debt
 - [ ] Remove debug routes (`/debug-customer`, `/p1-validation`, `/test-static`)

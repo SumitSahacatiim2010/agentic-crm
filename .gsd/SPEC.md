@@ -15,14 +15,13 @@ Build a **demo-grade, multi-persona enterprise Banking CRM** that showcases end-
 3. **Full module coverage**: Customer 360, Leads, Opportunities, Servicing, Compliance, Credit, Wealth, Branch Ops, Analytics, Marketing/Campaigns, Knowledge Base
 4. **Live database binding** — all data fetched from/persisted to InsForge Postgres, no static mocks in production views
 5. **Demo-ready quality** — no NaN/undefined/placeholder values, every button produces observable behavior, every form persists and shows feedback
+6. **Headless journey microservices** — decompose J1/J2/J3 into atomic operations exposed as MCP tools for AI agent consumption
+7. **Goal-oriented AI agents** — agents that use MCP tools to autonomously execute journey steps, draft comms, and optimize campaigns
 
-## Non-Goals (Out of Scope — Deferred to Phase 5+)
+## Non-Goals (Out of Scope)
 
-- Authentication / Authorization / RBAC (persona switcher is the only role mechanism)
-- Autonomous AI agents (Email Drafting, Financial Statement Summarizer, Meeting Prep, Compliance Check, Campaign Optimization)
+- Authentication / Authorization / RBAC — indefinitely deferred; persona switcher remains the only role mechanism to preserve demo flow
 - Full ML model training pipelines (XGBoost/Random Forest)
-- Event-driven architecture / event bus
-- Production deployment, CI/CD, monitoring
 - Mobile app or PWA
 - Real payment processing or banking integrations
 

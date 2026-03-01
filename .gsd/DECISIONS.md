@@ -42,3 +42,12 @@
 **Context**: Multiple phases build on the same schema. Renaming/removing tables would break existing code.
 **Decision**: Only add new tables/columns. Existing table names and column names are immutable.
 **Consequences**: Schema may accumulate unused columns over time. Migration complexity is low.
+
+---
+
+## ADR-006: No Auth/RBAC — Headless Microservices Before Agents
+**Date**: 2026-03-01
+**Status**: Active
+**Context**: Implementing real authentication would break the demo-friendly persona switcher flow. AI agents need structured, tool-based access to journey operations.
+**Decision**: (1) Remove Auth/RBAC from the roadmap entirely — persona switcher remains the only role mechanism indefinitely. (2) Split the AI phase into two: first decompose J1/J2/J3 journeys into headless microservices exposed as MCP tools (Phase 6), then build AI agents that consume those tools (Phase 7).
+**Consequences**: Agents get a clean, typed API surface. Demo flow is preserved. Auth can be revisited as a future initiative outside the current roadmap.

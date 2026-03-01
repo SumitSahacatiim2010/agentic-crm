@@ -4,18 +4,20 @@
 
 ## Current Position
 - **Milestone**: v2.5 Production Readiness
-- **Phase**: 6 (verified)
-- **Status**: ✅ Complete and verified
+- **Phase**: 7 (completed)
+- **Status**: ✅ AI Agent Integration complete
 
 ## Session Context
 ### What was just completed
-- Extracted `lead-service.ts`, `opportunity-service.ts`, `onboarding-service.ts`, and `credit-service.ts`.
-- Refactored `api/leads`, `api/opportunities`, `api/onboarding`, and `api/credit` to use headless services.
-- Created `src/mcp/server.ts` and `src/mcp/tools.ts` with Zod schemas for 7 journey tools.
-- Phase 6 Execution fully completed.
+- Installed `@google/genai` SDK for Gemini API with native tool-calling.
+- Created `tool-declarations.ts` with 11 FunctionDeclarations mapped to Phase 6 microservices.
+- Created `tool-executor.ts` dispatch layer and `gemini-agent.ts` core agent engine.
+- Created `/api/agents/chat` and `/api/agents/orchestrate` API routes.
+- Built `AIAssistantPanel.tsx` floating chat panel integrated into root layout.
+- Phase 7 Execution fully completed.
 
 ## Next Steps
-1. /execute 7
+1. /verify 7
 
 ### Key files modified recently
 - `src/components/home/PersonaLayout.tsx` — profile dropdown, Global Admin quick links

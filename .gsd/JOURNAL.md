@@ -1,5 +1,15 @@
 # JOURNAL.md — Development Journal
 
+## 2026-03-01 — Roadmap Restructured
+
+Removed Auth/RBAC phase (would break demo flow). Split AI phase into two:
+- **Phase 6**: Headless journey microservices + MCP tools layer (J1/J2/J3 → atomic operations → typed MCP tools)
+- **Phase 7**: AI agents that consume those MCP tools for goal-oriented tasks
+
+Roadmap now has 9 phases (4 complete, 5 planned).
+
+---
+
 ## 2026-03-01 — GSD System Initialized
 
 Retroactively initialized GSD project tracking for BankingCRM 2.5. Phases 1-4 are complete. The project has:
