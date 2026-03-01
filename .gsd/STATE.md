@@ -4,20 +4,18 @@
 
 ## Current Position
 - **Milestone**: v2.5 Production Readiness
-- **Phase**: 7 (completed)
-- **Status**: ✅ AI Agent Integration complete
+- **Phase**: 8 (completed)
+- **Status**: ✅ Event Architecture & Real-time complete
 
 ## Session Context
 ### What was just completed
-- Installed `@google/genai` SDK for Gemini API with native tool-calling.
-- Created `tool-declarations.ts` with 11 FunctionDeclarations mapped to Phase 6 microservices.
-- Created `tool-executor.ts` dispatch layer and `gemini-agent.ts` core agent engine.
-- Created `/api/agents/chat` and `/api/agents/orchestrate` API routes.
-- Built `AIAssistantPanel.tsx` floating chat panel integrated into root layout.
-- Phase 7 Execution fully completed.
+- Created `useRealtimeChannel` hook (singleton connect, auto-subscribe/cleanup).
+- Refactored `ServiceInbox.tsx` and `AlertsQueue.tsx` to use shared hook.
+- Added real-time to `LeadDataTable`, `BranchLeadQueue`, `OpportunityKanban`, and `ComplianceDashboardClient`.
+- Phase 8 Execution fully completed.
 
 ## Next Steps
-1. /verify 7
+1. /verify 8
 
 ### Key files modified recently
 - `src/components/home/PersonaLayout.tsx` — profile dropdown, Global Admin quick links
